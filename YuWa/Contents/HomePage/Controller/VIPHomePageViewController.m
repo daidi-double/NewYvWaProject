@@ -81,14 +81,11 @@
     [self makeNaviBar];
     [self addTableVIew];
     [self setUpMJRefresh];
-
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[[self.navigationController.navigationBar subviews] objectAtIndex:0 ]setAlpha:1];
-//    [self makeNoticeWithTime:0 withAlertBody:@"您已购买了xxxx"];
-
     
 }
 - (void)tagsAliasCallback:(int)iResCode  tags:(NSSet *)tags alias:(NSString *)alias {
