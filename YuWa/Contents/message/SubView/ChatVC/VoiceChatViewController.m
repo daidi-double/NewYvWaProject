@@ -86,12 +86,13 @@
         
         //对方窗口
         _callSession.remoteVideoView = [[EMCallRemoteView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height)];
+        _callSession.remoteVideoView.scaleMode = EMCallViewScaleModeAspectFill;
         _callSession.remoteVideoView.backgroundColor = [UIColor lightGrayColor];
         [self.view addSubview:_callSession.remoteVideoView];
         
         
         //自己窗口
-        _callSession.localVideoView = [[EMCallLocalView alloc]initWithFrame:CGRectMake(kScreen_Width-100, 64, 80, 120)];
+        _callSession.localVideoView = [[EMCallLocalView alloc]initWithFrame:CGRectMake(kScreen_Width-120, 64, 100, 120)];
         [self.view addSubview:_callSession.localVideoView];
         
     }
