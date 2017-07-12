@@ -169,6 +169,9 @@
 #define FONT_CN_30 [UIFont fontWithName:@"PingFang SC" size:15]
 #define FONT_CN_24 [UIFont fontWithName:@"PingFang SC" size:12]
 
+//FONT_CN   中文48号字体
+//Helvetica-Bold     PingFang SC
+#define FONT_BOLD__48 [UIFont fontWithName:@"Helvetica-Bold" size:24]
 
 //FONT_EN
 //#define FONT_EN_48 [UIFont fontWithName:@"San Francisco Text" size:24]

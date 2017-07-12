@@ -902,8 +902,6 @@
 		AA42110F1E5ABAEF00085650 /* MovieCinemaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA42110D1E5ABAEF00085650 /* MovieCinemaViewController.xib */; };
 		AA4517091ED52118007CF813 /* CinameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4517071ED52118007CF813 /* CinameTableViewCell.m */; };
 		AA45170A1ED52118007CF813 /* CinameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4517081ED52118007CF813 /* CinameTableViewCell.xib */; };
-		AA466C7E1E53EA1F009E9F98 /* gogogo1.png in Resources */ = {isa = PBXBuildFile; fileRef = AA466C7C1E53EA1F009E9F98 /* gogogo1.png */; };
-		AA466C7F1E53EA1F009E9F98 /* gogogo2.png in Resources */ = {isa = PBXBuildFile; fileRef = AA466C7D1E53EA1F009E9F98 /* gogogo2.png */; };
 		AA466CCB1E5449D1009E9F98 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA466CC91E5449D1009E9F98 /* MovieViewController.m */; };
 		AA466CCC1E5449D1009E9F98 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA466CCA1E5449D1009E9F98 /* MovieViewController.xib */; };
 		AA4706861E6558AA00D09619 /* MovieHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4706851E6558AA00D09619 /* MovieHeaderModel.m */; };
@@ -912,6 +910,7 @@
 		AA6B5EC31EA9FCF900E6A83D /* ShopDetailGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6B5EC21EA9FCF900E6A83D /* ShopDetailGoodsModel.m */; };
 		AA6B5EC71EAA0E6F00E6A83D /* CategoryLeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6B5EC51EAA0E6F00E6A83D /* CategoryLeftTableViewCell.m */; };
 		AA6B5EC81EAA0E6F00E6A83D /* CategoryLeftTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6B5EC61EAA0E6F00E6A83D /* CategoryLeftTableViewCell.xib */; };
+		AA6C2BF81F1654A5009DA6AB /* 首页数据.json in Resources */ = {isa = PBXBuildFile; fileRef = AA6C2BF71F1654A5009DA6AB /* 首页数据.json */; };
 		AA73F2951ECEBA9C0002B548 /* beijingBG.png in Resources */ = {isa = PBXBuildFile; fileRef = AA73F2941ECEBA9C0002B548 /* beijingBG.png */; };
 		AA73F2991ECEC4D50002B548 /* toyou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA73F2971ECEC4D50002B548 /* toyou@2x.png */; };
 		AA73F29C1ECEC4FA0002B548 /* yuwa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA73F29B1ECEC4FA0002B548 /* yuwa@2x.png */; };
@@ -1443,7 +1442,6 @@
 		B38B2F551D8FC83A004D5256 /* 总的专辑 个人中心展示小图.json in Resources */ = {isa = PBXBuildFile; fileRef = B38B2F3F1D8FC83A004D5256 /* 总的专辑 个人中心展示小图.json */; };
 		B38B2F561D8FC83A004D5256 /* 总的笔记个人.json in Resources */ = {isa = PBXBuildFile; fileRef = B38B2F401D8FC83A004D5256 /* 总的笔记个人.json */; };
 		B38B2F571D8FC83A004D5256 /* 点进个人中心的一个专辑.json in Resources */ = {isa = PBXBuildFile; fileRef = B38B2F411D8FC83A004D5256 /* 点进个人中心的一个专辑.json */; };
-		B38B2F591D8FC83A004D5256 /* 首页数据.json in Resources */ = {isa = PBXBuildFile; fileRef = B38B2F431D8FC83A004D5256 /* 首页数据.json */; };
 		B38B2F5A1D8FC83A004D5256 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = B38B2F451D8FC83A004D5256 /* country.plist */; };
 		B38B2F5B1D8FC83A004D5256 /* countrycoderule.plist in Resources */ = {isa = PBXBuildFile; fileRef = B38B2F461D8FC83A004D5256 /* countrycoderule.plist */; };
 		B38B2F5C1D8FC83A004D5256 /* EmojisList.plist in Resources */ = {isa = PBXBuildFile; fileRef = B38B2F471D8FC83A004D5256 /* EmojisList.plist */; };
@@ -3053,8 +3051,6 @@
 		AA4517061ED52118007CF813 /* CinameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinameTableViewCell.h; sourceTree = "<group>"; };
 		AA4517071ED52118007CF813 /* CinameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CinameTableViewCell.m; sourceTree = "<group>"; };
 		AA4517081ED52118007CF813 /* CinameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CinameTableViewCell.xib; sourceTree = "<group>"; };
-		AA466C7C1E53EA1F009E9F98 /* gogogo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gogogo1.png; sourceTree = "<group>"; };
-		AA466C7D1E53EA1F009E9F98 /* gogogo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gogogo2.png; sourceTree = "<group>"; };
 		AA466CC81E5449D1009E9F98 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		AA466CC91E5449D1009E9F98 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		AA466CCA1E5449D1009E9F98 /* MovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
@@ -3069,6 +3065,7 @@
 		AA6B5EC41EAA0E6F00E6A83D /* CategoryLeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryLeftTableViewCell.h; path = "新的18分类/CategoryLeftTableViewCell.h"; sourceTree = "<group>"; };
 		AA6B5EC51EAA0E6F00E6A83D /* CategoryLeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryLeftTableViewCell.m; path = "新的18分类/CategoryLeftTableViewCell.m"; sourceTree = "<group>"; };
 		AA6B5EC61EAA0E6F00E6A83D /* CategoryLeftTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryLeftTableViewCell.xib; path = "新的18分类/CategoryLeftTableViewCell.xib"; sourceTree = "<group>"; };
+		AA6C2BF71F1654A5009DA6AB /* 首页数据.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "首页数据.json"; sourceTree = "<group>"; };
 		AA73F2941ECEBA9C0002B548 /* beijingBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beijingBG.png; sourceTree = "<group>"; };
 		AA73F2971ECEC4D50002B548 /* toyou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toyou@2x.png"; sourceTree = "<group>"; };
 		AA73F29B1ECEC4FA0002B548 /* yuwa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yuwa@2x.png"; sourceTree = "<group>"; };
@@ -3927,7 +3924,6 @@
 		B38B2F3F1D8FC83A004D5256 /* 总的专辑 个人中心展示小图.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "总的专辑 个人中心展示小图.json"; sourceTree = "<group>"; };
 		B38B2F401D8FC83A004D5256 /* 总的笔记个人.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "总的笔记个人.json"; sourceTree = "<group>"; };
 		B38B2F411D8FC83A004D5256 /* 点进个人中心的一个专辑.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "点进个人中心的一个专辑.json"; sourceTree = "<group>"; };
-		B38B2F431D8FC83A004D5256 /* 首页数据.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "首页数据.json"; sourceTree = "<group>"; };
 		B38B2F451D8FC83A004D5256 /* country.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = country.plist; sourceTree = "<group>"; };
 		B38B2F461D8FC83A004D5256 /* countrycoderule.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = countrycoderule.plist; sourceTree = "<group>"; };
 		B38B2F471D8FC83A004D5256 /* EmojisList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmojisList.plist; sourceTree = "<group>"; };
@@ -6720,8 +6716,6 @@
 			isa = PBXGroup;
 			children = (
 				AAF628ED1E5B120D000FF976 /* 横条.png */,
-				AA466C7C1E53EA1F009E9F98 /* gogogo1.png */,
-				AA466C7D1E53EA1F009E9F98 /* gogogo2.png */,
 			);
 			name = "商家入驻";
 			sourceTree = "<group>";
@@ -8931,7 +8925,7 @@
 				B38B2F3F1D8FC83A004D5256 /* 总的专辑 个人中心展示小图.json */,
 				B38B2F401D8FC83A004D5256 /* 总的笔记个人.json */,
 				B38B2F411D8FC83A004D5256 /* 点进个人中心的一个专辑.json */,
-				B38B2F431D8FC83A004D5256 /* 首页数据.json */,
+				AA6C2BF71F1654A5009DA6AB /* 首页数据.json */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -10860,6 +10854,7 @@
 				AA3543E41E9DF23800A2EC73 /* 1baobaoLVUP4@2x.jpg in Resources */,
 				AA3543EB1E9DF23800A2EC73 /* 1baobaoLVUP56@2x.jpg in Resources */,
 				AA35440C1E9DF23800A2EC73 /* 2baobaoLVUP31@2x.jpg in Resources */,
+				AA6C2BF81F1654A5009DA6AB /* 首页数据.json in Resources */,
 				AA3545B21E9DF23A00A2EC73 /* 4baobaoBG36@2x.jpg in Resources */,
 				AA3544DA1E9DF23900A2EC73 /* 0baobaoBG55@2x.jpg in Resources */,
 				B38B2F171D8FC82F004D5256 /* RBNodeShowViewController.xib in Resources */,
@@ -11124,7 +11119,6 @@
 				AA3545461E9DF23A00A2EC73 /* 2baobaoBG47@2x.jpg in Resources */,
 				AAFAE3E41EE6F31500D24DCF /* FilmDetailTableViewCell.xib in Resources */,
 				B3FEBA2B1D9BC2D9003CDEF2 /* YWMessageAddressBookHeader.xib in Resources */,
-				B38B2F591D8FC83A004D5256 /* 首页数据.json in Resources */,
 				AA3545961E9DF23A00A2EC73 /* 4baobaoBG10@2x.jpg in Resources */,
 				AA35455C1E9DF23A00A2EC73 /* 3baobaoBG12@2x.jpg in Resources */,
 				B38B2E621D8FACD8004D5256 /* Info.plist in Resources */,
@@ -11281,7 +11275,6 @@
 				AAD988C51ECB29F10055D044 /* PlayTimeShowTableViewCell.xib in Resources */,
 				AA35443F1E9DF23800A2EC73 /* 3baobaoLVUP23@2x.jpg in Resources */,
 				AA3544341E9DF23800A2EC73 /* 3baobaoLVUP13@2x.jpg in Resources */,
-				AA466C7E1E53EA1F009E9F98 /* gogogo1.png in Resources */,
 				C1C1480A1DE817F1001FCBC3 /* 椭圆实.png in Resources */,
 				C1F7BF411DB1CA0700CCAF96 /* home_xiaofeijilu.png in Resources */,
 				AAFA57A91ED2E540006CF2D7 /* 酒店@3x.png in Resources */,
@@ -11571,7 +11564,6 @@
 				AA3544171E9DF23800A2EC73 /* 2baobaoLVUP41@2x.jpg in Resources */,
 				B38B2F301D8FC82F004D5256 /* RBConnectionViewController.xib in Resources */,
 				AA35444D1E9DF23800A2EC73 /* 3baobaoLVUP36@2x.jpg in Resources */,
-				AA466C7F1E53EA1F009E9F98 /* gogogo2.png in Resources */,
 				AA3544781E9DF23800A2EC73 /* 4baobaoLVUP20@2x.jpg in Resources */,
 				B3FFF4861D93B45500EDD2AB /* RBPublicTagEditorViewController.xib in Resources */,
 				25B3C5B91ECD8E4000674F20 /* 24.png in Resources */,
@@ -12898,13 +12890,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks -ObjC";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/YuWa/Foundation/SDK/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
-					"$(PROJECT_DIR)/YuWa/Foundation/SDK/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
-					"$(PROJECT_DIR)/YuWa/Foundation/SDK/HyphenateFullSDK/lib",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/JPush",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
-					"$(PROJECT_DIR)/YuWa/Foundation/SDK/ZBar",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/weChatSDK",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/applePaySDK/libs",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/libs",
@@ -12955,13 +12943,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks -ObjC";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/YuWa/Foundation/SDK/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
-					"$(PROJECT_DIR)/YuWa/Foundation/SDK/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
-					"$(PROJECT_DIR)/YuWa/Foundation/SDK/HyphenateFullSDK/lib",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/JPush",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/ShareSDK/Support/PlatformSDK/WeChatSDK",
-					"$(PROJECT_DIR)/YuWa/Foundation/SDK/ZBar",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/weChatSDK",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/applePaySDK/libs",
 					"$(PROJECT_DIR)/YuWa/Foundation/SDK/libs",
