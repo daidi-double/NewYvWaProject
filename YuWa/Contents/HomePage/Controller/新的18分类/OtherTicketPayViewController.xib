@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OtherTicketPayViewController">
+            <connections>
+                <outlet property="payTableView" destination="Nq8-CL-IlN" id="45w-mc-s6F"/>
+                <outlet property="settmentMoneyLabel" destination="UaD-dk-dy0" id="iAR-bN-G8F"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Nq8-CL-IlN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="585"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Nq8-CL-IlN" secondAttribute="height" multiplier="375:455" constant="-107.14285714285711" id="CBl-S9-fI7"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="srx-WZ-1ts"/>
+                        <outlet property="delegate" destination="-1" id="g2B-pb-ONG"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCf-uR-QoK">
+                    <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待结算" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaD-dk-dy0">
+                            <rect key="frame" x="40" y="12.5" width="52" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.28235294119999998" green="0.53333333329999999" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHb-a0-RFS">
+                            <rect key="frame" x="275" y="0.0" width="100" height="45"/>
+                            <color key="backgroundColor" red="0.28235294119999998" green="0.53333333329999999" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="tro-xC-b04"/>
+                            </constraints>
+                            <state key="normal" title="去结算">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="toPayAction:" destination="-1" eventType="touchUpInside" id="86t-MF-0Jg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="MHb-a0-RFS" secondAttribute="trailing" id="5xh-PP-Meq"/>
+                        <constraint firstItem="UaD-dk-dy0" firstAttribute="centerY" secondItem="KCf-uR-QoK" secondAttribute="centerY" id="7OV-D9-zP8"/>
+                        <constraint firstItem="MHb-a0-RFS" firstAttribute="top" secondItem="KCf-uR-QoK" secondAttribute="top" id="IxQ-F1-rfo"/>
+                        <constraint firstItem="UaD-dk-dy0" firstAttribute="leading" secondItem="KCf-uR-QoK" secondAttribute="leading" constant="40" id="QJx-Lf-iXe"/>
+                        <constraint firstAttribute="bottom" secondItem="MHb-a0-RFS" secondAttribute="bottom" id="WkO-uM-9eI"/>
+                        <constraint firstAttribute="height" constant="45" id="fK8-du-xtu"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Nq8-CL-IlN" secondAttribute="trailing" id="8Ki-V8-mIi"/>
+                <constraint firstAttribute="trailing" secondItem="KCf-uR-QoK" secondAttribute="trailing" id="9Wd-wn-6jP"/>
+                <constraint firstItem="Nq8-CL-IlN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VVO-yg-49U"/>
+                <constraint firstItem="KCf-uR-QoK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X9C-39-ytg"/>
+                <constraint firstAttribute="bottom" secondItem="KCf-uR-QoK" secondAttribute="bottom" id="bl9-Il-eCs"/>
+                <constraint firstItem="Nq8-CL-IlN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mNh-PG-OSO"/>
+            </constraints>
+            <point key="canvasLocation" x="35.5" y="110.5"/>
+        </view>
+    </objects>
+</document>

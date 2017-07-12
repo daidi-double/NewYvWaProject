@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="YWWinnersCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="358" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="358" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一等奖" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRT-fr-cBT">
+                        <rect key="frame" x="8" y="5" width="37" height="40"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.24705882352941178" green="0.69411764705882351" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YWB12345678" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TAv-BV-YFD">
+                        <rect key="frame" x="50" y="5.5" width="85" height="40"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.24705882352941178" green="0.69411764705882351" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13661475900" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDq-Ra-qRs">
+                        <rect key="frame" x="138.5" y="5.5" width="79" height="40"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.24705882352941178" green="0.69411764705882351" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lK-Aq-R69">
+                        <rect key="frame" x="300" y="13" width="50" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Lav-uR-cQV"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="WPr-CO-aWN"/>
+                        </constraints>
+                        <state key="normal" image="4-领取"/>
+                        <connections>
+                            <action selector="getAwardAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="nhA-4l-XsC"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13661475900" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IpE-uq-M5X">
+                        <rect key="frame" x="221" y="5.5" width="79" height="40"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.24705882352941178" green="0.69411764705882351" blue="0.88627450980392153" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="IpE-uq-M5X" firstAttribute="height" secondItem="NRT-fr-cBT" secondAttribute="height" id="3aR-X8-wRg"/>
+                <constraint firstItem="NRT-fr-cBT" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4Vq-1T-kKk"/>
+                <constraint firstItem="NRT-fr-cBT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="D6y-sp-keB"/>
+                <constraint firstItem="IpE-uq-M5X" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="F1Z-d2-U4P"/>
+                <constraint firstItem="TAv-BV-YFD" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Ftj-6D-Vn0"/>
+                <constraint firstItem="7lK-Aq-R69" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="GE5-jj-MoA"/>
+                <constraint firstItem="WDq-Ra-qRs" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="GYr-lT-SC9"/>
+                <constraint firstItem="WDq-Ra-qRs" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="-1" id="KKA-ZH-jD4"/>
+                <constraint firstAttribute="trailing" secondItem="7lK-Aq-R69" secondAttribute="trailing" constant="8" id="Pay-Ey-mrH"/>
+                <constraint firstItem="TAv-BV-YFD" firstAttribute="leading" secondItem="NRT-fr-cBT" secondAttribute="trailing" constant="5" id="YuG-ds-d1q"/>
+                <constraint firstItem="7lK-Aq-R69" firstAttribute="leading" secondItem="IpE-uq-M5X" secondAttribute="trailing" id="ZyM-6l-hqO"/>
+                <constraint firstItem="WDq-Ra-qRs" firstAttribute="height" secondItem="NRT-fr-cBT" secondAttribute="height" id="e3T-yl-WLJ"/>
+                <constraint firstItem="TAv-BV-YFD" firstAttribute="height" secondItem="NRT-fr-cBT" secondAttribute="height" id="epn-o1-ol7"/>
+                <constraint firstItem="TAv-BV-YFD" firstAttribute="leading" secondItem="NRT-fr-cBT" secondAttribute="trailing" constant="5" id="hCF-ca-KW9"/>
+                <constraint firstItem="7lK-Aq-R69" firstAttribute="leading" secondItem="IpE-uq-M5X" secondAttribute="trailing" id="j9W-IS-SCw"/>
+                <constraint firstAttribute="bottom" secondItem="NRT-fr-cBT" secondAttribute="bottom" constant="5" id="mu6-C2-aXG"/>
+            </constraints>
+            <size key="customSize" width="358" height="50"/>
+            <connections>
+                <outlet property="codeLabel" destination="TAv-BV-YFD" id="GWV-dO-gEe"/>
+                <outlet property="getAwardBtn" destination="7lK-Aq-R69" id="ZAm-jp-4ry"/>
+                <outlet property="nameLabel" destination="WDq-Ra-qRs" id="Myh-wH-eNf"/>
+                <outlet property="phoneNumberLabel" destination="IpE-uq-M5X" id="yEf-4g-m15"/>
+                <outlet property="winLabel" destination="NRT-fr-cBT" id="zqX-v1-OK0"/>
+            </connections>
+            <point key="canvasLocation" x="79" y="23"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="4-领取" width="129" height="61"/>
+    </resources>
+</document>

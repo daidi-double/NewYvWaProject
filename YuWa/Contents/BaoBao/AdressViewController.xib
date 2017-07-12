@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AdressViewController">
+            <connections>
+                <outlet property="adressScrollView" destination="uUf-Sf-kQU" id="TG3-Jv-yJ1"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUf-Sf-kQU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="I0t-CE-9y9"/>
+                    </connections>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uUf-Sf-kQU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Aqz-nP-0dx"/>
+                <constraint firstAttribute="bottom" secondItem="uUf-Sf-kQU" secondAttribute="bottom" id="Bq3-ul-lSS"/>
+                <constraint firstItem="uUf-Sf-kQU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NPS-Ab-cTh"/>
+                <constraint firstItem="uUf-Sf-kQU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QJv-LY-Lhh"/>
+                <constraint firstAttribute="trailing" secondItem="uUf-Sf-kQU" secondAttribute="trailing" id="h3m-bE-mKC"/>
+                <constraint firstItem="uUf-Sf-kQU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rGv-63-z7e"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

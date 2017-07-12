@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="243" id="KGk-i7-Jjw" customClass="SalesShopTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="243"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="392" height="243"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baobaoBG0" translatesAutoresizingMaskIntoConstraints="NO" id="fpc-XO-ON6">
+                        <rect key="frame" x="171" y="40" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="JvO-fA-ahJ"/>
+                            <constraint firstAttribute="height" constant="50" id="wYQ-pq-ola"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipJ-8e-ARy">
+                        <rect key="frame" x="136" y="108" width="120" height="21"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Coconut商务股权">
+                                <attributes>
+                                    <font key="NSFont" size="15" name="STHeitiSC-Medium"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIf-gK-eaW">
+                        <rect key="frame" x="127.5" y="142" width="138" height="21"/>
+                        <attributedString key="attributedText">
+                            <fragment content="24小时供输甜品美食">
+                                <attributes>
+                                    <font key="NSFont" size="15" name="STHeitiSC-Medium"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="甜点饮品" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dl6-Wf-nuz">
+                        <rect key="frame" x="169.5" y="176" width="53.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="haveuser" translatesAutoresizingMaskIntoConstraints="NO" id="iXS-1X-sFL">
+                        <rect key="frame" x="145" y="211" width="48" height="15"/>
+                    </imageView>
+                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xg1-6G-Wrc">
+                        <rect key="frame" x="196" y="192" width="0.5" height="50.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="0.5" id="eru-OR-lqV"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="泉州市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVO-93-hfM">
+                        <rect key="frame" x="200" y="211" width="48" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dl6-Wf-nuz" firstAttribute="top" secondItem="gIf-gK-eaW" secondAttribute="bottom" constant="13" id="7uO-2m-ILB"/>
+                    <constraint firstItem="iXS-1X-sFL" firstAttribute="top" secondItem="dl6-Wf-nuz" secondAttribute="bottom" constant="19" id="8fS-q8-Ews"/>
+                    <constraint firstItem="ipJ-8e-ARy" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="BVD-fe-bZV"/>
+                    <constraint firstItem="EVO-93-hfM" firstAttribute="height" secondItem="iXS-1X-sFL" secondAttribute="height" id="Ccp-qM-Y3f"/>
+                    <constraint firstItem="EVO-93-hfM" firstAttribute="centerY" secondItem="iXS-1X-sFL" secondAttribute="centerY" id="Ixw-wG-puj"/>
+                    <constraint firstItem="xg1-6G-Wrc" firstAttribute="top" secondItem="dl6-Wf-nuz" secondAttribute="bottom" id="KHz-Xh-713"/>
+                    <constraint firstItem="xg1-6G-Wrc" firstAttribute="leading" secondItem="iXS-1X-sFL" secondAttribute="trailing" constant="3" id="QGg-6r-gXU"/>
+                    <constraint firstItem="xg1-6G-Wrc" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="UV9-Ae-f1H"/>
+                    <constraint firstItem="dl6-Wf-nuz" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ah7-JM-ehu"/>
+                    <constraint firstItem="gIf-gK-eaW" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="cYg-oq-7UB"/>
+                    <constraint firstAttribute="bottom" secondItem="xg1-6G-Wrc" secondAttribute="bottom" id="fUy-DL-ohL"/>
+                    <constraint firstItem="EVO-93-hfM" firstAttribute="width" secondItem="iXS-1X-sFL" secondAttribute="width" id="kbL-kl-OtC"/>
+                    <constraint firstItem="fpc-XO-ON6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="32" id="m61-2i-to9"/>
+                    <constraint firstItem="gIf-gK-eaW" firstAttribute="top" secondItem="ipJ-8e-ARy" secondAttribute="bottom" constant="13" id="mli-nq-ilN"/>
+                    <constraint firstItem="ipJ-8e-ARy" firstAttribute="top" secondItem="fpc-XO-ON6" secondAttribute="bottom" constant="18" id="p8E-37-sdE"/>
+                    <constraint firstItem="EVO-93-hfM" firstAttribute="leading" secondItem="xg1-6G-Wrc" secondAttribute="trailing" constant="3" id="vS1-h0-vue"/>
+                    <constraint firstItem="fpc-XO-ON6" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="xQh-wu-efH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addressLabel" destination="EVO-93-hfM" id="hrc-ye-9fA"/>
+                <outlet property="categoryLabel" destination="dl6-Wf-nuz" id="q40-up-nrf"/>
+                <outlet property="characteristicLabel" destination="gIf-gK-eaW" id="zlg-wv-SGN"/>
+                <outlet property="iconImageView" destination="fpc-XO-ON6" id="QvA-Wd-nA3"/>
+                <outlet property="isHaveUserImageView" destination="iXS-1X-sFL" id="U23-9y-8j2"/>
+                <outlet property="nameLabel" destination="ipJ-8e-ARy" id="8JP-Z8-Hye"/>
+            </connections>
+            <point key="canvasLocation" x="-2" y="153.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="baobaoBG0" width="375" height="603"/>
+        <image name="haveuser" width="48" height="15"/>
+    </resources>
+</document>

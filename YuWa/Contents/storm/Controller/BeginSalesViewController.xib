@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BeginSalesViewController">
+            <connections>
+                <outlet property="salesTableView" destination="Jkl-3r-g8B" id="mjm-7Q-oGz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Jkl-3r-g8B">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="622"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="hn9-75-4fP"/>
+                        <outlet property="delegate" destination="-1" id="PpN-mE-LVP"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Jkl-3r-g8B" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AT9-dQ-dWg"/>
+                <constraint firstAttribute="bottom" secondItem="Jkl-3r-g8B" secondAttribute="bottom" constant="45" id="GdY-DR-o31"/>
+                <constraint firstAttribute="trailing" secondItem="Jkl-3r-g8B" secondAttribute="trailing" id="PZh-T8-skq"/>
+                <constraint firstItem="Jkl-3r-g8B" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g5F-7b-F7m"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutUsViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutuslogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="LDg-Ai-D1J">
+                    <rect key="frame" x="87" y="567" width="200" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="sFS-fd-Wp9"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="LDg-Ai-D1J" secondAttribute="bottom" constant="30" id="8J0-4w-Dn3"/>
+                <constraint firstItem="LDg-Ai-D1J" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="87" id="Bcs-v1-TpL"/>
+                <constraint firstAttribute="trailing" secondItem="LDg-Ai-D1J" secondAttribute="trailing" constant="88" id="QM3-Gy-eeJ"/>
+                <constraint firstItem="LDg-Ai-D1J" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kHY-RU-0Yi"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="aboutuslogo.png" width="197" height="71"/>
+    </resources>
+</document>

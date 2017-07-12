@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignatureViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有趣的个人介绍更引人注目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opF-8m-cUK">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zk6-gM-9Pk">
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hrk-7F-8ZS">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoM-81-IHo">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="BoM-81-IHo" secondAttribute="bottom" constant="5" id="JHd-xi-m0t"/>
+                        <constraint firstItem="hrk-7F-8ZS" firstAttribute="leading" secondItem="Zk6-gM-9Pk" secondAttribute="leading" constant="15" id="ONp-vx-guV"/>
+                        <constraint firstItem="BoM-81-IHo" firstAttribute="top" secondItem="hrk-7F-8ZS" secondAttribute="bottom" constant="5" id="Wkx-uY-5f5"/>
+                        <constraint firstAttribute="height" constant="130" id="bJm-zp-VPu"/>
+                        <constraint firstAttribute="trailing" secondItem="BoM-81-IHo" secondAttribute="trailing" constant="30" id="eBo-R9-GDC"/>
+                        <constraint firstItem="hrk-7F-8ZS" firstAttribute="top" secondItem="Zk6-gM-9Pk" secondAttribute="top" constant="10" id="iOE-Jm-wGE"/>
+                        <constraint firstAttribute="bottom" secondItem="hrk-7F-8ZS" secondAttribute="bottom" constant="30" id="igg-Ad-Viv"/>
+                        <constraint firstAttribute="trailing" secondItem="hrk-7F-8ZS" secondAttribute="trailing" constant="15" id="q9g-Tj-CQL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.96470588235294119" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="opF-8m-cUK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="P7e-Fa-94z"/>
+                <constraint firstItem="opF-8m-cUK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="VDQ-cP-fhv"/>
+                <constraint firstAttribute="trailing" secondItem="opF-8m-cUK" secondAttribute="trailing" constant="15" id="WH5-lh-YR2"/>
+                <constraint firstItem="Zk6-gM-9Pk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="c5G-ZU-8rq"/>
+                <constraint firstItem="Zk6-gM-9Pk" firstAttribute="top" secondItem="opF-8m-cUK" secondAttribute="bottom" constant="10" id="pqf-RG-dfg"/>
+                <constraint firstAttribute="trailing" secondItem="Zk6-gM-9Pk" secondAttribute="trailing" id="rNq-9j-Kag"/>
+            </constraints>
+            <point key="canvasLocation" x="25.5" y="52.5"/>
+        </view>
+    </objects>
+</document>

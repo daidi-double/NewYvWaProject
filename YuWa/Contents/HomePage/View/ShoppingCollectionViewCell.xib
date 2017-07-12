@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ShoppingCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="110" height="140"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" tag="11" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placehoder_loading.png" translatesAutoresizingMaskIntoConstraints="NO" id="ICz-3l-Duc">
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ICz-3l-Duc" secondAttribute="height" multiplier="1:1" id="e3x-Ex-pTN"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="22" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店铺超高人气" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-Pi-ux4">
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="ICz-3l-Duc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3V7-aN-yXA"/>
+                <constraint firstItem="CoO-Pi-ux4" firstAttribute="top" secondItem="ICz-3l-Duc" secondAttribute="bottom" constant="8" id="NnN-0X-VNt"/>
+                <constraint firstAttribute="trailing" secondItem="ICz-3l-Duc" secondAttribute="trailing" id="PfL-QY-XYv"/>
+                <constraint firstAttribute="trailing" secondItem="CoO-Pi-ux4" secondAttribute="trailing" constant="5" id="T27-Yv-gAk"/>
+                <constraint firstItem="CoO-Pi-ux4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="aPr-jo-iyn"/>
+                <constraint firstItem="CoO-Pi-ux4" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="l9L-0n-vTh"/>
+                <constraint firstItem="ICz-3l-Duc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="vUZ-20-YR5"/>
+            </constraints>
+            <connections>
+                <outlet property="imageView" destination="ICz-3l-Duc" id="9ot-gH-sfw"/>
+                <outlet property="titleLabel" destination="CoO-Pi-ux4" id="vG3-8n-1Ki"/>
+            </connections>
+            <point key="canvasLocation" x="-277" y="48"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="placehoder_loading.png" width="1024" height="1024"/>
+    </resources>
+</document>

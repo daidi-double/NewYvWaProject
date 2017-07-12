@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xUA-pL-cUA">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wmark Name View Controller-->
+        <scene sceneID="1L6-d9-k1h">
+            <objects>
+                <viewController id="xUA-pL-cUA" customClass="YWmarkNameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XUP-uw-9NN"/>
+                        <viewControllerLayoutGuide type="bottom" id="zkT-gh-KJO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lyr-Ih-d4a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用中英文，数字和下划线。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWm-74-P5m">
+                                <rect key="frame" x="5" y="25" width="354" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H44-t3-lT7">
+                                <rect key="frame" x="0.0" y="49" width="375" height="38"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入昵称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kvl-q7-dii">
+                                        <rect key="frame" x="5" y="10.5" width="370" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="xUA-pL-cUA" id="1xC-sN-TZp"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="kvl-q7-dii" firstAttribute="centerY" secondItem="H44-t3-lT7" secondAttribute="centerY" id="00V-wN-UFO"/>
+                                    <constraint firstAttribute="height" constant="38" id="4BO-Q3-OjI"/>
+                                    <constraint firstAttribute="trailing" secondItem="kvl-q7-dii" secondAttribute="trailing" id="Mzc-Q7-edI"/>
+                                    <constraint firstItem="kvl-q7-dii" firstAttribute="leading" secondItem="H44-t3-lT7" secondAttribute="leading" constant="5" id="hxY-nP-Mr0"/>
+                                    <constraint firstAttribute="trailing" secondItem="kvl-q7-dii" secondAttribute="trailing" id="j2h-4W-aeY"/>
+                                    <constraint firstItem="kvl-q7-dii" firstAttribute="centerY" secondItem="H44-t3-lT7" secondAttribute="centerY" id="jYy-Wj-roa"/>
+                                    <constraint firstItem="kvl-q7-dii" firstAttribute="leading" secondItem="H44-t3-lT7" secondAttribute="leading" constant="5" id="uCe-0b-3ke"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91372549020000005" green="0.93333333330000001" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QWm-74-P5m" secondAttribute="trailing" constant="16" id="Dee-wh-mvE"/>
+                            <constraint firstAttribute="trailing" secondItem="H44-t3-lT7" secondAttribute="trailing" id="Gzs-DU-ycn"/>
+                            <constraint firstItem="QWm-74-P5m" firstAttribute="leading" secondItem="Lyr-Ih-d4a" secondAttribute="leading" constant="5" id="NL4-Jn-xNG"/>
+                            <constraint firstItem="H44-t3-lT7" firstAttribute="top" secondItem="QWm-74-P5m" secondAttribute="bottom" constant="8" id="W8u-yW-YDe"/>
+                            <constraint firstItem="H44-t3-lT7" firstAttribute="leading" secondItem="Lyr-Ih-d4a" secondAttribute="leading" id="iwV-Mj-pA5"/>
+                            <constraint firstItem="QWm-74-P5m" firstAttribute="top" secondItem="XUP-uw-9NN" secondAttribute="bottom" constant="5" id="zzj-FH-IuY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textfileName" destination="kvl-q7-dii" id="YE7-U2-n68"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H2E-d8-tba" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221.59999999999999" y="128.18590704647679"/>
+        </scene>
+    </scenes>
+</document>

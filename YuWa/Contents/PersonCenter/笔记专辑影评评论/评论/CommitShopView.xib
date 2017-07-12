@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CommitShopView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDf-MP-HHb">
+                    <rect key="frame" x="75" y="0.0" width="285" height="60"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placehoder_loading.png" translatesAutoresizingMaskIntoConstraints="NO" id="ijl-Co-9hE">
+                            <rect key="frame" x="8" y="8" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="ijl-Co-9hE" secondAttribute="height" multiplier="1:1" id="8UD-D1-oNs"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="大奇山国家森林公园" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQq-vi-KOG">
+                            <rect key="frame" x="57" y="8" width="138" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="桐庐其他 自然风光" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsT-3o-n1u">
+                            <rect key="frame" x="57" y="37.5" width="101.5" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.48627450979999998" green="0.48627450979999998" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="ijl-Co-9hE" firstAttribute="leading" secondItem="LDf-MP-HHb" secondAttribute="leading" constant="8" id="1cI-da-xb8"/>
+                        <constraint firstItem="ijl-Co-9hE" firstAttribute="top" secondItem="LDf-MP-HHb" secondAttribute="top" constant="8" id="5ql-s8-yH9"/>
+                        <constraint firstItem="rQq-vi-KOG" firstAttribute="leading" secondItem="ijl-Co-9hE" secondAttribute="trailing" constant="5" id="96l-JL-z4g"/>
+                        <constraint firstItem="RsT-3o-n1u" firstAttribute="leading" secondItem="rQq-vi-KOG" secondAttribute="leading" id="H1K-GV-50t"/>
+                        <constraint firstAttribute="bottom" secondItem="ijl-Co-9hE" secondAttribute="bottom" constant="8" id="RE0-PT-0hb"/>
+                        <constraint firstItem="RsT-3o-n1u" firstAttribute="bottom" secondItem="ijl-Co-9hE" secondAttribute="bottom" id="XF1-fC-MMZ"/>
+                        <constraint firstItem="rQq-vi-KOG" firstAttribute="top" secondItem="ijl-Co-9hE" secondAttribute="top" id="gIZ-tl-K91"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="LDf-MP-HHb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4Cp-oZ-Qqf"/>
+                <constraint firstAttribute="bottom" secondItem="LDf-MP-HHb" secondAttribute="bottom" id="B4e-3d-N0Q"/>
+                <constraint firstAttribute="trailing" secondItem="LDf-MP-HHb" secondAttribute="trailing" constant="15" id="fQn-fa-jhK"/>
+                <constraint firstItem="LDf-MP-HHb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="75" id="rme-9K-vSS"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="16" y="4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="placehoder_loading.png" width="1024" height="1024"/>
+    </resources>
+</document>

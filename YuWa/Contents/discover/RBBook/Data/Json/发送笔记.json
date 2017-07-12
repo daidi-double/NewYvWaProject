@@ -1,0 +1,60 @@
+发送： 的笔记  还有一堆 坐标 貌似 看不懂的  key
+ats	[]
+desc	你是个个性细心呵护的时候就要到家啦啦队的士上课时光是因为自己不
+@shysxhs @Eire大禾子🐬 
+😚😚😗
+[鄙视R][得意R][得意R][鄙视R]
+_(:з」∠)_＠ 'ェ' ＠∧( 'Θ' )∧→_→
+deviceId	C010915C-74AB-4A24-AEBB-3BB665D2B470
+geo	{"lati":31.33381933967621,"longti":121.2874440883015,"name":"","poi_id":""}
+images	[{"longitude":0,"latitude":0,"width":750,"height":1334,"fileid":"8d430d2f-6b97-4602-ae50-5672472d74cf"},{"longitude":0,"latitude":0,"width":750,"height":1334,"fileid":"1b54f8d6-b16d-4b60-bcbd-bfb35e9eca93"}]
+lang	zh
+platform	iOS
+sid	session.1144745172235876489
+sign	9fa895d36f70b1ca86786445e2d20067
+t	1473259439
+tags	英国,中秋美食测评,
+tagsinfo2	[[[{"oid":"","angle":0,"name":"","position":{"x":0.3133333,"y":0.4877561},"type":"center"},{"oid":"","angle":-89.888,"name":"我","position":{"x":66.11935,"y":152.9086},"type":"brand"},{"oid":"","angle":-89.888,"name":"让","position":{"x":66.11935,"y":152.9086},"type":"good"},{"oid":"5281e46cb4c4d613811abaf5","angle":0,"name":"港币","position":{"x":96.06071,"y":182.9085},"type":"currency"},{"oid":"","angle":0,"name":"14","position":{"x":96.06071,"y":182.9085},"type":"price"},{"oid":"area.53103b3ab4c4d61fed9fe9f2","angle":89.888,"name":"英国","position":{"x":66.11935,"y":212.9085},"type":"destination"},{"oid":"","angle":89.888,"name":"烦烦烦","position":{"x":66.11935,"y":212.9085},"type":"location"}],[{"oid":"57c96a1bf5a2633ae0e57c5c","angle":0,"name":"中秋美食测评","position":{"x":0,"y":0},"type":"huati"}]],[]]
+title	ggggg
+
+
+
+
+
+
+——————————
+
+{
+	"schema": "pd\/1-0-5",
+	"data": [{
+		"vp": "750x1334",
+		"seq_id": "4387",
+		"eid": "494a8269-4874-4d2c-9293-81e13e629168",
+		"exp": "hluo_00101,hluo_00250,hluo_00261,hluo_00230,hluo_00271,kxia_00010,hluo_00271,hluo_00261,loyd_00012,hluo_20182,hluo_00101,hluo_20151,hluo_20111,hluo_10150,hluo_20072,hluo_10131,hluo_00230,hluo_20130,hluo_20190,jjiang_00020,hluo_10110,hluo_20083,kxia_00010,lli_00000,hluo_20164,hluo_00250",
+		"uid": "f4ce1566a7114d664b7fabf41a6d574d",
+		"co": "{\"schema\":\"ctx\\\/1-0-1\",\"data\":[{\"schema\":\"dvc\\\/1-0-0\",\"data\":{\"deviceId\":\"C010915C-74AB-4A24-AEBB-3BB665D2B470\"}},{\"schema\":\"idc\\\/1-0-0\",\"data\":{}},{\"schema\":\"mbc\\\/1-0-1\",\"data\":{\"networkType\":\"wifi\",\"osVersion\":\"9.3.5\",\"deviceType\":\"iPhone8,1\",\"networkTechnology\":\"CTRadioAccessTechnologyLTE\",\"appleIdfv\":\"6DF1D9F4-59B6-4BC8-ABCB-47860D9945E3\",\"carrier\":\"中国移动\",\"deviceManufacturer\":\"Apple Inc.\",\"appleIdfa\":\"1DB41F68-113E-4BE7-B340-B6EA7155B91A\",\"deviceModel\":\"iPhone\"}},{\"schema\":\"cls\\\/1-0-1\",\"data\":{\"firstEventId\":\"56e1e32d-05fb-4cda-9891-4c89dec22663\",\"sessionId\":\"9ebee2df-5489-41bd-9aa1-90ed332aa0fc\",\"sessionIndex\":145}}]}",
+		"se_ca": "PostNotes_EditDesc_View",
+		"dtm": "1473259437346",
+		"se_va": "0",
+		"tna": "iOST",
+		"e": "se",
+		"se_ac": "postButtonPressed",
+		"aid": "discovery-4.8",
+		"res": "750x1334"
+	}, {
+		"vp": "750x1334",
+		"seq_id": "4388",
+		"eid": "db4f8608-1be7-4b2e-8a86-bc10f01a3da2",
+		"exp": "hluo_00101,hluo_00250,hluo_00261,hluo_00230,hluo_00271,kxia_00010,hluo_00271,hluo_00261,loyd_00012,hluo_20182,hluo_00101,hluo_20151,hluo_20111,hluo_10150,hluo_20072,hluo_10131,hluo_00230,hluo_20130,hluo_20190,jjiang_00020,hluo_10110,hluo_20083,kxia_00010,lli_00000,hluo_20164,hluo_00250",
+		"uid": "f4ce1566a7114d664b7fabf41a6d574d",
+		"co": "{\"schema\":\"ctx\\\/1-0-1\",\"data\":[{\"schema\":\"dvc\\\/1-0-0\",\"data\":{\"deviceId\":\"C010915C-74AB-4A24-AEBB-3BB665D2B470\"}},{\"schema\":\"idc\\\/1-0-0\",\"data\":{}},{\"schema\":\"mbc\\\/1-0-1\",\"data\":{\"networkType\":\"wifi\",\"osVersion\":\"9.3.5\",\"deviceType\":\"iPhone8,1\",\"networkTechnology\":\"CTRadioAccessTechnologyLTE\",\"appleIdfv\":\"6DF1D9F4-59B6-4BC8-ABCB-47860D9945E3\",\"carrier\":\"中国移动\",\"deviceManufacturer\":\"Apple Inc.\",\"appleIdfa\":\"1DB41F68-113E-4BE7-B340-B6EA7155B91A\",\"deviceModel\":\"iPhone\"}},{\"schema\":\"cls\\\/1-0-1\",\"data\":{\"firstEventId\":\"56e1e32d-05fb-4cda-9891-4c89dec22663\",\"sessionId\":\"9ebee2df-5489-41bd-9aa1-90ed332aa0fc\",\"sessionIndex\":145}}]}",
+		"se_ca": "PostNotes_EditDesc_View",
+		"dtm": "1473259437348",
+		"se_va": "0",
+		"tna": "iOST",
+		"e": "se",
+		"se_ac": "Post_Note_Button_Clicked",
+		"aid": "discovery-4.8",
+		"res": "750x1334"
+	}]
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FilmDetailTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drS-J0-34U">
+                        <rect key="frame" x="153" y="13" width="52" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="赞一下" image="good">
+                            <color key="titleColor" red="0.28235294119999998" green="0.52941176469999995" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="selected" title="赞一下" image="goodsel"/>
+                        <connections>
+                            <action selector="goodAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lDC-B0-e0s"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHU-gf-pu9">
+                        <rect key="frame" x="233" y="13" width="66" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="吐槽一下" image="bad">
+                            <color key="titleColor" red="0.28235294119999998" green="0.52941176469999995" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="selected" title="吐槽一下" image="badsel"/>
+                        <connections>
+                            <action selector="badAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UR6-iQ-NUX"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="likesee" translatesAutoresizingMaskIntoConstraints="NO" id="RM9-5L-dSB">
+                        <rect key="frame" x="16" y="11" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="dmS-q1-94h"/>
+                            <constraint firstAttribute="width" constant="20" id="yDf-OA-abu"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="喜欢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVQ-bC-Z6f">
+                        <rect key="frame" x="46" y="13" width="31" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.5450980392" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PHU-gf-pu9" firstAttribute="leading" secondItem="drS-J0-34U" secondAttribute="trailing" constant="28" id="2Yv-Y0-Ioq"/>
+                    <constraint firstItem="PHU-gf-pu9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ngj-1d-nJc"/>
+                    <constraint firstItem="EVQ-bC-Z6f" firstAttribute="leading" secondItem="RM9-5L-dSB" secondAttribute="trailing" constant="10" id="hAf-KJ-aTg"/>
+                    <constraint firstItem="RM9-5L-dSB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="iy4-VV-w1M"/>
+                    <constraint firstItem="RM9-5L-dSB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sBb-Ah-Irg"/>
+                    <constraint firstItem="EVQ-bC-Z6f" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tll-9G-YCl"/>
+                    <constraint firstItem="drS-J0-34U" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uo7-Eg-9qG"/>
+                    <constraint firstAttribute="trailing" secondItem="PHU-gf-pu9" secondAttribute="trailing" constant="21" id="wF4-d3-uLj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="badBtn" destination="PHU-gf-pu9" id="z5z-8L-WEH"/>
+                <outlet property="goodBtn" destination="drS-J0-34U" id="60E-Cp-v37"/>
+                <outlet property="likeLabel" destination="EVQ-bC-Z6f" id="Ruc-X2-dqs"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bad" width="12" height="13"/>
+        <image name="badsel" width="12" height="13"/>
+        <image name="good" width="12" height="13"/>
+        <image name="goodsel" width="12" height="13"/>
+        <image name="likesee" width="26" height="26"/>
+    </resources>
+</document>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PayMoney1TableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_yue.png" translatesAutoresizingMaskIntoConstraints="NO" id="D35-0D-30Z">
+                        <rect key="frame" x="23" y="15" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="1Lq-j4-vX2"/>
+                            <constraint firstAttribute="height" constant="30" id="gbP-hM-KjR"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额：￥300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaR-Es-zqH">
+                        <rect key="frame" x="73" y="19" width="135" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_cricle_no.png" translatesAutoresizingMaskIntoConstraints="NO" id="76b-aX-IzS">
+                        <rect key="frame" x="325" y="15" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="4G6-ay-tRY"/>
+                            <constraint firstAttribute="height" constant="30" id="zqh-H5-L66"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kaR-Es-zqH" firstAttribute="leading" secondItem="D35-0D-30Z" secondAttribute="trailing" constant="20" id="Jcq-wA-p5n"/>
+                    <constraint firstAttribute="trailing" secondItem="76b-aX-IzS" secondAttribute="trailing" constant="20" id="Qgl-II-s0o"/>
+                    <constraint firstItem="D35-0D-30Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="15" id="VXE-bF-ofB"/>
+                    <constraint firstItem="D35-0D-30Z" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Yng-Wc-o81"/>
+                    <constraint firstItem="76b-aX-IzS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lrV-dW-GHy"/>
+                    <constraint firstItem="kaR-Es-zqH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rgX-DQ-WTt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="25.5" y="52"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="home_cricle_no.png" width="64" height="64"/>
+        <image name="home_yue.png" width="64" height="64"/>
+    </resources>
+</document>

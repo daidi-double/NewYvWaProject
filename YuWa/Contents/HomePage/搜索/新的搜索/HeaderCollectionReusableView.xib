@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="HeaderCollectionReusableView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CA0-3m-DZk">
+                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="82C-Rr-wTp"/>
+                        <constraint firstAttribute="width" secondItem="CA0-3m-DZk" secondAttribute="height" multiplier="1:1" id="u8N-vb-yvF"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybx-7s-NtM">
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="Ld8-9Z-4Rd"/>
+                        <constraint firstAttribute="width" secondItem="Ybx-7s-NtM" secondAttribute="height" multiplier="1:1" id="gbQ-dG-SOh"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="垃圾桶"/>
+                    <connections>
+                        <action selector="clearButton:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="rbO-px-wkA"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最近搜索" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlN-t8-fnk">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.66274509803921566" green="0.66274509803921566" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="CA0-3m-DZk" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="IgH-tc-fwV"/>
+                <constraint firstItem="CA0-3m-DZk" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="14" id="QvB-CP-EaP"/>
+                <constraint firstAttribute="trailing" secondItem="Ybx-7s-NtM" secondAttribute="trailing" constant="12" id="U3L-PB-fLy"/>
+                <constraint firstItem="tlN-t8-fnk" firstAttribute="leading" secondItem="CA0-3m-DZk" secondAttribute="trailing" constant="8" id="Wvo-R2-OYH"/>
+                <constraint firstItem="tlN-t8-fnk" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="go4-cK-eTJ"/>
+                <constraint firstItem="Ybx-7s-NtM" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="pnO-nj-icl"/>
+            </constraints>
+            <connections>
+                <outlet property="leftImageView" destination="CA0-3m-DZk" id="Wap-In-rgA"/>
+                <outlet property="rightButton" destination="Ybx-7s-NtM" id="qOM-Z7-AZy"/>
+                <outlet property="title" destination="tlN-t8-fnk" id="NW7-hM-Sz5"/>
+            </connections>
+            <point key="canvasLocation" x="240.5" y="298"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="垃圾桶" width="32" height="32"/>
+    </resources>
+</document>

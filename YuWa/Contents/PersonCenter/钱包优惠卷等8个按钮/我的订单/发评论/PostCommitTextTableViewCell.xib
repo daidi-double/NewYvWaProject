@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PostCommitTextTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SKk-Cg-cSE" customClass="SAMTextView">
+                        <rect key="frame" x="10" y="10" width="355" height="149"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="加油，还差1个字哦！" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ged-Io-65j">
+                        <rect key="frame" x="156" y="167" width="204" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="204" id="RuW-S7-jfV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.82736045122146606" green="0.82750314474105835" blue="0.82735145092010498" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="SKk-Cg-cSE" secondAttribute="bottom" constant="40" id="K0r-Te-qDm"/>
+                    <constraint firstItem="SKk-Cg-cSE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TvO-ry-KhV"/>
+                    <constraint firstAttribute="trailing" secondItem="SKk-Cg-cSE" secondAttribute="trailing" constant="10" id="cor-hb-cF9"/>
+                    <constraint firstItem="SKk-Cg-cSE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="fDa-M3-Eiw"/>
+                    <constraint firstAttribute="bottom" secondItem="Ged-Io-65j" secondAttribute="bottom" constant="15" id="uMA-rY-1RT"/>
+                    <constraint firstAttribute="trailing" secondItem="Ged-Io-65j" secondAttribute="trailing" constant="15" id="uzc-cG-e4E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ShowLabel" destination="Ged-Io-65j" id="iaq-3t-SeU"/>
+                <outlet property="samTextView" destination="SKk-Cg-cSE" id="OGc-Gf-KMW"/>
+            </connections>
+            <point key="canvasLocation" x="-220" y="17"/>
+        </tableViewCell>
+    </objects>
+</document>
