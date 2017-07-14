@@ -148,6 +148,7 @@
         }
         
     }
+    [self hangupCallWithReason:aReason];
 }
 - (void)hangupCallWithReason:(EMCallEndReason)aReason
 {

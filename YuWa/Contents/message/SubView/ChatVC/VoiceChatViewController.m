@@ -252,7 +252,7 @@
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:nil];
     [audioSession setActive:YES error:nil];
-    
+    [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonNoResponse];
     self.callSession.remoteVideoView.hidden = YES;
     self.callSession.remoteVideoView = nil;
     _callSession = nil;

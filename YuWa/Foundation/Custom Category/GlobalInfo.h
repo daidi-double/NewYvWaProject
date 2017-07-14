@@ -16,9 +16,6 @@
 
 #define HTTP_IMG_UP @"/api.php/Index/uploadImg/" //1上传图片
 
-#define KNOTIFICATION_CALL @"callOutWithChatter"
-#define KNOTIFICATION_CALL_CLOSE @"callControllerClose"
-
 
 #pragma mark - Logion & Register
 
