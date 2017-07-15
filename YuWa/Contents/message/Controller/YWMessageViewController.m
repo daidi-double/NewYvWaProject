@@ -352,6 +352,8 @@
     self.tableView.mj_footer = [UIScrollView scrollRefreshGifFooterWithImgName:@"newheader" withImageCount:60 withRefreshBlock:^{
         [self footerRereshing];
     }];
+    //立即刷新
+    [self.tableView.mj_header beginRefreshing];
 }
 - (void)footerRereshing{
     self.pages++;
@@ -361,7 +363,8 @@
     self.pages = 0;
     if ([UserSession instance].isLoginHX) {
 //        如果登录环信成功，就加载好友数据
-        [self.addressBooktableView requestShopArrData];
+        
+        [self requestShopArrDataWithPages:_pages];
     }else{
         [self cancelRefreshWithIsHeader:YES];
     }

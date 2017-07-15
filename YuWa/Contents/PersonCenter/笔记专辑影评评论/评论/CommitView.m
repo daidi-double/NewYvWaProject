@@ -89,6 +89,7 @@
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     CommitShopView*footView=[[NSBundle mainBundle]loadNibNamed:@"CommitShopView" owner:nil options:nil].firstObject;
     footView.frame=CGRectMake(0, 0, kScreen_Width, 60);
+    footView.backgroundColor = [UIColor whiteColor];
     CommentModel*model=_allDatas[section];
 
     footView.touchBlock=^(){

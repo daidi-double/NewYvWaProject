@@ -24,6 +24,9 @@
 @property (nonatomic) int timeLength;
 @property (nonatomic,strong) NSString * accountType;
 @property (nonatomic,strong)NSTimer * timeTimer;
+
+@property (strong, nonatomic) AVAudioPlayer *ringPlayer;
+
 @end
 
 @implementation VoiceChatViewController
@@ -40,6 +43,7 @@
         self.rejectBtn.hidden = NO;
         self.answerBtn.hidden = NO;
         self.hangupBtn.hidden = YES;
+        [self _beginRing];
         [self getIconAccount:_remoteUsername];
     }
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.friendsIcon]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
@@ -151,8 +155,40 @@
     [self _stopTimeTimer];
     _callSession = nil;
     [self clearData];
-    
+    [self _stopRing];
 }
+
+#pragma mark - private ring
+
+- (void)_beginRing
+{
+    [self.ringPlayer stop];
+    
+    //    NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"callRing" ofType:@"mp3"];
+    SystemSoundID sound = kSystemSoundID_Vibrate;
+    
+    NSString *musicPath = [NSString stringWithFormat:@"/System/Library/Audio/UISounds/%@.%@",@"SIMToolkitGeneralBeep",@"caf"];
+    if (musicPath) {
+        OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:musicPath],&sound);
+        if (error != kAudioServicesNoError) {
+            sound = 0;
+        }
+    }
+    
+    NSURL *url = [[NSURL alloc] initFileURLWithPath:musicPath];
+    self.ringPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    [self.ringPlayer setVolume:1];
+    self.ringPlayer.numberOfLoops = -1; //设置音乐播放次数  -1为一直循环
+    if([self.ringPlayer prepareToPlay])
+    {
+        [self.ringPlayer play]; //播放
+    }
+}
+- (void)_stopRing
+{
+    [self.ringPlayer stop];
+}
+
 - (void)_startTimeTimer
 {
     MyLog(@"开启定时器");
@@ -190,7 +226,7 @@
 - (void)hangupCallWithReason:(EMCallEndReason)aReason
 {
     [self _stopTimeTimer];
-    
+    [self _stopRing];
     if (self.callSession) {
         [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:aReason];
     }
@@ -200,13 +236,14 @@
 //拒绝
 - (IBAction)rejectAction:(UIButton *)sender {
     [self _stopTimeTimer];
-    
+    [self _stopRing];
     [self hangupCallWithReason:EMCallEndReasonDecline];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 //挂断
 - (IBAction)hangupAction:(UIButton *)sender {
     [self _stopTimeTimer];
+    [self _stopRing];
     if (_callSession) {
         
         [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonHangup];
@@ -220,7 +257,7 @@
 - (IBAction)answerAction:(UIButton *)sender {
     _timeLabel.hidden = NO;
     [self _startTimeTimer];
-    
+    [self _stopRing];
     EMError * error = [[EMClient sharedClient].callManager answerIncomingCall:self.callSession.callId];
     
     if (error) {
@@ -236,7 +273,7 @@
 
 -(void)dealloc{
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];//休眠关闭
-    
+    [self _stopRing];
     if (_callSession) {
         [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonHangup];
     }
@@ -250,6 +287,7 @@
 - (void)clearData{
     [self dismissViewControllerAnimated:YES completion:nil];
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [self _stopRing];
     [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:nil];
     [audioSession setActive:YES error:nil];
     [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonNoResponse];
@@ -281,7 +319,14 @@
     NSDictionary * pragram = @{@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"other_username":username,@"user_type":@(1),@"type":self.accountType};
     [[HttpObject manager]postNoHudWithType:YuWaType_FRIENDS_INFO withPragram:pragram success:^(id responsObj) {
         YWMessageAddressBookModel * modelTemp = [YWMessageAddressBookModel yy_modelWithDictionary:responsObj[@"data"]];
-        [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",modelTemp.header_img]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        if ([modelTemp.header_img isEqualToString:@""]) {
+            
+            [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",modelTemp.header_img]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+        }else{
+            NSURL *url = [NSURL URLWithString:modelTemp.header_img]; // 获取的图片地址
+            UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
+            _iconImageView.image = image;
+        }
         if ([modelTemp.friend_remark isEqualToString:@""]) {
             
             self.FriendsNameLabel.text = modelTemp.nikeName;

@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placehoder_loading.png" translatesAutoresizingMaskIntoConstraints="NO" id="Eh9-wd-qvw">
+                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Eh9-wd-qvw">
                         <rect key="frame" x="20" y="10" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="jc3-Na-y8u"/>
@@ -104,7 +104,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="home_lightStar.png" width="19" height="19"/>
-        <image name="placehoder_loading.png" width="1024" height="1024"/>
+        <image name="home_lightStar.png" width="13" height="12"/>
+        <image name="placeholder" width="394" height="330"/>
     </resources>
 </document>

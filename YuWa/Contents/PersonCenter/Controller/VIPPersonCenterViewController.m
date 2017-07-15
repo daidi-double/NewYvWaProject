@@ -94,7 +94,8 @@
     if ([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)]) {
         self.automaticallyAdjustsScrollViewInsets=NO;
     }
-    
+    _whichShow = 0;
+    [self setUpMJRefresh];
     self.heighCell = [[[NSBundle mainBundle]loadNibNamed:@"RBHomeCollectionViewCell" owner:nil options:nil]firstObject];
     
     [self.view addSubview:self.tableView];
@@ -120,7 +121,6 @@
     self.navigationItem.rightBarButtonItem=rightIte;
     
     [self addHeaderView];
-    [self setUpMJRefresh];
     [self getNewBaseInfo];
     //    [self.tableView.mj_header beginRefreshing];
 }
@@ -134,7 +134,7 @@
 #pragma mark   --- 滚动视图
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat yoffset=scrollView.contentOffset.y;
-    if (yoffset<0) {
+    if (yoffset<=0) {
         CGRect frame = self.headerImageView.frame;
         frame.origin.x = self.headerViewFrame.origin.x +yoffset/2;
         frame.origin.y=  yoffset ;
@@ -156,7 +156,7 @@
     }else if (yoffset<HEADERVIEWHEIGHT-64){
         
         self.navigationItem.title=@"";
-        //        [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:1];
+        [[[self.navigationController.navigationBar subviews] objectAtIndex:0] setAlpha:0];
         
     }else{
         self.navigationItem.title=[UserSession instance].nickName;
@@ -187,6 +187,8 @@
         [weakSelf getBottomDatas];
         
     }];
+    //立即刷新
+    [self.tableView.mj_header beginRefreshing];
 }
 
 
@@ -825,6 +827,7 @@
                 
                 
                 CommentModel*model=[CommentModel yy_modelWithDictionary:dict];
+                model.customer_img = [UserSession instance].logo;
                 [self.maMallDatas addObject:model];
                 
                 
