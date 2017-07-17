@@ -297,10 +297,10 @@
             textLabel.text = @"暂无粉丝数据哦~";
             break;
         case TheFriendsBePraise:
-            textLabel.text = @"还未发布笔记哦~";
+            textLabel.text = @"你的笔记还未被赞哦~";
             break;
         case TheFriendsBeCollected:
-             textLabel.text = @"还未发布笔记哦~";
+             textLabel.text = @"你的笔记还没有被收藏哦~";
             break;
             
         default:
