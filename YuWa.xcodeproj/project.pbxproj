@@ -12864,7 +12864,7 @@
 				CODE_SIGN_ENTITLEMENTS = YuWa/YuWa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Mingbang Network Technology Co., Ltd. (JQ283T24DV)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JQ283T24DV;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -12917,7 +12917,7 @@
 				CODE_SIGN_ENTITLEMENTS = YuWa/YuWa.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Mingbang Network Technology Co., Ltd. (JQ283T24DV)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = JQ283T24DV;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
