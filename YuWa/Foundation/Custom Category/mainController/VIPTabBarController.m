@@ -111,6 +111,10 @@
     
 }
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    if (!self.BGView.isHidden) {
+        //表示正在显示
+        self.BGView.hidden = NO;
+    }
     if ([viewController.tabBarItem.title isEqualToString:@"个人中心"]) {
         if (![UserSession instance].isLogin) {
             YWLoginViewController * vc = [[YWLoginViewController alloc]init];
