@@ -72,17 +72,19 @@
         cell = [[ForgetPayPasswordTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FORGETCELL];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.textColor = LightColor;
+    cell.textLabel.font = [UIFont systemFontOfSize:13];
     if (indexPath.section == 0) {
-        cell.bankCardLabel.text = @"卡号";
+        cell.bankCardLabel.text = @"卡   号:";
         cell.status = 0;
         cell.infoTextfiled.placeholder = self.str;
     }else{
         if (indexPath.row == 0) {
-            cell.bankCardLabel.text = @"姓名";
+            cell.bankCardLabel.text = @"姓   名:";
             cell.status = 1;
             cell.infoTextfiled.placeholder = self.user_name;
         }else{
-            cell.bankCardLabel.text = @"手机号";
+            cell.bankCardLabel.text = @"手机号:";
             cell.status = 2;
             cell.infoTextfiled.placeholder = @"请输入绑定时的手机号码";
             WEAKSELF;

@@ -215,7 +215,7 @@
         HttpManager * manager = [[HttpManager alloc]init];
         [manager postDatasNoHudWithUrl:urlStr withParams:pragrams compliation:^(id data, NSError *error) {
             MyLog(@"参数%@",pragrams);
-            //            MyLog(@"场次数据%@",data);
+            MyLog(@"场次数据%@",data);
             
             if ([data[@"errorCode"] integerValue] == 0) {
                 [self.seatModelAry removeAllObjects];
@@ -223,6 +223,7 @@
                 [weakSelf initSelectionView:self.seatsModelArray];
             }else{
                 [_HUD hide:YES];
+                MyLog(@"错误%@",error);
                 [JRToast showWithText:@"网络出现异常，请检查网络" duration:1];
             }
         }];
