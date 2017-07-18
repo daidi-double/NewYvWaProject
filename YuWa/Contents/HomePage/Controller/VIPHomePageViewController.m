@@ -131,12 +131,11 @@
 
     if (scrollView.contentOffset.y>0) {
        
-        if (self.centerView.width !=kScreen_Width- 40.f) {
+        if (self.centerView.width !=kScreen_Width- 44.f) {
             self.navigationItem.leftBarButtonItem = nil;
             self.navigationItem.rightBarButtonItems=nil;
             [UIView animateWithDuration:0.25 animations:^{
-                self.centerView.width=kScreen_Width- 40.f;
-                
+                self.centerView.width=kScreen_Width- 44.f;
             }];
         }
         
@@ -144,7 +143,6 @@
         if (self.centerView.width!=kScreen_Width/2) {
             self.navigationItem.leftBarButtonItem = self.leftItem;
             self.navigationItem.rightBarButtonItems=@[self.rightItem2,self.rightItem];
-            
             [UIView animateWithDuration:0.25 animations:^{
             self.centerView.width=kScreen_Width/2;
             }];
@@ -184,7 +182,7 @@
     centerView.layer.cornerRadius=6;
     self.centerView=centerView;
     //centview 上的元素
-    UIImageView*imageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 20, 20)];
+    UIImageView*imageView=[[UIImageView alloc]initWithFrame:CGRectMake(10, 7.5, 15, 15)];
     imageView.image=[UIImage imageNamed:@"home_2_nomal"];
     [self.centerView addSubview:imageView];
     
