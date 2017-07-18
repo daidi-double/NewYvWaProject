@@ -11,7 +11,6 @@
 #import "YWPayMoneyTableViewCell.h"//打折的cell
 #import "NSString+JWAppendOtherStr.h"
 #import "YWOtherPayMoneyTableViewCell.h"//总的消费金额cell
-
 #import "CouponViewController.h"
 #import "TwoLabelShowTableViewCell.h"
 #import "PCPayViewController.h"

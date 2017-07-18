@@ -12,8 +12,6 @@
 typedef NS_ENUM(NSInteger,PayCategoryMethod){
     PayCategoryQRCodePayMethod=0,   //二维码支付
     PayCategoryWritePayMethod //手写支付
-    
-    
 };
 
 
