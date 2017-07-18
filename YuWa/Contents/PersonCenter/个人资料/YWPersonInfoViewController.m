@@ -103,7 +103,8 @@
         
         UILabel*mainLabel=[cell viewWithTag:1];
         UILabel*subLabel=[cell viewWithTag:2];
-        
+        subLabel.textColor = LightColor;
+        subLabel.font = [UIFont systemFontOfSize:13];
         switch (indexPath.row) {
             case 1:
                 mainLabel.text=@"昵称";
@@ -116,6 +117,8 @@
                 imageView.hidden=YES;}
                 break;
             case 3:{
+                UIImageView*imageView=[cell viewWithTag:3];
+                imageView.hidden=YES;
                 mainLabel.text = @"邀请码";
                 subLabel.text = [UserSession instance].invite_code;
             }
@@ -143,11 +146,12 @@
     }else if (indexPath.row==8-1){
         cell=[tableView dequeueReusableCellWithIdentifier:CELL2];
         cell.selectionStyle=NO;
-        
         UILabel*mainLabel=[cell viewWithTag:1];
         mainLabel.text = @"个性签名:";
         UILabel*subLabel=[cell viewWithTag:2];
         subLabel.text=[UserSession instance].personality;
+        subLabel.textColor = LightColor;
+        subLabel.font = [UIFont systemFontOfSize:13];
 
         
         
@@ -307,8 +311,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row==0) {
         return 94;
-    }else if (indexPath.row==7-1){
-        return 88;
+    }else if (indexPath.row==7){
+
+       return [UserSession instance].personality.length==0?44:[[UserSession instance].personality boundingRectWithSize:CGSizeMake(MAXFLOAT, 20) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size.height+25;
     }
     
     return 44;

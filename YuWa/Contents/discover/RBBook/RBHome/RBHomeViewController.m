@@ -16,12 +16,14 @@
 #import "JWCollectionViewFlowLayout.h"
 #import "JWSearchView.h"
 
+#import "JWTagCollectionViewCell.h"
+
 
 #import "YWLoginViewController.h"
 #import "RBHomeCollectionViewCell.h"
 
 #define HOMECELL @"RBHomeCollectionViewCell"
-@interface RBHomeViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,JWWaterflowLayoutDelegate,TZImagePickerControllerDelegate>
+@interface RBHomeViewController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,JWWaterflowLayoutDelegate,TZImagePickerControllerDelegate,UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic,strong)JWTagCollectionView * tagCollectionView;
@@ -29,7 +31,8 @@
 @property (nonatomic,copy)NSString * pagens;
 @property (nonatomic,assign)NSInteger pages;
 @property (nonatomic,copy)NSString * states;
-
+@property (nonatomic,strong)UISwipeGestureRecognizer * recognizer;
+@property (nonatomic,strong)UISwipeGestureRecognizer * righttRecognizer;
 @property (nonatomic,strong)RBHomeCollectionViewCell * heighCell;
 @property (nonatomic, strong)JWCollectionViewFlowLayout *waterFlowLayout;
 @property (nonatomic,strong)JWSearchView * searchView;
@@ -55,7 +58,7 @@
 }
 
 - (void)makeNavi{
-   self.searchView = [[[NSBundle mainBundle]loadNibNamed:@"JWSearchView" owner:nil options:nil]firstObject];
+    self.searchView = [[[NSBundle mainBundle]loadNibNamed:@"JWSearchView" owner:nil options:nil]firstObject];
     WEAKSELF;
     self.searchView.searchClik = ^(){
         [weakSelf searchBtnAction];
@@ -91,6 +94,49 @@
     self.collectionView.collectionViewLayout = self.waterFlowLayout;
     [self.collectionView registerNib:[UINib nibWithNibName:HOMECELL bundle:nil] forCellWithReuseIdentifier:HOMECELL];
     self.heighCell = [[[NSBundle mainBundle] loadNibNamed:HOMECELL owner:nil options:nil] firstObject];
+    
+    //    _添加左滑手势：
+    _recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [_recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [self.collectionView addGestureRecognizer:_recognizer];
+    
+    //    添加右滑手势：
+    _righttRecognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [_righttRecognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.collectionView addGestureRecognizer:_righttRecognizer];
+    
+}
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer{
+    
+    if(recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+        MyLog(@"左划");
+        
+        if ([_states isEqualToString:@"20"]) {
+            return;
+        }
+        _states = [NSString stringWithFormat:@"%ld",[_states integerValue]+ 1];
+        _tagCollectionView.choosedTag = [_states integerValue];
+        JWTagCollectionViewCell * selectedCell = (JWTagCollectionViewCell *)[_tagCollectionView collectionView:_tagCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:_tagCollectionView.choosedTag inSection:0]];
+        _tagCollectionView.tagVeiw.x = selectedCell.x;
+        NSIndexPath * indexPath = [NSIndexPath indexPathForRow:_tagCollectionView.choosedTag inSection:0];
+        [_tagCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        [_tagCollectionView reloadData];
+        [self.collectionView.mj_header beginRefreshing];
+    }
+    if(recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+        MyLog(@"右划");
+        if ([_states isEqualToString:@"0"]) {
+            return;
+        }
+        _states = [NSString stringWithFormat:@"%ld",[_states integerValue]- 1];
+        _tagCollectionView.choosedTag = [_states integerValue];
+        JWTagCollectionViewCell * selectedCell = (JWTagCollectionViewCell *)[_tagCollectionView collectionView:_tagCollectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:_tagCollectionView.choosedTag inSection:0]];
+        NSIndexPath * indexPath = [NSIndexPath indexPathForRow:_tagCollectionView.choosedTag inSection:0];
+        [_tagCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        _tagCollectionView.tagVeiw.x = selectedCell.x;
+        [_tagCollectionView reloadData];
+        [self.collectionView.mj_header beginRefreshing];
+    }
 }
 
 #pragma mark - Button Action

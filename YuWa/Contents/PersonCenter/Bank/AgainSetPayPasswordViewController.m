@@ -107,9 +107,10 @@
     }
     cell.backgroundColor = [UIColor whiteColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.textColor = LightColor;
+    cell.textLabel.font = [UIFont systemFontOfSize:13];
     if (indexPath.section == 0) {
        if (self.dataArr.count>0) {
-        
             YWBankModel * model = self.dataArr[indexPath.row];
             NSString * bankCard = [model.bankCard substringFromIndex:15];
             cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ (%@)",model.bankName,model.bankCategory,bankCard];

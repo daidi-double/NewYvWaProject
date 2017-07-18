@@ -198,7 +198,7 @@
 #define KUSERDEFAULT [NSUserDefaults standardUserDefaults]
 
 
-#define SHARE_HTTP @"http://114.215.252.104/index.php/Home/share?shareid="
-
+//#define SHARE_HTTP @"http://114.215.252.104/index.php/Home/share?shareid="
+#define SHARE_HTTP  @"https://www.yuwabao.cn/"
 #endif /* VipxoxPrefixHeader_pch */
 

@@ -57,20 +57,20 @@
     refundBtn.layer.cornerRadius = 5;
     refundBtn.layer.masksToBounds = YES;
     refundBtn.hidden = YES;
-//    [refundBtn addTarget:self action:@selector(placeRefundAction) forControlEvents:UIControlEventTouchUpInside];
+    //    [refundBtn addTarget:self action:@selector(placeRefundAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:refundBtn];
     
     
 }
 -(void)setUpMJRefresh{
-
+    
     self.orderTableView.mj_header=[UIScrollView scrollRefreshGifHeaderWithImgName:@"newheader" withImageCount:60 withRefreshBlock:^{
-
+        
         [self getDatas];
         
     }];
     
-   
+    
 }
 
 //- (void)placeRefundAction{
@@ -85,15 +85,15 @@
             }else{
                 return 9;
             }
-        
+            
         }else {
             if (([self.orModel.status integerValue] == 3 ||[self.orModel.status integerValue] ==4||[self.orModel.status integerValue] ==5)&&[self.orModel.hall_name containsString:@"通兑票"]){
-            return 9;
-            
-        }else{
-            return 7;
+                return 9;
+                
+            }else{
+                return 7;
+            }
         }
-      }
     }
     return 7;
 }
@@ -106,40 +106,40 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-    if (self.status ==0) {
-        
-        ShopDetailViewController * vc = [[ShopDetailViewController alloc]init];
-        vc.shop_id = self.shop_id;
-        [self.navigationController pushViewController:vc animated:YES];
-    }else{
-         OrderModel * model = self.orderAry[0];
-        MovieCinemaViewController * vc = [[MovieCinemaViewController alloc]init];
-        vc.film_code = model.film_code;
-        vc.cinema_code = model.cinema_code;
-        if ([model.hall_name containsString:@"通兑票"]) {
-            vc.status = 1;
+        if (self.status ==0) {
+            
+            ShopDetailViewController * vc = [[ShopDetailViewController alloc]init];
+            vc.shop_id = self.shop_id;
+            [self.navigationController pushViewController:vc animated:YES];
         }else{
-            vc.status = 0;
+            OrderModel * model = self.orderAry[0];
+            MovieCinemaViewController * vc = [[MovieCinemaViewController alloc]init];
+            vc.film_code = model.film_code;
+            vc.cinema_code = model.cinema_code;
+            if ([model.hall_name containsString:@"通兑票"]) {
+                vc.status = 1;
+            }else{
+                vc.status = 0;
+            }
+            [self.navigationController pushViewController:vc animated:YES];
         }
-        [self.navigationController pushViewController:vc animated:YES];
-    }
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.orderAry.count > 0) {
         
-    OrderModel * model = self.orderAry[0];
-    if (indexPath.row == 0) {
-        return 80.f;
-    }else if(indexPath.row ==1){
-        if (self.status == 1) {
+        OrderModel * model = self.orderAry[0];
+        if (indexPath.row == 0) {
+            return 80.f;
+        }else if(indexPath.row ==1){
+            if (self.status == 1) {
+                return 35.f;
+            }
+            return 35.f * model.buy_shopAry.count;
+        }else{
+            
             return 35.f;
         }
-        return 35.f * model.buy_shopAry.count;
-    }else{
-
-        return 35.f;
-    }
     }
     return 35;
     
@@ -159,102 +159,107 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
     }else{
-    if (indexPath.row >= 4) {
-        cell.textLabel.textColor = [UIColor lightGrayColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:12];
-        [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, MAXFLOAT)];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
+        if (indexPath.row >= 4) {
+            cell.textLabel.textColor = [UIColor lightGrayColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:12];
+            [cell setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, MAXFLOAT)];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
     }
     if (self.orderAry.count > 0) {
         
         OrderModel * orderModel = self.orderAry[0];
         if (self.status == 0) {
-    if (indexPath.row == 0) {
-        ShopNameView * nameView = [[ShopNameView alloc]initWithFrame:CGRectMake(0, 0, cell.width *0.8f, 80)];
-        
-        [nameView.imageView sd_setImageWithURL:[NSURL URLWithString:orderModel.shop_img] placeholderImage:[UIImage imageNamed:@"placeholder"]];
-        nameView.shopNameLabel.text = orderModel.shop_name;
-        nameView.filmNameLabel.hidden = YES;
-        [cell.contentView addSubview:nameView];
-
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }else if (indexPath.row == 1){
-        OrdelShopCellView * shopCellView;
-        if (shopCellView) {
-            [shopCellView removeFromSuperview];
-        }
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        for (int i = 0; i< orderModel.buy_shopAry.count; i++) {
-            shopCellView = [[OrdelShopCellView alloc]initWithFrame:CGRectMake(0, 44 *i, cell.width, 44)];
-            [cell.contentView addSubview:shopCellView];
-        }
-    }else if (indexPath.row == 2){
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-        cell.imageView.image = [UIImage imageNamed:@"减"];
-        CGFloat itemH =  cell.height * 0.4f;
-        CGFloat itemW = 0;
-        if (cell.imageView.image.size.width) {
-            itemW = cell.imageView.image.size.height / cell.imageView.image.size.width * itemH;
-            
-            if (itemH >= itemW) {
-                itemH = cell.height * 0.4f;
-                itemW = cell.imageView.image.size.width * itemH/cell.imageView.image.size.height;
+            if (indexPath.row == 0) {
+                ShopNameView * nameView = [[ShopNameView alloc]initWithFrame:CGRectMake(0, 0, cell.width *0.8f, 80)];
+                
+                [nameView.imageView sd_setImageWithURL:[NSURL URLWithString:orderModel.shop_img] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+                nameView.shopNameLabel.text = orderModel.shop_name;
+                nameView.filmNameLabel.hidden = YES;
+                [cell.contentView addSubview:nameView];
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }else if (indexPath.row == 1){
+                OrdelShopCellView * shopCellView;
+                if (shopCellView) {
+                    [shopCellView removeFromSuperview];
+                }
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                for (int i = 0; i< orderModel.buy_shopAry.count; i++) {
+                    shopCellView = [[OrdelShopCellView alloc]initWithFrame:CGRectMake(0, 44 *i, cell.width, 44)];
+                    [cell.contentView addSubview:shopCellView];
+                }
+            }else if (indexPath.row == 2){
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                cell.imageView.image = [UIImage imageNamed:@"减"];
+                CGFloat itemH =  cell.height * 0.4f;
+                CGFloat itemW = 0;
+                if (cell.imageView.image.size.width) {
+                    itemW = cell.imageView.image.size.height / cell.imageView.image.size.width * itemH;
+                    
+                    if (itemH >= itemW) {
+                        itemH = cell.height * 0.4f;
+                        itemW = cell.imageView.image.size.width * itemH/cell.imageView.image.size.height;
+                    }
+                }
+                
+                CGSize itemSize = CGSizeMake(itemW,cell.height*0.4f);
+                UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+                CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+                [cell.imageView.image drawInRect:imageRect];
+                cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                CGFloat zhekou = [orderModel.discount floatValue]*10;
+                if (zhekou >=10 || zhekou<=0.00) {
+                    cell.textLabel.textColor = LightColor;
+                    cell.textLabel.font = [UIFont systemFontOfSize:13];
+                    cell.textLabel.text = @"未打折";
+                }else{
+                    cell.textLabel.textColor = LightColor;
+                    cell.textLabel.font = [UIFont systemFontOfSize:13];
+                    cell.textLabel.text = [NSString stringWithFormat:@"闪付享受%.1f折 折扣",zhekou];
+                    
+                    CGFloat discountMoney = [orderModel.total_money floatValue] - [orderModel.pay_money floatValue];
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"-%.2f",discountMoney];
+                    cell.detailTextLabel.textColor = [UIColor orangeColor];
+                    
+                }
+                
+            }else if (indexPath.row == 3){
+                cell.textLabel.textColor = LightColor;
+                if (orderModel.pay_money == NULL) {
+                    //
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"实付款￥%@",orderModel.pay_money];
+                }else{
+                    cell.detailTextLabel.attributedText = [NSString stringWithFirstStr:@"实付款" withFont:[UIFont systemFontOfSize:13.f] withColor:LightColor withSecondtStr:[NSString stringWithFormat:@"￥%@",orderModel.pay_money] withFont:[UIFont systemFontOfSize:13.f] withColor:[UIColor orangeColor]];
+                }
+                cell.textLabel.font = [UIFont systemFontOfSize:13];
+                if (orderModel.is_coupon == 0) {
+                    cell.textLabel.text = @"优惠券金额:￥0.00";
+                }else{
+                    cell.textLabel.text = [NSString stringWithFormat:@"优惠券金额￥:%@",orderModel.coupon_money];
+                }
+                
+                
+            }else if (indexPath.row == 4){
+                cell.textLabel.text = [NSString stringWithFormat:@"订单编号:%@",orderModel.order_id];
+                
+            }else if (indexPath.row == 5){
+                cell.textLabel.text = [NSString stringWithFormat:@"订单状态:%@",orderModel.status];
+            }else if (indexPath.row == 6){
+                cell.textLabel.text = [NSString stringWithFormat:@"下单时间:%@",[JWTools getTime:orderModel.create_time]];
+                UIButton * questionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+                
+                questionBtn.frame = CGRectMake(kScreen_Width * 0.65f, 5, kScreen_Width * 0.3f, 34);
+                [questionBtn setTitle:@"对订单有疑问?" forState:UIControlStateNormal];
+                questionBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+                [questionBtn setTitleColor:CNaviColor forState:UIControlStateNormal];
+                [questionBtn addTarget:self action:@selector(callKeFu) forControlEvents:UIControlEventTouchDown];
+                [cell.contentView addSubview:questionBtn];
+                
             }
-        }
-        
-        CGSize itemSize = CGSizeMake(itemW,cell.height*0.4f);
-        UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
-        CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
-        [cell.imageView.image drawInRect:imageRect];
-        cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        CGFloat zhekou = [orderModel.discount floatValue]*10;
-        if (zhekou >=10 || zhekou<=0.00) {
-           cell.textLabel.text = @"未打折";
-        }else{
-        cell.textLabel.text = [NSString stringWithFormat:@"闪付享受%.1f折 折扣",zhekou];
-            CGFloat discountMoney = [orderModel.total_money floatValue] - [orderModel.pay_money floatValue];
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"-%.2f",discountMoney];
-            cell.detailTextLabel.textColor = [UIColor orangeColor];
             
-        }
-    
-    }else if (indexPath.row == 3){
-
-        if (orderModel.pay_money == NULL) {
-//
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"实付款￥%@",orderModel.pay_money];
-        }else{
-            cell.detailTextLabel.attributedText = [NSString stringWithFirstStr:@"实付款" withFont:[UIFont systemFontOfSize:13.f] withColor:[UIColor blackColor] withSecondtStr:[NSString stringWithFormat:@"￥%@",orderModel.pay_money] withFont:[UIFont systemFontOfSize:13.f] withColor:[UIColor orangeColor]];
-        }
-        cell.textLabel.font = [UIFont systemFontOfSize:13];
-        if (orderModel.is_coupon == 0) {
-            cell.textLabel.text = @"优惠券金额:￥0.00";
-        }else{
-            cell.textLabel.text = [NSString stringWithFormat:@"优惠券金额￥:%@",orderModel.coupon_money];
-        }
-        
-
-    }else if (indexPath.row == 4){
-        cell.textLabel.text = [NSString stringWithFormat:@"订单编号:%@",orderModel.order_id];
-        
-    }else if (indexPath.row == 5){
-        cell.textLabel.text = [NSString stringWithFormat:@"订单状态:%@",orderModel.status];
-    }else if (indexPath.row == 6){
-        cell.textLabel.text = [NSString stringWithFormat:@"下单时间:%@",[JWTools getTime:orderModel.create_time]];
-        UIButton * questionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-
-        questionBtn.frame = CGRectMake(kScreen_Width * 0.65f, 5, kScreen_Width * 0.3f, 34);
-        [questionBtn setTitle:@"对订单有疑问?" forState:UIControlStateNormal];
-        questionBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        [questionBtn setTitleColor:CNaviColor forState:UIControlStateNormal];
-        [questionBtn addTarget:self action:@selector(callKeFu) forControlEvents:UIControlEventTouchDown];
-        [cell.contentView addSubview:questionBtn];
-    
-    }
-   
         }else{//电影
             if (indexPath.row == 0) {
                 ShopNameView * nameView = [[ShopNameView alloc]initWithFrame:CGRectMake(0, 0, cell.width *0.8f, 80)];
@@ -272,11 +277,11 @@
                         nameView.filmNameLabel.text = [NSString stringWithFormat:@"    %@张",orderModel.num];
                     }
                 }
-               
+                
                 nameView.shopNameLabel.centerY = 28;
                 nameView.shopNameLabel.text = orderModel.cinemaName;
                 [cell.contentView addSubview:nameView];
-
+                
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }else if (indexPath.row == 1){
                 
@@ -285,8 +290,8 @@
                     
                     cell.detailTextLabel.text = @"实付款￥0.00";
                 }else{
-
-                     cell.detailTextLabel.attributedText = [NSString stringWithFirstStr:@"实付款" withFont:[UIFont systemFontOfSize:13.f] withColor:[UIColor blackColor] withSecondtStr:[NSString stringWithFormat:@"￥%@",orderModel.pay_money] withFont:[UIFont systemFontOfSize:13.f] withColor:[UIColor orangeColor]];
+                    
+                    cell.detailTextLabel.attributedText = [NSString stringWithFirstStr:@"实付款" withFont:[UIFont systemFontOfSize:13.f] withColor:[UIColor blackColor] withSecondtStr:[NSString stringWithFormat:@"￥%@",orderModel.pay_money] withFont:[UIFont systemFontOfSize:13.f] withColor:[UIColor orangeColor]];
                 }
                 cell.textLabel.font = [UIFont systemFontOfSize:13];
                 if (orderModel.is_coupon == 0) {
@@ -299,14 +304,14 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.text = [NSString stringWithFormat:@"影院: %@",orderModel.cinemaName];
             }else if (indexPath.row == 3){
-              cell.textLabel.text = [NSString stringWithFormat:@"订单信息:%@    %@张",orderModel.filmName,orderModel.num];
+                cell.textLabel.text = [NSString stringWithFormat:@"订单信息:%@    %@张",orderModel.filmName,orderModel.num];
                 if (orderModel.filmName== nil || [orderModel.filmName isKindOfClass:[NSNull class]]) {
                     cell.textLabel.text = [NSString stringWithFormat:@"订单信息:    %@张",orderModel.num];
                 }
                 if ([orderModel.hall_name containsString:@"通兑票"]) {
-                   cell.textLabel.text = [NSString stringWithFormat:@"订单信息:%@    %@张",orderModel.hall_name,orderModel.num];
+                    cell.textLabel.text = [NSString stringWithFormat:@"订单信息:%@    %@张",orderModel.hall_name,orderModel.num];
                     if (orderModel.hall_name== nil || [orderModel.hall_name isKindOfClass:[NSNull class]]) {
-                       cell.textLabel.text = [NSString stringWithFormat:@"订单信息:    %@张",orderModel.num];
+                        cell.textLabel.text = [NSString stringWithFormat:@"订单信息:    %@张",orderModel.num];
                     }
                 }
             }else if (indexPath.row == 3){
@@ -319,7 +324,7 @@
                 
             }else if (indexPath.row == 5){
                 NSString * orderStatus;
-//                订单状态（1：未支付 2：已取消 3：已支付 4：出票成功 5：出票失败 6：已退票 7：已评价
+                //                订单状态（1：未支付 2：已取消 3：已支付 4：出票成功 5：出票失败 6：已退票 7：已评价
                 switch ([orderModel.status integerValue]) {
                     case 1:
                         orderStatus = @"未支付";
@@ -327,7 +332,7 @@
                     case 2:
                         orderStatus = @"已取消";
                         break;
-
+                        
                     case 3:
                         orderStatus = @"已支付";
                         break;
@@ -341,7 +346,7 @@
                     case 6:
                         orderStatus = @"出票失败";
                         break;
-
+                        
                     default:
                         orderStatus = @"已退票";
                         
@@ -350,7 +355,7 @@
                 cell.textLabel.text = [NSString stringWithFormat:@"订单状态:%@",orderStatus];
                 
             }else if (indexPath.row == 6){
-               
+                
                 if ([orderModel.status integerValue] == 3 ||[orderModel.status integerValue] ==4||[orderModel.status integerValue] ==5) {
                     
                     if ([orderModel.hall_name containsString:@"通兑票"]) {
@@ -366,6 +371,7 @@
                         }
                     }
                 }else if (![orderModel.hall_name containsString:@"通兑票"]) {
+                    
                     cell.textLabel.text = [NSString stringWithFormat:@"座位号:%@",orderModel.seat];
                 }else{
                     cell.textLabel.text = [NSString stringWithFormat:@"下单时间:%@",[JWTools getTime:orderModel.create_time]];
@@ -381,7 +387,7 @@
             }else if (indexPath.row == 7){
                 if ([orderModel.hall_name containsString:@"通兑票"]) {
                     if ([orderModel.status integerValue] == 3 ||[orderModel.status integerValue] ==4||[orderModel.status integerValue] ==5 ) {
-                          cell.textLabel.text = [NSString stringWithFormat:@"有效期至:%@",[JWTools getTime:orderModel.period_validity]];
+                        cell.textLabel.text = [NSString stringWithFormat:@"有效期至:%@",[JWTools getTime:orderModel.period_validity]];
                     }
                 }else{
                     if (([orderModel.status integerValue] == 3 ||[orderModel.status integerValue] ==4||[orderModel.status integerValue] ==5) && ![orderModel.hall_name containsString:@"通兑票"]) {
@@ -400,13 +406,13 @@
                         [questionBtn setTitleColor:CNaviColor forState:UIControlStateNormal];
                         [questionBtn addTarget:self action:@selector(callKeFu) forControlEvents:UIControlEventTouchDown];
                         [cell.contentView addSubview:questionBtn];
- 
+                        
                     }
                 }
             }else if (indexPath.row == 8){
                 if ([orderModel.hall_name containsString:@"通兑票"]) {
                     if ([orderModel.status integerValue] == 3 ||[orderModel.status integerValue] ==4||[orderModel.status integerValue] ==5 )
-                    
+                        
                     {
                         cell.textLabel.text = [NSString stringWithFormat:@"下单时间:%@",[JWTools getTime:orderModel.create_time]];
                         UIButton * questionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -418,9 +424,12 @@
                         [questionBtn addTarget:self action:@selector(callKeFu) forControlEvents:UIControlEventTouchDown];
                         [cell.contentView addSubview:questionBtn];
                     }
-
+                    
                 }else if (![orderModel.hall_name containsString:@"通兑票"]) {
-                    cell.textLabel.text = [NSString stringWithFormat:@"座位号:%@",orderModel.seat];
+                    if ([orderModel.status integerValue] == 3 ||[orderModel.status integerValue] ==4||[orderModel.status integerValue] ==5) {
+                        
+                        cell.textLabel.text = [NSString stringWithFormat:@"座位号:%@",orderModel.seat];
+                    }
                 }
             }else if (indexPath.row == 9){
                 if (![orderModel.hall_name containsString:@"通兑票"]) {
@@ -429,7 +438,7 @@
             }else{
                 cell.textLabel.text = [NSString stringWithFormat:@"下单时间:%@",[JWTools dateStr:orderModel.create_time]];
                 UIButton * questionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-                 
+                
                 questionBtn.frame = CGRectMake(kScreen_Width * 0.65f, 5, kScreen_Width * 0.3f, 34);
                 [questionBtn setTitle:@"对订单有疑问?" forState:UIControlStateNormal];
                 questionBtn.titleLabel.font = [UIFont systemFontOfSize:12];
@@ -437,7 +446,7 @@
                 [questionBtn addTarget:self action:@selector(callKeFu) forControlEvents:UIControlEventTouchDown];
                 [cell.contentView addSubview:questionBtn];
                 
-
+                
             }
         }
         
@@ -466,7 +475,7 @@
     }else{//电影
         urlStr=[NSString stringWithFormat:@"%@%@",HTTP_ADDRESS,HTTP_MOVIE_ORDERDETAIL];
     }
-
+    
     NSDictionary*params=@{@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"order_id":self.order_id};
     
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
@@ -483,17 +492,17 @@
             [self.orderAry addObject:model];
             
             [self.orderTableView reloadData];
-//            MyLog(@"orderAry = %@",_orderAry);
+            //            MyLog(@"orderAry = %@",_orderAry);
         }else{
             [JRToast showWithText:responseObject[@"errorMessage"]];
         }
         [self.orderTableView.mj_header endRefreshing];
         [self.orderTableView.mj_footer endRefreshing];
-    
+        
     } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-       
+        
     }];
-
+    
 }
 - (void)requestRefundData{
     NSString * urlStrr = [NSString stringWithFormat:@"%@%@",HTTP_ADDRESS,HTTP_REFUNDORDER];
@@ -513,13 +522,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

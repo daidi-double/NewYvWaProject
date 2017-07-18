@@ -132,6 +132,7 @@
         cell.delegate = self;
         NSArray * imageAry = [self.cinemaDetailModel.stills componentsSeparatedByString:@","];
         cell.imageAry = imageAry;
+        cell.selectionStyle = NO;
         return cell;
 
     }

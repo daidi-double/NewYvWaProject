@@ -177,7 +177,7 @@
         cell.layer.cornerRadius = 5;
         cell.layer.masksToBounds = YES;
         cell.backgroundColor = CNaviColor;
-        UIImageView * rightImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreen_Width-45, 0, 15, 25)];
+        UIImageView * rightImageView = [[UIImageView alloc]initWithFrame:CGRectMake(kScreen_Width-45, 0, 8, 15)];
         rightImageView.centerY = 22;
         rightImageView.image = [UIImage imageNamed:@"右箭头"];
         [cell.contentView addSubview:rightImageView];
