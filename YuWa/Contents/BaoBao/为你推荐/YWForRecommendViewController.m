@@ -10,7 +10,7 @@
 #import "YWMainShoppingTableViewCell.h"
 #import "HPRecommendShopModel.h"
 
-#import "YWShoppingDetailViewController.h"  //跳转到店铺
+#import "ShopDetailViewController.h"  //跳转到店铺
 
 #define CELL0   @"YWMainShoppingTableViewCell"
 @interface YWForRecommendViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -168,7 +168,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger number=indexPath.section;
     HPRecommendShopModel*model=self.mADatasModel[number];
-    YWShoppingDetailViewController*vc=[[YWShoppingDetailViewController alloc]init];
+    ShopDetailViewController*vc=[[ShopDetailViewController alloc]init];
     vc.shop_id=model.id;
     [self.navigationController pushViewController:vc animated:YES];
 
