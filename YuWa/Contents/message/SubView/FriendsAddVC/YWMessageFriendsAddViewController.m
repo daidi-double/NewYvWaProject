@@ -15,6 +15,10 @@
 #define MESSAGEADDFRIENDSEARCHCELL @"YWMessageSearchFriendAddCell"
 #define MESSAGEADDFRIENDCELL @"YWMessageFriendAddCell"
 @interface YWMessageFriendsAddViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,YWMessageFriendAddCellDelegate,YWMessageSearchFriendAddCellDelegate>
+{
+ 
+    NSString * markHxID;
+}
 @property (nonatomic,strong)NSMutableArray * dataArr;
 @property (nonatomic,strong)NSMutableArray * searchDataArr;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
@@ -81,11 +85,30 @@
         }
         [KUSERDEFAULT setObject:friendsRequest forKey:FRIENDSREQUEST];
     }
-    
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
+    //    NSMutableArray * listAry = [NSMutableArray array];
     [friendsRequest enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull requestDic, NSUInteger idx, BOOL * _Nonnull stop) {
-        [self.dataArr addObject:[YWMessageFriendAddModel yy_modelWithDictionary:requestDic]];
+    //去除重复的好友请求
+        if (idx == 0) {
+            markHxID = requestDic[@"hxID"];
+            [self.dataArr addObject:[YWMessageFriendAddModel yy_modelWithDictionary:requestDic]];
+        }else{
+            
+            NSString * hxID = requestDic[@"hxID"];
+            if (![hxID isEqualToString:markHxID]) {
+                
+                [self.dataArr addObject:[YWMessageFriendAddModel yy_modelWithDictionary:requestDic]];
+                markHxID = hxID;
+                
+            }
+            
+        }
+        
     }];
+    
+
+  
+    
 }
 
 - (void)makeUI{
@@ -99,19 +122,19 @@
     self.searchCustom.clipsToBounds = YES;
     self.searchCustom.layer.cornerRadius = 4;
     [self.customBtn setImage:[UIImage imageNamed:@"down_nol"] forState:UIControlStateNormal];
-     [self.customBtn setImage:[UIImage imageNamed:@"down_sel"] forState:UIControlStateSelected];
+    [self.customBtn setImage:[UIImage imageNamed:@"down_sel"] forState:UIControlStateSelected];
     [self.customBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 50, 0, -50)];
     [self.customBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 10)];
     self.btnView.layer.cornerRadius = 5;
     self.btnView.layer.masksToBounds = YES;
-//    //是箭头旋转一百八十度
-//        self.arrowImage.transform = CGAffineTransformRotate(self.arrowImage.transform,M_PI);
+    //    //是箭头旋转一百八十度
+    //        self.arrowImage.transform = CGAffineTransformRotate(self.arrowImage.transform,M_PI);
 }
 //选择按钮
 - (IBAction)searchBtn:(UIButton*)sender {
     sender.selected = !sender.selected;
     self.btnView.hidden = self.btnView.hidden?NO:YES;
-
+    
 }
 //消费者按钮
 - (IBAction)searchCustom:(UIButton*)sender {
@@ -135,7 +158,7 @@
         if (![self.searchTextField.text isEqualToString:@""]) {
             [self requestSearchFriendWithUserType:self.UserType];
         }
-         [sender setTitle:@"搜用户" forState:UIControlStateNormal];
+        [sender setTitle:@"搜用户" forState:UIControlStateNormal];
     }
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -220,7 +243,7 @@
     friendCell.model = self.dataArr[indexPath.row];
     
     friendCell.delegate = self;
-
+    
     return friendCell;
 }
 

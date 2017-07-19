@@ -229,24 +229,39 @@
         [UserSession saveUserInfoWithDic:responsObj[@"data"]];
         [self showHUDWithStr:@"登录成功" withSuccess:YES];
         EMError *errorLog = [[EMClient sharedClient] loginWithUsername:account password:[UserSession instance].hxPassword];
+        
         if (!errorLog){
-            [[EMClient sharedClient].options setIsAutoLogin:NO];
+            [[EMClient sharedClient].options setIsAutoLogin:YES];
             MyLog(@"环信登录成功");
-            MyLog(@"%@",[EMClient sharedClient].version);
-
             [UserSession instance].isLoginHX = YES;
-        }else{
-            [UserSession instance].isLoginHX = NO;
-            //如果登录失败，重新登录一次
-            EMError *errorLog = [[EMClient sharedClient] loginWithUsername:account password:[UserSession instance].hxPassword];
-            if (!errorLog){
-                [[EMClient sharedClient].options setIsAutoLogin:NO];
-                MyLog(@"环信登录成功");
+            [UserSession instance].isLogin = YES;
+        }else if (errorLog.code == 202){
+            EMError *errorLogs = [[EMClient sharedClient] loginWithUsername:account password:account];
+            if (errorLogs==nil){
+                [[EMClient sharedClient].options setIsAutoLogin:YES];
+                [UserSession instance].hxPassword = account;
                 [UserSession instance].isLoginHX = YES;
-            }else{
-                [UserSession instance].isLoginHX = NO;
+                MyLog(@"环信登录成功");
+            }
+        }else{
+            EMError *error = [[EMClient sharedClient] registerWithUsername:account password:account];
+            if (error==nil) {
+                MyLog(@"环信注册成功");
+                BOOL isAutoLogin = [EMClient sharedClient].options.isAutoLogin;
+                if (!isAutoLogin) {
+                    EMError *errorLog = [[EMClient sharedClient] loginWithUsername:account password:[NSString stringWithFormat:@"%@",account]];
+                    if (errorLog==nil){
+                        [[EMClient sharedClient].options setIsAutoLogin:YES];
+                        MyLog(@"环信登录成功");
+                        [UserSession instance].isLoginHX = YES;
+                    }else{
+                        [UserSession instance].isLogin = NO;
+                        [UserSession instance].isLoginHX = NO;
+                    }
+                }
             }
         }
+
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [JPUSHService setAlias:[UserSession instance].account callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
