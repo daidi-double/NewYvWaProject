@@ -54,7 +54,7 @@
 }
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    self.searchView.width = kScreen_Width - 40.f - 30.f;
+    self.searchView.width = kScreen_Width - 40.f - 40.f;
 }
 
 - (void)makeNavi{
