@@ -923,11 +923,8 @@
     }
     if ([cell.numberLabel.text integerValue] == 0) {
         
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            
         [self clearShopNumber:cell.goods_id];
-//      
-//        });
+
     }else{
             [self reduceShopToCar:cell.goods_id];
     }
@@ -944,7 +941,7 @@
     
     HttpManager*manager=[[HttpManager alloc]init];
     [manager postDatasWithUrl:urlStr withParams:params compliation:^(id data, NSError *error) {
-        MyLog(@"购物车 %@",data);
+        MyLog(@"添加商品%@",data);
        
     }];
 }

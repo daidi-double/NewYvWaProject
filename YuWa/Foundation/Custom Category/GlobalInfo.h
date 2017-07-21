@@ -48,7 +48,7 @@
 #define HTTP_HOME_SHOPCARLISTTWO   @"/api.php/Shop/newIndex/"//指定商家的购物车列表
 #define HTTP_HOME_CLEARSHOPCARLIST @"/api.php/Shop/clearShopCart"//清空购物车
 #define HTTP_HOME_SHOPCAR           @"/api.php/Shop/addShopCart/"//添加到购物车
-#define HTTP_HOME_REDUCESHOPCAR     @"/api.php/Shop/redgShopCart"//减少购物车商品
+#define HTTP_HOME_REDUCESHOPCAR     @"/api.php/Shop/redShopCart"//减少购物车商品
 #define HTTP_HOME_CLEARSHOPNUMBER   @"/api.php/Shop/redgShopCart/"//如果是最后一件商品，则删除这个商品
 #define HTTP_QRCODE_ID              @"/api.php/User/getQrcode/"  //1通过二维码的id 得到买单的详情
 #define HTTP_MAKEORDER             @"/api.php/Index/addNoPayOrder/"  //1生成未付款的订单 选好优惠券点确认付款
