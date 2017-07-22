@@ -180,10 +180,8 @@
     {
         topRootViewController = topRootViewController.presentedViewController;
     }
-    
     voiceVC.callSession = aSession;
     voiceVC.remoteUsername = aSession.remoteName;
-    MyLog(@"%d",aSession.type);
     if (aSession.type == 0) {
         voiceVC.isSender = NO;
         voiceVC.status = 1;

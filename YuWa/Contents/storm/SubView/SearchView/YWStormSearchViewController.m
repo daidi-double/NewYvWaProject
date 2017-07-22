@@ -7,7 +7,7 @@
 //
 
 #import "YWStormSearchViewController.h"
-#import "YWShoppingDetailViewController.h"
+#import "ShopDetailViewController.h"
 
 @interface YWStormSearchViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
@@ -61,13 +61,13 @@
     }
     if ([searchID isEqualToString:@""])return;
     
-    YWShoppingDetailViewController * vc = [[YWShoppingDetailViewController alloc]init];
+    ShopDetailViewController * vc = [[ShopDetailViewController alloc]init];
         vc.shop_id = searchID;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)searchWithID:(NSString *)searchID{
     MyLog(@"%@",searchID);
-    YWShoppingDetailViewController * vc = [[YWShoppingDetailViewController alloc]init];
+    ShopDetailViewController * vc = [[ShopDetailViewController alloc]init];
         vc.shop_id = searchID;
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -99,6 +99,9 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [JPUSHService setAlias:[UserSession instance].account callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
     });
+    [[EMClient sharedClient].chatManager removeDelegate:self];
+    [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
+    
 }
 
 
@@ -106,7 +109,7 @@
     CLLocation * location = [[CLLocation alloc]initWithLatitude:self.location.coordinate.latitude longitude:self.location.coordinate.longitude];
     [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         [placemarks enumerateObjectsUsingBlock:^(CLPlacemark * _Nonnull placemark, NSUInteger idx, BOOL * _Nonnull stop) {//地址反编译
-           
+            
             if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways ||[CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
                 MyLog(@"current location is %@",placemark.subLocality);
                 //已经定位了
@@ -123,14 +126,14 @@
         }];
     }];
     
-//     self.location.lat,self.location.lon
+    //     self.location.lat,self.location.lon
     
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-
+    
     if (scrollView.contentOffset.y>0) {
-       
+        
         if (self.centerView.width !=kScreen_Width- 44.f) {
             self.navigationItem.leftBarButtonItem = nil;
             self.navigationItem.rightBarButtonItems=nil;
@@ -144,9 +147,9 @@
             self.navigationItem.leftBarButtonItem = self.leftItem;
             self.navigationItem.rightBarButtonItems=@[self.rightItem2,self.rightItem];
             [UIView animateWithDuration:0.25 animations:^{
-            self.centerView.width=kScreen_Width/2;
+                self.centerView.width=kScreen_Width/2;
             }];
-
+            
         }
         
     }
@@ -156,12 +159,12 @@
     UIButton*buttonTitle=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 60, 25)];
     buttonTitle.titleLabel.font=[UIFont systemFontOfSize:14];
     [buttonTitle setTitle:@"泉州市" forState:UIControlStateNormal];
-//    [buttonTitle setImage:[UIImage imageNamed:@"page_downArr"] forState:UIControlStateNormal];
+    //    [buttonTitle setImage:[UIImage imageNamed:@"page_downArr"] forState:UIControlStateNormal];
     [buttonTitle addTarget:self action:@selector(touchNaviCity) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem*leftItem=[[UIBarButtonItem alloc]initWithCustomView:buttonTitle];
-//    //变换两者的位置
-//    [buttonTitle setTitleEdgeInsets:UIEdgeInsetsMake(0, -buttonTitle.imageView.bounds.size.width, 0, buttonTitle.imageView.bounds.size.width)];
-//    [buttonTitle setImageEdgeInsets:UIEdgeInsetsMake(0, buttonTitle.titleLabel.bounds.size.width, 0, -buttonTitle.titleLabel.bounds.size.width)];
+    //    //变换两者的位置
+    //    [buttonTitle setTitleEdgeInsets:UIEdgeInsetsMake(0, -buttonTitle.imageView.bounds.size.width, 0, buttonTitle.imageView.bounds.size.width)];
+    //    [buttonTitle setImageEdgeInsets:UIEdgeInsetsMake(0, buttonTitle.titleLabel.bounds.size.width, 0, -buttonTitle.titleLabel.bounds.size.width)];
     
     
     UIButton*button=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 17, 17)];
@@ -222,7 +225,7 @@
     self.pagen=10;
     self.pages=-1;
     NSString*urlStr=[NSString stringWithFormat:@"%@%@",HTTP_ADDRESS,HTTP_HOME_PAGE];
-
+    
     NSMutableDictionary*params=[NSMutableDictionary dictionary];
     [params setObject:[JWTools getUUID] forKey:@"device_id"];
     if (self.coordinatex) {
@@ -231,7 +234,7 @@
         [params setObject:self.coordinatey forKey:@"coordinatey"];
     }
     [self.mtModelArrRecommend removeAllObjects];
-                self.mtModelArrRecommend=nil;
+    self.mtModelArrRecommend=nil;
     HttpManager*manager=[[HttpManager alloc]init];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [manager postDatasNoHudWithUrl:urlStr withParams:params compliation:^(id data, NSError *error) {
@@ -321,7 +324,7 @@
         NSString*errorCode=[NSString stringWithFormat:@"%@",number];
         NSArray*array=data[@"data"];
         if ([errorCode isEqualToString:@"0"]) {
-
+            
             for (NSDictionary*dict in array) {
                 HPRecommendShopModel*model=[HPRecommendShopModel yy_modelWithDictionary:dict];
                 [self.mtModelArrRecommend addObject:model];
@@ -364,14 +367,14 @@
     
     NSString*urlStr=[NSString stringWithFormat:@"%@%@",HTTP_ADDRESS,HTTP_HOME_UPDATECOORDINATE];
     NSDictionary*params=@{@"device_id":[JWTools getUUID],@"coordinatex":self.coordinatex,@"coordinatey":self.coordinatey};
-   HttpManager*manager= [[HttpManager alloc]init];
+    HttpManager*manager= [[HttpManager alloc]init];
     [manager postDatasNoHudWithUrl:urlStr withParams:params compliation:^(id data, NSError *error) {
         //更新成功
         MyLog(@"%@",data);
         
         
     }];
-  
+    
 }
 -(void)getDatasWithIDD:(NSString*)idd{
     NSString*urlStr=[NSString stringWithFormat:@"%@%@",HTTP_ADDRESS,HTTP_QRCODE_ID];
@@ -379,7 +382,7 @@
     
     HttpManager*manager=[[HttpManager alloc]init];
     [manager postDatasWithUrl:urlStr withParams:params compliation:^(id data, NSError *error) {
-//        MyLog(@"%@",data);
+        //        MyLog(@"%@",data);
         if ([data[@"errorCode"] integerValue] == 0) {
             
             NSString*company_name=data[@"data"][@"company_name"];   //这个 名字 需要改。
@@ -411,16 +414,16 @@
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
-      [tableView setSeparatorColor:[UIColor clearColor]];;
+    [tableView setSeparatorColor:[UIColor clearColor]];;
     
     if (indexPath.section==0) {
-       
+        
         HomeMenuCell*cell = [[HomeMenuCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL0 menuArray:self.mtModelArrCategory];
-       
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegate=self;
         return cell;
-
+        
     }else if (indexPath.section==1){
         
         ShoppingTableViewCell*cell=[tableView dequeueReusableCellWithIdentifier:CELL1];
@@ -429,19 +432,19 @@
         WEAKSELF;
         cell.touchCollectionViewBlock=^(NSInteger number){
             HPTopShopModel*model=self.mtModelArrTopShop[number];
-//            MyLog(@"id=%@",model.id);
-
+            //            MyLog(@"id=%@",model.id);
+            
             ShopDetailViewController*vc=[[ShopDetailViewController alloc]init];
             vc.shop_id=model.id;
             [weakSelf.navigationController pushViewController:vc animated:YES];
             
         };
-       
+        
         return cell;
         
     }else if (indexPath.section==2){
-      
-       YWMainShoppingTableViewCell* cell=  [[[NSBundle mainBundle]loadNibNamed:@"YWMainShoppingTableViewCell" owner:nil options:nil]lastObject];
+        
+        YWMainShoppingTableViewCell* cell=  [[[NSBundle mainBundle]loadNibNamed:@"YWMainShoppingTableViewCell" owner:nil options:nil]lastObject];
         cell.selectionStyle=NO;
         NSInteger number=indexPath.row;
         HPRecommendShopModel*model;
@@ -459,7 +462,7 @@
         UILabel*titleLabel=[cell viewWithTag:2];
         titleLabel.text=model.company_name;
         
-//星星数量 -------------------------------------------------------
+        //星星数量 -------------------------------------------------------
         CGFloat realZhengshu;
         CGFloat realXiaoshu;
         NSString*starNmuber=model.star;
@@ -470,12 +473,12 @@
         
         if (CGxiaoshu>0.5) {
             realXiaoshu=0;
-           realZhengshu= realZhengshu+1;
+            realZhengshu= realZhengshu+1;
         }else if (CGxiaoshu>0&&CGxiaoshu<=0.5){
-             realXiaoshu=0.5;
+            realXiaoshu=0.5;
         }else{
-              realXiaoshu=0;
-
+            realXiaoshu=0;
+            
         }
         
         for (int i=30; i<35; i++) {
@@ -494,10 +497,10 @@
             
             
         }
-//---------------------------------------------------------------------------
+        //---------------------------------------------------------------------------
         //人均
         UILabel*per_capitaLabel=[cell viewWithTag:3];
-       
+        
         per_capitaLabel.text=[NSString stringWithFormat:@"%@/人",model.per_capita];
         
         //分类
@@ -512,14 +515,14 @@
         
         
         //距离自己的位置多远
-//        UILabel*nearLabel=[cell viewWithTag:5];
-//        nearLabel.text=[NSString stringWithFormat:@"%@km",model.company_near];
+        //        UILabel*nearLabel=[cell viewWithTag:5];
+        //        nearLabel.text=[NSString stringWithFormat:@"%@km",model.company_near];
         
         
         //折下面的文字
         UILabel*zheLabel=[cell viewWithTag:7];
         NSString*zheNum=[model.discount substringFromIndex:2];
-       
+        
         if ([zheNum integerValue] % 10 == 0) {
             zheNum = [NSString stringWithFormat:@"%ld",[zheNum integerValue]/10];
         }else{
@@ -532,14 +535,14 @@
             zheLabel.text=@"不打折";
         }
         cell.zhekou = model.discount;
-     
+        
         //特图片
         UIImageView*imageTe=[cell viewWithTag:8];
         imageTe.hidden=YES;
         //特旁边的文字
         UILabel*teLabel=[cell viewWithTag:9];
         teLabel.hidden=YES;
-
+        
         //显示的特别活动   nsarray 里面string越多 显示越多的内容
         
         cell.holidayArray=model.holiday;
@@ -555,7 +558,7 @@
     if (indexPath.section==2) {
         NSInteger number=indexPath.row;
         HPRecommendShopModel*model=self.mtModelArrRecommend[number];
-
+        
         ShopDetailViewController * shopVC = [[ShopDetailViewController alloc]init];
         shopVC.shop_id = model.id;
         [self.navigationController pushViewController:shopVC animated:YES];
@@ -572,7 +575,7 @@
     
     else{
         //最后一排 来判断得到的高度
-//          return 145;
+        //          return 145;
         HPRecommendShopModel*model;
         if (self.mtModelArrRecommend.count > 0) {
             
@@ -580,9 +583,9 @@
         }else{
             return 145;
         }
-
+        
         return [YWMainShoppingTableViewCell getCellHeight:model.holiday]-15;
-    
+        
     }
 }
 
@@ -606,7 +609,7 @@
         for (HPBannerModel*model in self.mtModelArrBanner) {
             [mtArray addObject:model.img];
         }
-      
+        
         SDCycleScrollView*sdView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kScreen_Width, SCREEN_WIDTH/3) imagesGroup:mtArray andPlaceholder:@"placehoder_loading"];
         sdView.autoScrollTimeInterval=5.0;
         sdView.delegate=self;
@@ -630,7 +633,7 @@
         
         
         return view;
-
+        
         
     }
     
@@ -641,7 +644,7 @@
 #pragma mark  -- touch
 -(void)touchNaviCity{
     //城市
-//    NSLog(@"城市");
+    //    NSLog(@"城市");
 }
 
 #pragma mark  --  二维码
@@ -653,7 +656,7 @@
     WLBarcodeViewController *vc=[[WLBarcodeViewController alloc] initWithBlock:^(NSString *str, BOOL isScceed) {
         
         if (isScceed) {
-          //扫描结果 成功
+            //扫描结果 成功
             self.saveQRCode=str;
             
             if([str hasPrefix:@"yuwabao.shop"]){
@@ -673,17 +676,17 @@
                 
                 return ;
             }else {
-            
-            
-            
-            //不是我们的二维码
-            NSString*strr=[NSString stringWithFormat:@"可能存在风险，是否打开此链接?\n %@",str];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:strr delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"打开链接", nil];
-            [alert show];
-     
+                
+                
+                
+                //不是我们的二维码
+                NSString*strr=[NSString stringWithFormat:@"可能存在风险，是否打开此链接?\n %@",str];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:strr delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"打开链接", nil];
+                [alert show];
+                
             }
         }else{
-           //扫描结果不成功
+            //扫描结果不成功
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"扫码结果" message:@"无法识别" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alert show];
         }
@@ -714,14 +717,14 @@
 #pragma mark  --delegate
 //轮播图
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
-//    MyLog(@"%ld",(long)index);    //缺少id
-//    HPBannerModel*model=self.mtModelArrBanner[index];
-//    //这个就是id
-////    model.url;
-//    
-//    YWShoppingDetailViewController*vc=[[YWShoppingDetailViewController alloc]init];
-//    vc.shop_id=model.url;
-//    [self.navigationController pushViewController:vc animated:YES];
+    //    MyLog(@"%ld",(long)index);    //缺少id
+    //    HPBannerModel*model=self.mtModelArrBanner[index];
+    //    //这个就是id
+    ////    model.url;
+    //
+    //    YWShoppingDetailViewController*vc=[[YWShoppingDetailViewController alloc]init];
+    //    vc.shop_id=model.url;
+    //    [self.navigationController pushViewController:vc animated:YES];
     
     
 }
@@ -738,25 +741,25 @@
         //        CategoryDetaliViewController * categoryVC = [[CategoryDetaliViewController alloc]init];
         //        [self.navigationController pushViewController:categoryVC animated:YES];
     }else if (number !=1 ){
-//        if (self.NewMainCategoryViewController == nil) {
-             NewMainCategoryViewController*vc=[[NewMainCategoryViewController alloc]init];
-            self.NewMainCategoryViewController = vc;
-//        }
+        //        if (self.NewMainCategoryViewController == nil) {
+        NewMainCategoryViewController*vc=[[NewMainCategoryViewController alloc]init];
+        self.NewMainCategoryViewController = vc;
+        //        }
         self.NewMainCategoryViewController.categoryTouch=number;
         [self.navigationController pushViewController:self.NewMainCategoryViewController animated:YES];
         
         
     }
-
-//    } else if (number==2){
-//        //酒店
-//        
-//        
-//    }else if (number!=1&&number!=2){
-////        YWMainCategoryViewController*vc=[[YWMainCategoryViewController alloc]initWithNibName:@"YWMainCategoryViewController" bundle:nil];
-////        [self.navigationController pushViewController:vc animated:YES];
-//
-       
+    
+    //    } else if (number==2){
+    //        //酒店
+    //
+    //
+    //    }else if (number!=1&&number!=2){
+    ////        YWMainCategoryViewController*vc=[[YWMainCategoryViewController alloc]initWithNibName:@"YWMainCategoryViewController" bundle:nil];
+    ////        [self.navigationController pushViewController:vc animated:YES];
+    //
+    
     
 }
 
@@ -778,7 +781,7 @@
 }
 #pragma mark --- 用来设置消息模块有几条信息是未读的
 - (void)requestShopArrData{
-//    NSInteger page = 1;
+    //    NSInteger page = 1;
     NSMutableArray * dataArr = [NSMutableArray array];
     NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
     NSArray* sorted = [conversations sortedArrayUsingComparator:^(EMConversation *obj1, EMConversation* obj2){
@@ -827,10 +830,11 @@
                 if (badgeValue == 0) {
                     item.badgeValue = nil;
                 }
+                
                 //还原
             } failur:^(id responsObj, NSError *error) {
-//                [JRToast showWithText:];
-//                [self showHUDWithStr:responsObj[@"errorMessage"]withSuccess:YES];
+                //                [JRToast showWithText:];
+                //                [self showHUDWithStr:responsObj[@"errorMessage"]withSuccess:YES];
                 MyLog(@"%@~~~~~%@",error,responsObj);
             }];
         }
@@ -838,22 +842,12 @@
 }
 
 -(void)messagesDidReceive:(NSArray *)aMessages{
-    BOOL  isReceive = NO;
-    MyLog(@"接收到文字消息");
-    for (EMMessage *message in aMessages) {
-        if (message.body.type == EMMessageBodyTypeText) {
+    WEAKSELF;
+    dispatch_async(dispatch_get_main_queue(), ^{
+            [weakSelf requestShopArrData];
             
-            WEAKSELF;
-            if (!isReceive) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [weakSelf requestShopArrData];
-                    
-                });
-            }
-            isReceive = YES;
-        }
-        
-    }
+        });
+
     
 }
 
@@ -861,7 +855,7 @@
 
 -(void)dealloc{
     [[EMClient sharedClient].chatManager removeDelegate:self];
-//    [[EMClient sharedClient].callManager removeDelegate:self];
+    //    [[EMClient sharedClient].callManager removeDelegate:self];
     [_mtModelArrBanner removeAllObjects];
     _mtModelArrBanner = nil;
     

@@ -84,7 +84,12 @@
 
 -(void)createUI{
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];//休眠关闭
-    _statusLabel.text = @"正在呼叫";
+    if (_status ==0) {
+        
+        _statusLabel.text = @"正在呼叫";
+    }else{
+        _statusLabel.text = _type== 0?@"邀你进行语音通话":@"邀你进行视频通话";
+    }
     
     if (_type == 1) {
         
@@ -149,15 +154,18 @@
 - (void)callDidEnd:(EMCallSession *)aSession
             reason:(EMCallEndReason)aReason
              error:(EMError *)aError{
-    
+    MyLog(@"132主叫还是被叫%d",_callSession.isCaller);
     [[AVAudioSession sharedInstance] setActive:NO error:nil];
     [[EMClient sharedClient].callManager removeDelegate:self];
     [self _stopTimeTimer];
     _callSession = nil;
-    [self clearData];
     [self _stopRing];
-}
+    if (_status == 1) {
+        
+        [self clearData];
+    }
 
+}
 #pragma mark - private ring
 
 - (void)_beginRing
@@ -225,11 +233,41 @@
 
 - (void)hangupCallWithReason:(EMCallEndReason)aReason
 {
+
     [self _stopTimeTimer];
     [self _stopRing];
     if (self.callSession) {
         [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:aReason];
     }
+    NSString * text;
+    if (aReason == EMCallEndReasonHangup) {
+        text = [NSString stringWithFormat:@"通话时长%@",_timeLabel.text];
+        if (_timeLabel.text.length == 0) {
+            if (_status == 0) {
+                
+                text = @"已取消";
+            }else{
+                text = @"未接听";
+            }
+        }
+        
+        EMTextMessageBody *textMessageBody = [[EMTextMessageBody alloc] initWithText:text];
+        EMMessage *textMessage = [[EMMessage alloc] initWithConversationID:_conversation.conversationId from:[EMClient sharedClient].currentUsername to:_callSession.callId body:textMessageBody ext:@{@"em_ignore_notification":@(YES)}];
+        textMessage.status = EMMessageStatusSuccessed;
+        textMessage.chatType = (EMChatType)self.conversation.type;
+        textMessage.isRead = YES;
+        /** 刷新当前聊天界面 */
+        if (self.addBlock) {
+            
+            self.addBlock(textMessage);
+        }
+        
+        
+        /** 存入当前会话并存入数据库 */
+        
+        [self.conversation insertMessage:textMessage error:nil];
+    }
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -246,7 +284,8 @@
     [self _stopRing];
     if (_callSession) {
         
-        [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonHangup];
+//        [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonHangup];
+        [self hangupCallWithReason:EMCallEndReasonHangup];
         _callSession = nil;
     }
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -290,7 +329,7 @@
     [self _stopRing];
     [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:nil];
     [audioSession setActive:YES error:nil];
-    [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonNoResponse];
+    [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonHangup];
     self.callSession.remoteVideoView.hidden = YES;
     self.callSession.remoteVideoView = nil;
     _callSession = nil;

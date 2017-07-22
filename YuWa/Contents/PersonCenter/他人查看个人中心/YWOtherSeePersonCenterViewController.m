@@ -24,7 +24,7 @@
 #import "YWFansViewController.h"   //粉丝
 #import "MyAlbumViewController.h"
 #import "RBNodeShowViewController.h"
-#import "YWShoppingDetailViewController.h"
+#import "ShopDetailViewController.h"
 #import "YWmarkNameViewController.h"//备注
 
 
@@ -440,7 +440,7 @@
     [self.tableView.mj_header beginRefreshing];
 }
 - (void)DelegateForToShopDetail:(NSString *)shopid{
-    YWShoppingDetailViewController * vc = [[YWShoppingDetailViewController alloc]init];
+    ShopDetailViewController * vc = [[ShopDetailViewController alloc]init];
     vc.shop_id = shopid;
     [self.navigationController pushViewController:vc animated:YES];
 }

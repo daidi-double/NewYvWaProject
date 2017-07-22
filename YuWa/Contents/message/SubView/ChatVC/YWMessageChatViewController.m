@@ -61,11 +61,52 @@
     _voiceViewController.isSender = YES;
     _voiceViewController.status = 0;
     _voiceViewController.friendsIcon = self.friendIcon;
+    _voiceViewController.conversation = [[EMClient sharedClient].chatManager getConversation:[notification object][@"chatter"] type:EMConversationTypeChat createIfNotExist:YES];
     _voiceViewController.friendsNiceName = self.friendNikeName;
     [self _startCallTimer];
     [self presentViewController:_voiceViewController animated:YES completion:nil];
-    
+    WEAKSELF;
+    _voiceViewController.addBlock = ^(EMMessage*textmessage){
+        textmessage.status = EMMessageStatusSuccessed;
+        [weakSelf addMessageToDataSource:textmessage progress:nil];
+        if ([weakSelf _shouldMarkMessageAsRead])
+        {
+            [weakSelf.conversation markMessageAsReadWithId:textmessage.messageId error:nil];
+        }
+    };
 }
+
+- (void)didReceiveMessages:(NSArray *)aMessages
+{
+    for (EMMessage *message in aMessages) {
+        if ([self.conversation.conversationId isEqualToString:message.conversationId]) {
+            [self addMessageToDataSource:message progress:nil];
+            
+            if ([self _shouldMarkMessageAsRead])
+            {
+                [self.conversation markMessageAsReadWithId:message.messageId error:nil];
+            }
+           
+        }
+    }
+}
+- (BOOL)_shouldMarkMessageAsRead
+{
+    BOOL isMark = YES;
+    if (self.dataSource && [self.dataSource respondsToSelector:@selector(messageViewControllerShouldMarkMessagesAsRead:)]) {
+        isMark = [self.dataSource  messageViewControllerShouldMarkMessagesAsRead:self];
+    }
+    else{
+        if (([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) || !self.isViewDidAppear)
+        {
+            isMark = NO;
+        }
+    }
+    
+    return isMark;
+}
+
+
 - (void)_startCallTimer
 {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:50 target:self selector:@selector(_timeoutBeforeCallAnswered) userInfo:nil repeats:NO];
@@ -108,6 +149,7 @@
 
 - (void)callDidEnd:(EMCallSession *)aSession reason:(EMCallEndReason)aReason error:(EMError *)aError
 {
+    MyLog(@"12主叫还是被叫%d----%u",_currentSession.isCaller,aReason);
     
     [self _stopCallTimer];
     
@@ -152,6 +194,8 @@
 }
 - (void)hangupCallWithReason:(EMCallEndReason)aReason
 {
+    MyLog(@"主叫还是被叫%d",_currentSession.isCaller);
+    
     [self _stopCallTimer];
     if (_currentSession) {
         
@@ -166,10 +210,11 @@
 
 - (void)_clearCurrentCallViewAndData
 {
-    
     self.currentSession = nil;
-    
-    [self.voiceViewController clearData];
+    if (self.voiceViewController) {
+        
+        [self.voiceViewController clearData];
+    }
     self.voiceViewController = nil;
     
 }

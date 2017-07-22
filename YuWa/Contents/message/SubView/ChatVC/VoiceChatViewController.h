@@ -18,5 +18,8 @@
 @property (nonatomic,strong)NSString * remoteUsername;
 @property (nonatomic,assign)NSInteger status;//0主动发起方，1接收方
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (nonatomic,strong)EMConversation *conversation;
+
+@property (nonatomic,copy) void (^addBlock)(EMMessage*);
 - (void)clearData;
 @end

@@ -12,7 +12,7 @@
 #import "TZImagePickerController.h"
 #import "ImageCache.h"
 #import "JWTools.h"
-#import "YWShoppingDetailViewController.h"
+#import "ShopDetailViewController.h"
 #define CELL0   @"PostCommitTextTableViewCell"
 #define CELL1   @"PostCommitImageTableViewCell"
 
