@@ -149,16 +149,14 @@
 
 - (void)callDidEnd:(EMCallSession *)aSession reason:(EMCallEndReason)aReason error:(EMError *)aError
 {
-    MyLog(@"12主叫还是被叫%d----%u",_currentSession.isCaller,aReason);
-    
-    [self _stopCallTimer];
-    
+  
     if (aReason != EMCallEndReasonHangup) {
         NSString *reasonStr = @"对方不在线";
         switch (aReason) {
             case EMCallEndReasonNoResponse:
             {
                 reasonStr = NSLocalizedString(@"对方无人接听", @"NO response");
+                
             }
                 break;
             case EMCallEndReasonDecline:
@@ -191,11 +189,11 @@
         
     }
     [self hangupCallWithReason:aReason];
+
 }
 - (void)hangupCallWithReason:(EMCallEndReason)aReason
 {
-    MyLog(@"主叫还是被叫%d",_currentSession.isCaller);
-    
+
     [self _stopCallTimer];
     if (_currentSession) {
         

@@ -44,7 +44,9 @@
         self.answerBtn.hidden = NO;
         self.hangupBtn.hidden = YES;
         [self _beginRing];
+      
         [self getIconAccount:_remoteUsername];
+       
     }
     [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.friendsIcon]] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     if (!_callSession) {
@@ -155,15 +157,15 @@
             reason:(EMCallEndReason)aReason
              error:(EMError *)aError{
     MyLog(@"132主叫还是被叫%d",_callSession.isCaller);
-    [[AVAudioSession sharedInstance] setActive:NO error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[EMClient sharedClient].callManager removeDelegate:self];
-    [self _stopTimeTimer];
     _callSession = nil;
     [self _stopRing];
     if (_status == 1) {
         
         [self clearData];
     }
+    [self _stopTimeTimer];
 
 }
 #pragma mark - private ring
@@ -234,7 +236,6 @@
 - (void)hangupCallWithReason:(EMCallEndReason)aReason
 {
 
-    [self _stopTimeTimer];
     [self _stopRing];
     if (self.callSession) {
         [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:aReason];
@@ -242,6 +243,7 @@
     NSString * text;
     if (aReason == EMCallEndReasonHangup) {
         text = [NSString stringWithFormat:@"通话时长%@",_timeLabel.text];
+
         if (_timeLabel.text.length == 0) {
             if (_status == 0) {
                 
@@ -252,42 +254,47 @@
         }
         
         EMTextMessageBody *textMessageBody = [[EMTextMessageBody alloc] initWithText:text];
-        EMMessage *textMessage = [[EMMessage alloc] initWithConversationID:_conversation.conversationId from:[EMClient sharedClient].currentUsername to:_callSession.callId body:textMessageBody ext:@{@"em_ignore_notification":@(YES)}];
+        EMMessage *textMessage = [[EMMessage alloc] initWithConversationID:_conversation.conversationId from:[EMClient sharedClient].currentUsername to:_callSession.callId body:textMessageBody ext:nil];
         textMessage.status = EMMessageStatusSuccessed;
+        textMessage.direction = EMMessageDirectionSend;
         textMessage.chatType = (EMChatType)self.conversation.type;
-        textMessage.isRead = YES;
+        textMessage.isDeliverAcked = YES;
         /** 刷新当前聊天界面 */
         if (self.addBlock) {
             
             self.addBlock(textMessage);
         }
-        
+        if (_timeLabel.text.length != 0) {
+            
+        }
         
         /** 存入当前会话并存入数据库 */
         
         [self.conversation insertMessage:textMessage error:nil];
+        MyLog(@"最后一条信息%@---%@",self.conversation.latestMessage,textMessage.body);
+        
     }
-
+     _callSession = nil;
+    [self _stopTimeTimer];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //拒绝
 - (IBAction)rejectAction:(UIButton *)sender {
-    [self _stopTimeTimer];
     [self _stopRing];
     [self hangupCallWithReason:EMCallEndReasonDecline];
+    [self _stopTimeTimer];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 //挂断
 - (IBAction)hangupAction:(UIButton *)sender {
-    [self _stopTimeTimer];
     [self _stopRing];
     if (_callSession) {
         
-//        [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonHangup];
         [self hangupCallWithReason:EMCallEndReasonHangup];
-        _callSession = nil;
+       
     }
+    [self _stopTimeTimer];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -316,7 +323,7 @@
     if (_callSession) {
         [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonHangup];
     }
-    [[AVAudioSession sharedInstance] setActive:NO error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[EMClient sharedClient].callManager removeDelegate:self];
     _callSession = nil;
     
