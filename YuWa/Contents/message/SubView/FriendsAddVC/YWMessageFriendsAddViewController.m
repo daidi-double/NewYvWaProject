@@ -75,9 +75,10 @@
     
     NSMutableArray * friendsRequest = [NSMutableArray arrayWithArray:[KUSERDEFAULT valueForKey:FRIENDSREQUEST]];
     if (!friendsRequest)friendsRequest = [NSMutableArray arrayWithCapacity:0];
+    NSMutableDictionary * requestDic;
     if (friendsRequest.count > 0) {
         for (int i = 0; i<friendsRequest.count; i++) {
-            NSMutableDictionary * requestDic = [NSMutableDictionary dictionaryWithDictionary:friendsRequest[i]];
+           requestDic = [NSMutableDictionary dictionaryWithDictionary:friendsRequest[i]];
             if ([requestDic[@"status"] isEqualToString:@"0"]){
                 [requestDic setObject:@"1" forKey:@"status"];
                 [friendsRequest replaceObjectAtIndex:i withObject:requestDic];
@@ -87,27 +88,29 @@
     }
     self.dataArr = [NSMutableArray arrayWithCapacity:0];
     //    NSMutableArray * listAry = [NSMutableArray array];
-    [friendsRequest enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull requestDic, NSUInteger idx, BOOL * _Nonnull stop) {
+    [friendsRequest enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull requestDics, NSUInteger idx, BOOL * _Nonnull stop) {
     //去除重复的好友请求
         if (idx == 0) {
-            markHxID = requestDic[@"hxID"];
-            [self.dataArr addObject:[YWMessageFriendAddModel yy_modelWithDictionary:requestDic]];
+            markHxID = requestDics[@"hxID"];
+            [self.dataArr addObject:[YWMessageFriendAddModel yy_modelWithDictionary:requestDics]];
         }else{
             
-            NSString * hxID = requestDic[@"hxID"];
+            NSString * hxID = requestDics[@"hxID"];
             if (![hxID isEqualToString:markHxID]) {
                 
-                [self.dataArr addObject:[YWMessageFriendAddModel yy_modelWithDictionary:requestDic]];
+                [self.dataArr addObject:[YWMessageFriendAddModel yy_modelWithDictionary:requestDics]];
                 markHxID = hxID;
                 
+            }else{
+                [friendsRequest removeObjectAtIndex:idx];
+                [KUSERDEFAULT setObject:friendsRequest forKey:FRIENDSREQUEST];
             }
             
         }
-        
+ 
     }];
-    
 
-  
+
     
 }
 

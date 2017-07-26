@@ -150,46 +150,46 @@
 - (void)callDidEnd:(EMCallSession *)aSession reason:(EMCallEndReason)aReason error:(EMError *)aError
 {
   
-    if (aReason != EMCallEndReasonHangup) {
-        NSString *reasonStr = @"对方不在线";
-        switch (aReason) {
-            case EMCallEndReasonNoResponse:
-            {
-                reasonStr = NSLocalizedString(@"对方无人接听", @"NO response");
-                
-            }
-                break;
-            case EMCallEndReasonDecline:
-            {
-                reasonStr = NSLocalizedString(@"对方拒绝了您的通话", @"Reject the call");
-            }
-                break;
-            case EMCallEndReasonBusy:
-            {
-                reasonStr = NSLocalizedString(@"对方正在通话中", @"In the call...");
-            }
-                break;
-            case EMCallEndReasonFailed:
-            {
-                reasonStr = NSLocalizedString(@"连接失败", @"Connect failed");
-            }
-                break;
-            default:
-                break;
-        }
-        
-        if (aError) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:aError.errorDescription delegate:nil cancelButtonTitle:NSLocalizedString(@"好的", @"OK") otherButtonTitles:nil, nil];
-            [alertView show];
-        }
-        else{
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:reasonStr delegate:nil cancelButtonTitle:NSLocalizedString(@"好的", @"OK") otherButtonTitles:nil, nil];
-            [alertView show];
-        }
-        
-    }
-    [self hangupCallWithReason:aReason];
-
+//    if (aReason != EMCallEndReasonHangup) {
+//        NSString *reasonStr = @"对方不在线";
+//        switch (aReason) {
+//            case EMCallEndReasonNoResponse:
+//            {
+//                reasonStr = NSLocalizedString(@"对方无人接听", @"NO response");
+//                
+//            }
+//                break;
+//            case EMCallEndReasonDecline:
+//            {
+//                reasonStr = NSLocalizedString(@"对方拒绝了您的通话", @"Reject the call");
+//            }
+//                break;
+//            case EMCallEndReasonBusy:
+//            {
+//                reasonStr = NSLocalizedString(@"对方正在通话中", @"In the call...");
+//            }
+//                break;
+//            case EMCallEndReasonFailed:
+//            {
+//                reasonStr = NSLocalizedString(@"连接失败", @"Connect failed");
+//            }
+//                break;
+//            default:
+//                break;
+//        }
+//        
+//        if (aError) {
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:aError.errorDescription delegate:nil cancelButtonTitle:NSLocalizedString(@"好的", @"OK") otherButtonTitles:nil, nil];
+//            [alertView show];
+//        }
+//        else{
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:reasonStr delegate:nil cancelButtonTitle:NSLocalizedString(@"好的", @"OK") otherButtonTitles:nil, nil];
+//            [alertView show];
+//        }
+//        
+//    }
+    [self _stopCallTimer];
+    [self.voiceViewController dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)hangupCallWithReason:(EMCallEndReason)aReason
 {

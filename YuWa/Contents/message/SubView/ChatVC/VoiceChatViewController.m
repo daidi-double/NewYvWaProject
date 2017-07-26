@@ -52,12 +52,9 @@
     if (!_callSession) {
         
         NSString * string = ([[[EMClient sharedClient] currentUsername] isEqualToString:_friendsName])?_friendsName:_friendsName;
-        
-        NSLog(@"currentUsername = %@  ,  string = %@",[[EMClient sharedClient] currentUsername],string);
-        
+
         [[EMClient sharedClient].callManager startCall:(_type == 1)?EMCallTypeVideo:EMCallTypeVoice remoteName:string ext:nil completion:^(EMCallSession *aCallSession, EMError *aError) {
-            
-            NSLog(@"startCall : errorDescription = %@",aError.errorDescription);
+
             
             if (!aError) {
                 _callSession = aCallSession;
@@ -156,16 +153,97 @@
 - (void)callDidEnd:(EMCallSession *)aSession
             reason:(EMCallEndReason)aReason
              error:(EMError *)aError{
-    MyLog(@"132主叫还是被叫%d",_callSession.isCaller);
+
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [[EMClient sharedClient].callManager removeDelegate:self];
+    
+    NSString * text;
+    if (aReason == EMCallEndReasonHangup) {
+        text = [NSString stringWithFormat:@"视频通话时长%@",_timeLabel.text];
+        
+        if (_timeLabel.text.length == 0) {
+            if (_status == 0) {
+                
+                text = @"已取消";
+            }else{
+                text = @"未接听";
+            }
+        }
+    }else if (aReason == EMCallEndReasonDecline){
+        if (_timeLabel.text.length == 0) {
+            if (_status == 0) {
+                
+                text = @"对方已拒绝";
+            }else{
+                text = @"已拒绝";
+            }
+        }
+    }else if (aReason == EMCallEndReasonNoResponse){
+        if (_timeLabel.text.length == 0) {
+            if (_status == 0) {
+                
+                text = @"无人接听";
+            }else{
+                if (_type == 0) {
+                    text = @"有未接语音电话";
+                }else{
+                    
+                    text = @"有未接视频电话";
+                }
+            }
+        }
+    }else if (aReason == EMCallEndReasonBusy){
+        if (_timeLabel.text.length == 0) {
+            if (_status == 0) {
+                
+                text = @"对方正在通话中";
+            }else{
+                text = @"有来电";
+            }
+        }
+    }else if (aReason == EMCallEndReasonFailed){
+        if (_timeLabel.text.length == 0) {
+            if (_status == 0) {
+                
+                text = @"连接失败";
+            }
+        }
+    }else if (aReason == EMCallEndReasonRemoteOffline){
+        if (_timeLabel.text.length == 0) {
+            if (_status == 0) {
+                
+                text = @"对方不在线";
+            }
+        }
+    }
+        EMTextMessageBody *textMessageBody = [[EMTextMessageBody alloc] initWithText:text];
+        EMMessage *textMessage = [[EMMessage alloc] initWithConversationID:_conversation.conversationId from:[EMClient sharedClient].currentUsername to:_callSession.callId body:textMessageBody ext:nil];
+        textMessage.status = EMMessageStatusSuccessed;
+        textMessage.direction = EMMessageDirectionSend;
+        textMessage.chatType = (EMChatType)self.conversation.type;
+        textMessage.isDeliverAcked = YES;
+        /** 刷新当前聊天界面 */
+        if (self.addBlock) {
+            
+            self.addBlock(textMessage);
+        }
+
+        /** 存入当前会话并存入数据库 */
+        
+        [self.conversation insertMessage:textMessage error:nil];
+
+    
+
+    
     _callSession = nil;
     [self _stopRing];
     if (_status == 1) {
         
         [self clearData];
     }
+    self.timeLabel.text = nil;
     [self _stopTimeTimer];
+    
 
 }
 #pragma mark - private ring
@@ -212,7 +290,7 @@
     [self.timeTimer invalidate];
     self.timeTimer = nil;
     
-    self.timeLabel.text = nil;
+
 }
 
 - (void)timeTimerAction:(id)sender
@@ -240,41 +318,7 @@
     if (self.callSession) {
         [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:aReason];
     }
-    NSString * text;
-    if (aReason == EMCallEndReasonHangup) {
-        text = [NSString stringWithFormat:@"通话时长%@",_timeLabel.text];
-
-        if (_timeLabel.text.length == 0) {
-            if (_status == 0) {
-                
-                text = @"已取消";
-            }else{
-                text = @"未接听";
-            }
-        }
-        
-        EMTextMessageBody *textMessageBody = [[EMTextMessageBody alloc] initWithText:text];
-        EMMessage *textMessage = [[EMMessage alloc] initWithConversationID:_conversation.conversationId from:[EMClient sharedClient].currentUsername to:_callSession.callId body:textMessageBody ext:nil];
-        textMessage.status = EMMessageStatusSuccessed;
-        textMessage.direction = EMMessageDirectionSend;
-        textMessage.chatType = (EMChatType)self.conversation.type;
-        textMessage.isDeliverAcked = YES;
-        /** 刷新当前聊天界面 */
-        if (self.addBlock) {
-            
-            self.addBlock(textMessage);
-        }
-        if (_timeLabel.text.length != 0) {
-            
-        }
-        
-        /** 存入当前会话并存入数据库 */
-        
-        [self.conversation insertMessage:textMessage error:nil];
-        MyLog(@"最后一条信息%@---%@",self.conversation.latestMessage,textMessage.body);
-        
-    }
-     _callSession = nil;
+        _callSession = nil;
     [self _stopTimeTimer];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -336,7 +380,10 @@
     [self _stopRing];
     [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:nil];
     [audioSession setActive:YES error:nil];
-    [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonHangup];
+    if (_callSession) {
+        
+        [[EMClient sharedClient].callManager endCall:self.callSession.callId reason:EMCallEndReasonHangup];
+    }
     self.callSession.remoteVideoView.hidden = YES;
     self.callSession.remoteVideoView = nil;
     _callSession = nil;

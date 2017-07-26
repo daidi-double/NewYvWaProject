@@ -185,7 +185,7 @@
     if (aSession.type == 0) {
         voiceVC.isSender = NO;
         voiceVC.status = 1;
-        
+        voiceVC.conversation = [[EMClient sharedClient].chatManager getConversation:aSession.remoteName type:EMConversationTypeChat createIfNotExist:YES];
     }else{//视频
         voiceVC.type = 1;
         voiceVC.status = 1;

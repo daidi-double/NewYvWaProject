@@ -69,6 +69,7 @@
         }
         
     }else{
+        [self makeUIWithStatus:@"2"];
         [self.delegate delFriendRequset:sender];
         return;
         
@@ -78,6 +79,7 @@
 
 - (IBAction)refuseBtnAction:(id)sender {
     if (![self judgeIsFriends]) {
+        [self makeUIWithStatus:@"3"];
         [self.delegate delFriendRequset:sender];
         return;
     }

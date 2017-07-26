@@ -178,7 +178,7 @@
         weakSelf.pages=0;
         weakSelf.maMallDatas=[NSMutableArray array];
         [weakSelf getBottomDatas];
-        
+        [self getNewBaseInfo];
     }];
     
     //上拉刷新
@@ -868,6 +868,10 @@
         if ([data[@"errorCode"] integerValue] == 0) {
             self.newsToday_money = data[@"data"][@"money"];
             [UserSession instance].personality = data[@"data"][@"mark"];
+            [UserSession instance].fans = data[@"data"][@"fans"];
+            [UserSession instance].praised = data[@"data"][@"praised"];
+            [UserSession instance].collected = data[@"data"][@"collected"];
+            [UserSession instance].attentionCount = data[@"data"][@"attentioncount"];
         }
         [self.tableView reloadData];
     }];
