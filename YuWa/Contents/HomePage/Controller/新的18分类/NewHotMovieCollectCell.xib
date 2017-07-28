@@ -25,8 +25,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CM-RA-KSz">
                         <rect key="frame" x="0.0" y="157.5" width="123" height="52.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GId-AO-FGO">
-                                <rect key="frame" x="8" y="5" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GId-AO-FGO">
+                                <rect key="frame" x="0.0" y="5" width="123" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.5568627451" green="0.56470588239999997" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -35,7 +35,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GId-AO-FGO" firstAttribute="top" secondItem="6CM-RA-KSz" secondAttribute="top" constant="5" id="QGf-Dw-P2w"/>
-                            <constraint firstItem="GId-AO-FGO" firstAttribute="leading" secondItem="6CM-RA-KSz" secondAttribute="leading" constant="8" id="W3Z-Cg-58U"/>
+                            <constraint firstAttribute="trailing" secondItem="GId-AO-FGO" secondAttribute="trailing" id="QHq-N1-xTH"/>
+                            <constraint firstItem="GId-AO-FGO" firstAttribute="leading" secondItem="6CM-RA-KSz" secondAttribute="leading" id="W3Z-Cg-58U"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -16,11 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACq-4T-gR9">
-                        <rect key="frame" x="22" y="0.0" width="277" height="44"/>
+                        <rect key="frame" x="22" y="0.0" width="277" height="43"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ass-mV-HWO">
                                 <rect key="frame" x="66" y="1" width="211" height="42"/>
@@ -35,7 +35,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8P-n6-Nvg">
-                                <rect key="frame" x="10" y="13.5" width="50.5" height="18"/>
+                                <rect key="frame" x="10" y="13" width="51" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.63137254899999995" green="0.62745098040000002" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -55,7 +55,6 @@
                 <constraints>
                     <constraint firstItem="ACq-4T-gR9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7Ce-9z-IYe"/>
                     <constraint firstItem="ACq-4T-gR9" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="650:750" id="EMw-mC-FKE"/>
-                    <constraint firstItem="ACq-4T-gR9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OvZ-5R-lOE"/>
                     <constraint firstItem="ACq-4T-gR9" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="R8N-5g-scr"/>
                     <constraint firstAttribute="bottom" secondItem="ACq-4T-gR9" secondAttribute="bottom" id="Yyn-BI-IZS"/>
                 </constraints>

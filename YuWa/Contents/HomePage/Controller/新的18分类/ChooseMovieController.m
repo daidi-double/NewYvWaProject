@@ -190,7 +190,7 @@
         }
         tableViewBG = [[TableBGView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, hight) andTag:tag andTitle:title andIndex:1 andFilmCode:self.filmCode andCityCode:self.cityCode];
     }
-        MyLog(@"%f %f %f %f",tableViewBG.frame.origin.x,tableViewBG.frame.origin.y,tableViewBG.frame.size.width,tableViewBG.frame.size.height);
+
     tableViewBG.filmCode = self.filmCode;
     tableViewBG.cityCode = self.cityCode;
     tableViewBG.delegate = self;

@@ -43,8 +43,8 @@
     CGSize size = [self sizeWithSt:self.model.cinema_name font:[UIFont systemFontOfSize:15]];
     _cinemaName.frame = CGRectMake(12, 0, size.width, kScreen_Height* 114/1334.f);
     self.touchView = [[UIView alloc]initWithFrame:_cinemaName.frame];
+    self.touchView.width = kScreen_Width - 50;
     [self addSubview:_touchView];
-    
     
     UITapGestureRecognizer * tapGes = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(ToCinemaDetail)];
     tapGes.numberOfTapsRequired = 1;

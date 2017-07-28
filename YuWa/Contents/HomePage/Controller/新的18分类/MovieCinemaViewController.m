@@ -202,7 +202,7 @@
             self.filmName = model.name;
         }
         chooseSeat.filmName = self.filmName;
-        MyLog(@"渠道编码2 = %@",showModel.channelshowcode);//1710490158461
+//        MyLog(@"渠道编码2 = %@",showModel.channelshowcode);//1710490158461
         [self.navigationController pushViewController:chooseSeat animated:YES];
     }
 }

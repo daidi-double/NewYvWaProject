@@ -186,7 +186,10 @@
         
         UIButton * lookBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         lookBtn.frame = CGRectMake(kScreen_Width - 13 - 70, 3, 70, hotMovieBGView.size.height);
-        [lookBtn setTitle:@"全部 >" forState:UIControlStateNormal];
+        [lookBtn setTitle:@"全部" forState:UIControlStateNormal];
+        [lookBtn setImage:[UIImage imageNamed:@"right"] forState:UIControlStateNormal];
+        [lookBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 40, 0, -40)];
+
         [lookBtn setTitleColor:[UIColor colorWithHexString:@"#999999"] forState:UIControlStateNormal];
         [lookBtn addTarget:self action:@selector(lookAll:) forControlEvents:UIControlEventTouchUpInside];
         lookBtn.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -256,6 +259,7 @@
     if (indexPath.section != 0) {
         
     CinameTableViewCell * cinemaCell = [tableView dequeueReusableCellWithIdentifier:CINEMASHOWCELL];
+    _movieTableView.separatorColor = RGBCOLOR(235, 235, 236, 1);
     cinemaCell.selectionStyle = UITableViewCellSelectionStyleNone;
     CinemaModel * model = self.theaterNameAry[indexPath.row];
     cinemaCell.model = model;
@@ -696,7 +700,9 @@
         
         UIButton * allCinemaBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         allCinemaBtn.frame = CGRectMake(kScreen_Width - 13- 70, 0, 70, 35);
-        [allCinemaBtn setTitle:@"全部 >" forState:UIControlStateNormal];
+        [allCinemaBtn setTitle:@"全部" forState:UIControlStateNormal];
+        [allCinemaBtn setImage:[UIImage imageNamed:@"right"] forState:UIControlStateNormal];
+        [allCinemaBtn setImageEdgeInsets:UIEdgeInsetsMake(1, 40, -1, -40)];
         [allCinemaBtn setTitleColor:[UIColor colorWithHexString:@"#999999"] forState:UIControlStateNormal];
         [allCinemaBtn addTarget:self action:@selector(searchMovie) forControlEvents:UIControlEventTouchUpInside];
         allCinemaBtn.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -708,7 +714,7 @@
         [nameView addSubview:blueView];
         
         UIView * line3 = [[UIView alloc]initWithFrame:CGRectMake(0, 34.5, kScreen_Width, 0.5)];
-        line3.backgroundColor = RGBCOLOR(234, 235, 236, 1);
+        line3.backgroundColor = RGBCOLOR(235, 236, 237, 1);
         [nameView addSubview:line3];
         
         
