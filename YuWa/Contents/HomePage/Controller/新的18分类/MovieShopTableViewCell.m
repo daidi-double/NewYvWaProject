@@ -15,6 +15,10 @@
     // Initialization code
 }
 - (IBAction)navBtnAction:(UIButton *)sender {
+    if (self.navBlock) {
+        self.navBlock();
+    }
+    
 }
 - (void)setCinemaDetailModel:(CinemaDetailModel *)cinemaDetailModel{
     _cinemaDetailModel = cinemaDetailModel;

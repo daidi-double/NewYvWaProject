@@ -14,6 +14,9 @@
 #import "CinemaDetailModel.h"
 #import "CinemaLabelModel.h"//标签model
 
+#import "MapNavNewViewController.h"
+
+
 #define COMMENTCELL00  @"CommentTableViewCell"
 #define INFOCELL23  @"InfomationTableViewCell"
 #define CharacteristicCell  @"CinemaCharacteristicTableViewCell"
@@ -138,6 +141,15 @@
     self.cinemaTableView.separatorStyle = NO;
     if (indexPath.section == 0) {
         MovieShopTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:MOVIECELL12];
+        cell.selectionStyle = NO;
+        WEAKSELF;
+        cell.navBlock = ^(){
+            MapNavNewViewController * mapVC  = [[MapNavNewViewController alloc]init];
+            mapVC.shopName = weakSelf.cinemaDetailModel.cinema_name;
+            mapVC.coordinatex = weakSelf.cinemaDetailModel.longitude;
+            mapVC.coordinatey = weakSelf.cinemaDetailModel.latitude;
+            [weakSelf.navigationController pushViewController:mapVC animated:YES];
+        };
         cell.cinemaDetailModel = self.cinemaDetailModel;
         return cell;
         

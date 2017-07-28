@@ -23,4 +23,6 @@
 @property (nonatomic,strong)FilmShowTimeModel * headerModel;
 @property (nonatomic,copy)NSString * filmName;
 @property (nonatomic,copy)NSString * cinemaCode;//影院编码
+@property (nonatomic,copy)NSString * showPlayTime;//播放日期
+
 @end

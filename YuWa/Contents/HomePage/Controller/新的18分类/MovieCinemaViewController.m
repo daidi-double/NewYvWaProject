@@ -197,6 +197,7 @@
         chooseSeat.cinemaName = self.headerModel.cinema_name;
         chooseSeat.cinemaCode = self.cinema_code;
         FilmListModel * model = self.filmListAry[_index];
+        chooseSeat.showPlayTime = self.time;
         if (self.filmName == nil) {
             self.filmName = model.name;
         }
@@ -211,11 +212,13 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"movieTableViewCell"];
     }
+    cell.selectionStyle = NO;
     if (indexPath.section == 1){
         self.movieTableView.separatorStyle = UITableViewCellSeparatorStyleNone ;
         
         PlayTimeShowTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:PLAYSHOWCELL];
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = NO;
         FilmShowTimeModel * showModel = self.filmShowAry[indexPath.row];
         cell.model = showModel;
         _buy_ticket = [cell viewWithTag:100];
@@ -256,6 +259,7 @@
         if (self.filmName == nil) {
             self.filmName = model.name;
         }
+        chooseVC.showPlayTime = self.time;
         chooseVC.filmName = self.filmName;
         chooseVC.cinemaName = self.headerModel.cinema_name;
         chooseVC.cinemaCode = self.cinema_code;

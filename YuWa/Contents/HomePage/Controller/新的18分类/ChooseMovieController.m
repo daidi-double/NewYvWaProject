@@ -149,16 +149,18 @@
 
 - (void)creatPlaceView:(NSInteger)tag andTitle:(NSString *)title{
     UIView * bgView2;
+    UIView * bgView;
     if (!menuBG) {
        bgView2 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, 64)];
         bgView2.backgroundColor = [UIColor whiteColor];
-        bgView2.backgroundColor = CNaviColor;
+//        bgView2.backgroundColor = CNaviColor;
         [self.view addSubview:bgView2];
         menuBG = [[UIView alloc]initWithFrame:CGRectMake(0, NavigationHeight, kScreen_Width, kScreen_Height)];
         menuBG.backgroundColor = RGBCOLOR(195, 202, 203, 0.3);
         
         [self.view addSubview:menuBG];
     }
+
     bgView2.hidden = NO;
     menuBG.hidden = NO;
     UITapGestureRecognizer*cancelFirstObject=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancelMenuBG:)];
@@ -167,24 +169,28 @@
     cancelFirstObject.delegate= self;
     menuBG.contentMode = UIViewContentModeScaleToFill;
     [menuBG addGestureRecognizer:cancelFirstObject];
-    UIView * bgView;
+
     if (tableViewBG) {
         [tableViewBG removeFromSuperview];
     }
-    if (bgView) {
-        [bgView removeFromSuperview];
+    for (UIView * views in menuBG.subviews) {
+        
+        if (views.tag ==10212) {
+            [views removeFromSuperview];
+        }
     }
     if (tag == 1112) {
         tableViewBG = [[TableBGView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, 45*3 + 30) andTag:tag andTitle:title andIndex:1 andFilmCode:self.filmCode andCityCode:self.cityCode] ;
     }else{
         CGFloat hight;
-        if (44 * self.cityCodeAry.count <= kScreen_Height * 0.7f) {
-            hight = 44* self.cityCodeAry.count;
+        if (44 * self.cityCodeAry.count+30 <= kScreen_Height * 0.7f+30) {
+            hight = 44* self.cityCodeAry.count+30;
         }else{
-            hight = kScreen_Height * 0.7f;
+            hight = kScreen_Height * 0.7f+30;
         }
         tableViewBG = [[TableBGView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, hight) andTag:tag andTitle:title andIndex:1 andFilmCode:self.filmCode andCityCode:self.cityCode];
     }
+        MyLog(@"%f %f %f %f",tableViewBG.frame.origin.x,tableViewBG.frame.origin.y,tableViewBG.frame.size.width,tableViewBG.frame.size.height);
     tableViewBG.filmCode = self.filmCode;
     tableViewBG.cityCode = self.cityCode;
     tableViewBG.delegate = self;
@@ -227,12 +233,14 @@
     [menuBG addSubview:tableViewBG];
     if (tag == 1111) {
         
-        bgView = [[UIView alloc]initWithFrame:CGRectMake(0, tableViewBG.bottom+30, kScreen_Width, kScreen_Height)];
+        bgView = [[UIView alloc]initWithFrame:CGRectMake(0, tableViewBG.bottom, kScreen_Width, kScreen_Height)];
     }else{
        bgView = [[UIView alloc]initWithFrame:CGRectMake(0, tableViewBG.bottom, kScreen_Width, kScreen_Height)];
     }
     bgView.backgroundColor = [UIColor lightGrayColor];
-    bgView.alpha = 0.7f;
+    bgView.alpha = 0.78f;
+    bgView.tag = 10212;
+    
     [menuBG addSubview:bgView];
     
     

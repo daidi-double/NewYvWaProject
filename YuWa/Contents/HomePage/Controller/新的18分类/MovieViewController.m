@@ -455,7 +455,7 @@
     LookAllViewController * lookAllView = [[LookAllViewController alloc]init];
     lookAllView.coordinatex = self.coordinatex;
     lookAllView.coordinatey = self.coordinatey;
-//    lookAllView.cityCode = self.cityCode;
+    lookAllView.cityCodeAry = self.cityCodeAry;
     [self.navigationController pushViewController:lookAllView animated:YES];
 }
 //- (void)lookDetail:(UIButton*)sender{
@@ -505,8 +505,11 @@
     if (tableViewBG) {
         [tableViewBG removeFromSuperview];
     }
-    if (bgView) {
-        [bgView removeFromSuperview];
+    for (UIView * views in menuBG.subviews) {
+        
+        if (views.tag ==10210) {
+            [views removeFromSuperview];
+        }
     }
     if (tag == 1112) {
         tableViewBG = [[TableBGView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, 45*3 + 30) andTag:tag andTitle:title andIndex:0 andFilmCode:nil andCityCode:self.cityCode];
@@ -561,12 +564,13 @@
     
     if (tag == 1111) {
         
-        bgView = [[UIView alloc]initWithFrame:CGRectMake(0, tableViewBG.bottom+30, kScreen_Width, kScreen_Height)];
+        bgView = [[UIView alloc]initWithFrame:CGRectMake(0, tableViewBG.bottom, kScreen_Width, kScreen_Height)];
     }else{
         bgView = [[UIView alloc]initWithFrame:CGRectMake(0, tableViewBG.bottom, kScreen_Width, kScreen_Height)];
     }
     bgView.backgroundColor = [UIColor lightGrayColor];
-    bgView.alpha = 0.7f;
+    bgView.alpha = 0.85f;
+    bgView.tag = 10210;
     [menuBG addSubview:bgView];
     
 

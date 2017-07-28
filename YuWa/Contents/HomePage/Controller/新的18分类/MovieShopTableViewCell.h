@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *shopNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shopAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *shopIhoneNumberLabel;
-
+@property (nonatomic,strong) void (^navBlock)();
 @property (nonatomic,strong)CinemaDetailModel * cinemaDetailModel;
 
 @end

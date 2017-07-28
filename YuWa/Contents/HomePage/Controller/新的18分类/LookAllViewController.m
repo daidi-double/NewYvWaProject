@@ -107,6 +107,7 @@
         chooseMC.cityCode = @"350500";//先固定为泉州地区，后续若要修改可以修改
         chooseMC.coordinatey = self.coordinatey;
         chooseMC.coordinatex = self.coordinatex;
+        chooseMC.cityCodeAry = self.cityCodeAry;
         [self.navigationController pushViewController:chooseMC animated:YES];
     }else{
         //预售
@@ -120,6 +121,7 @@
             chooseMC.cityCode = @"350500";//先固定为泉州地区，后续若要修改可以修改
             chooseMC.coordinatey = self.coordinatey;
             chooseMC.coordinatex = self.coordinatex;
+            chooseMC.cityCodeAry = self.cityCodeAry;
             [self.navigationController pushViewController:chooseMC animated:YES];
         }else{
             //没有预售的跳到影片详情
@@ -162,6 +164,7 @@
     chooseMC.cityCode = @"350500";//先固定地区
     chooseMC.coordinatey = self.coordinatey;
     chooseMC.coordinatex = self.coordinatex;
+    chooseMC.cityCodeAry = self.cityCodeAry;
     [self.navigationController pushViewController:chooseMC animated:YES];
 }
 
@@ -235,6 +238,12 @@
         _headerViewAry = [NSMutableArray array];
     }
     return _headerViewAry;
+}
+- (NSMutableArray*)cityCodeAry{
+    if (!_cityCodeAry) {
+        _cityCodeAry = [NSMutableArray array];
+    }
+    return _cityCodeAry;
 }
 
 - (void)didReceiveMemoryWarning {

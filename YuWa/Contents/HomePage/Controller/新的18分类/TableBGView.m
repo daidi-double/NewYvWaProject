@@ -94,7 +94,7 @@
     UIView * grayView = [[UIView alloc]initWithFrame:CGRectMake(0, 30, kScreen_Width, 1)];
     grayView.backgroundColor = RGBCOLOR(222, 220, 223, 1);
     [self addSubview:grayView];//分割线
-    _placeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,30 , kScreen_Width, self.height) style:UITableViewStyleGrouped];
+    _placeTableView = [[UITableView alloc]initWithFrame:CGRectMake(0,30 , kScreen_Width, self.height-30) style:UITableViewStyleGrouped];
     _placeTableView.delegate = self;
     _placeTableView.dataSource = self;
     

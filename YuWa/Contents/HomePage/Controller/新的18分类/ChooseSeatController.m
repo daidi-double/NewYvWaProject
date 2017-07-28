@@ -124,7 +124,7 @@
         _languageLabel.text = [NSString stringWithFormat:@"%@/%@/%@",self.headerModel.language,showType,self.headerModel.hall_name];
         [cell.contentView addSubview:self.languageLabel];
         
-        NSString * timeLabelStr = [NSString stringWithFormat:@"%@%@",[JWTools currentTimeStr],self.headerModel.showTime];
+        NSString * timeLabelStr = [NSString stringWithFormat:@"%@  %@",self.showPlayTime,self.headerModel.showTime];
         CGRect timeLabelWidth = [timeLabelStr boundingRectWithSize:CGSizeMake(MAXFLOAT, 30) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: cell.textLabel.font} context:nil];
         
         self.timeLabel.frame = CGRectMake(8, _languageLabel.bottom, timeLabelWidth.size.width, 20);
