@@ -121,6 +121,7 @@
     self.navigationItem.rightBarButtonItem=rightIte;
 
     [self getNewBaseInfo];
+    [self addHeaderView];
     //    [self.tableView.mj_header beginRefreshing];
 }
 
@@ -871,7 +872,7 @@
             [UserSession instance].praised = data[@"data"][@"praised"];
             [UserSession instance].collected = data[@"data"][@"collected"];
             [UserSession instance].attentionCount = data[@"data"][@"attentioncount"];
-            [self addHeaderView];
+            
         }
         [self.tableView reloadData];
     }];
