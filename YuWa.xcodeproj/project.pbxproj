@@ -1008,8 +1008,6 @@
 		AACD1D981F146502001C29FE /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD1D7B1F146502001C29FE /* zbar-helpicons.png */; };
 		AACD1D991F146502001C29FE /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD1D7C1F146502001C29FE /* zbar-samples.png */; };
 		AACD1D9A1F146502001C29FE /* WLBarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AACD1D7E1F146502001C29FE /* WLBarcodeViewController.m */; };
-		AACD1D9B1F1465C1001C29FE /* WLBarcodeViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = AACD1D7D1F146502001C29FE /* WLBarcodeViewController.h */; };
-		AACD1D9C1F1465C1001C29FE /* WLBarcodeViewController.m in Resources */ = {isa = PBXBuildFile; fileRef = AACD1D7E1F146502001C29FE /* WLBarcodeViewController.m */; };
 		AACD1D9F1F146797001C29FE /* EaseUIResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AACD1D9E1F146797001C29FE /* EaseUIResource.bundle */; };
 		AACF6BCE1F0341CE0072478A /* YWStarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AACF6BCC1F0341CE0072478A /* YWStarCollectionViewCell.m */; };
 		AACF6BCF1F0341CE0072478A /* YWStarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AACF6BCD1F0341CE0072478A /* YWStarCollectionViewCell.xib */; };
@@ -10809,8 +10807,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AACD1D9B1F1465C1001C29FE /* WLBarcodeViewController.h in Resources */,
-				AACD1D9C1F1465C1001C29FE /* WLBarcodeViewController.m in Resources */,
 				AA16DAB21F13C1A3005858CB /* JPUSHService.h in Resources */,
 				AA3544B21E9DF23900A2EC73 /* 0baobaoBG19@2x.jpg in Resources */,
 				B38B2F191D8FC82F004D5256 /* RBNodeShowCommentDetailVC.xib in Resources */,

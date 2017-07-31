@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Fur-uX-b0n">
-                    <rect key="frame" x="16" y="84" width="343" height="450"/>
+                    <rect key="frame" x="16" y="84" width="343" height="508"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -31,10 +31,10 @@
                     </connections>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVk-a2-PdW">
-                    <rect key="frame" x="10" y="554" width="355" height="30"/>
+                    <rect key="frame" x="10" y="612" width="355" height="35"/>
                     <color key="backgroundColor" red="0.27058823529411763" green="0.51372549019607838" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="xh4-Ol-T5h"/>
+                        <constraint firstAttribute="height" constant="35" id="xh4-Ol-T5h"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <state key="normal" title="同意以上协议">
@@ -50,7 +50,7 @@
                 <constraint firstAttribute="trailing" secondItem="Fur-uX-b0n" secondAttribute="trailing" constant="16" id="8jx-zV-8K9"/>
                 <constraint firstAttribute="trailing" secondItem="gVk-a2-PdW" secondAttribute="trailing" constant="10" id="LPW-GC-1Fs"/>
                 <constraint firstItem="Fur-uX-b0n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="NHF-fS-98O"/>
-                <constraint firstAttribute="bottom" secondItem="gVk-a2-PdW" secondAttribute="bottom" constant="83" id="OiU-ij-Tji"/>
+                <constraint firstAttribute="bottom" secondItem="gVk-a2-PdW" secondAttribute="bottom" constant="20" id="OiU-ij-Tji"/>
                 <constraint firstItem="gVk-a2-PdW" firstAttribute="top" secondItem="Fur-uX-b0n" secondAttribute="bottom" constant="20" id="Rcf-Yd-kNP"/>
                 <constraint firstItem="Fur-uX-b0n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="84" id="dDj-oJ-mKU"/>
                 <constraint firstItem="gVk-a2-PdW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="vvS-Zd-rRz"/>

@@ -48,6 +48,7 @@
 @property(nonatomic,strong)NSString * address;
 @property(nonatomic,strong)NSString * cinema_code;
 @property(nonatomic,strong)NSString * cinema_name;
+@property (nonatomic,strong)NSString * cinema_img;
 @property(nonatomic,strong)NSString * film_code;
 
 //电影订单详情
