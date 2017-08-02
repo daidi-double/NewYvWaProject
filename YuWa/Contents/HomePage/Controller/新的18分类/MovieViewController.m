@@ -154,8 +154,10 @@
         [headerFirstView addSubview:moviePage];
         [moviePage addTarget:self action:@selector(pageController:) forControlEvents:UIControlEventValueChanged];
         if (self.timer == nil) {
-            
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(timer:) userInfo:nil repeats:YES];
+            if (self.hotMovieSAry.count>0) {
+                
+                self.timer = [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(timer:) userInfo:nil repeats:YES];
+            }
         }
         if (self.hotMovieSAry.count>0) {
             [self.timer setFireDate:[NSDate distantPast]];

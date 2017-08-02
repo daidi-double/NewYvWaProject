@@ -73,7 +73,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Im-ZI-vHb">
-                    <rect key="frame" x="8.5" y="595" width="75" height="27"/>
+                    <rect key="frame" x="3.5" y="595" width="75" height="27"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="27" id="2JF-xx-45p"/>
                     </constraints>
@@ -174,7 +174,7 @@
                 <constraint firstAttribute="trailing" secondItem="57L-4y-n3g" secondAttribute="trailing" constant="52" id="I5S-cD-ARh"/>
                 <constraint firstItem="Ivw-h7-PsQ" firstAttribute="leading" secondItem="iRa-UQ-HlW" secondAttribute="trailing" id="Ifh-bn-CLM"/>
                 <constraint firstItem="s5E-IL-D0j" firstAttribute="centerY" secondItem="9Im-ZI-vHb" secondAttribute="centerY" id="OXi-nf-F9f"/>
-                <constraint firstItem="iRa-UQ-HlW" firstAttribute="leading" secondItem="9Im-ZI-vHb" secondAttribute="trailing" constant="-5" id="Oci-yh-Wio"/>
+                <constraint firstItem="iRa-UQ-HlW" firstAttribute="leading" secondItem="9Im-ZI-vHb" secondAttribute="trailing" id="Oci-yh-Wio"/>
                 <constraint firstAttribute="bottom" secondItem="ivc-jr-TcX" secondAttribute="bottom" id="QSJ-Ua-Gn2"/>
                 <constraint firstItem="ivc-jr-TcX" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Qng-eh-OWJ"/>
                 <constraint firstAttribute="trailing" secondItem="57L-4y-n3g" secondAttribute="trailing" constant="104" id="RAo-n8-xWl"/>
