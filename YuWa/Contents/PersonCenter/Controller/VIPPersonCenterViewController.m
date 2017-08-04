@@ -178,7 +178,7 @@
         weakSelf.pages=0;
         weakSelf.maMallDatas=[NSMutableArray array];
         [weakSelf getBottomDatas];
-        [self getNewBaseInfo];
+        [weakSelf getNewBaseInfo];
     }];
     
     //上拉刷新
@@ -861,7 +861,7 @@
 //获取今日收益数据
 -(void)getNewBaseInfo{
     NSString * urlStr = [NSString stringWithFormat:@"%@%@",HTTP_ADDRESS,HTTP_PRESON_GETNEWBASINFO];
-    NSDictionary * prams = @{@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid)};
+    NSDictionary * prams = @{@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"user_type":@(1)};
     HttpManager * manager = [[HttpManager alloc]init];
     [manager postDatasNoHudWithUrl:urlStr withParams:prams compliation:^(id data, NSError *error) {
         MyLog(@"信息 %@",data);
@@ -872,7 +872,7 @@
             [UserSession instance].praised = data[@"data"][@"praised"];
             [UserSession instance].collected = data[@"data"][@"collected"];
             [UserSession instance].attentionCount = data[@"data"][@"attentioncount"];
-            
+            [self addHeaderView];
         }
         [self.tableView reloadData];
     }];

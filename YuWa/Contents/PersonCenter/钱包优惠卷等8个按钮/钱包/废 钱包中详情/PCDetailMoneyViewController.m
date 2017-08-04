@@ -178,28 +178,38 @@
     NSNumber * payStr = pay[section];
     NSString * payStr2 = payStr.description;
     headerView.pay = payStr2;
-    if (section == 0) {//判断下，当前第一区的月份是否与当前月份匹配，不匹配说明是上个月的，本月还没收支，所以赋值从第二个开始
-        if (nub != [NSNumber numberWithInteger:[self getYearOrMonth:@"month"]]) {
-            incomeStr = income[section +1];
+
+        NSInteger currentM = [self getYearOrMonth:@"month"];
+        NSInteger firstNub = [nub integerValue];
+        NSInteger value = currentM - firstNub;
+        if (currentM - firstNub <0) {
+            value = firstNub - currentM;
+        }else if (currentM - firstNub == 0){
+            headerView.month.text = [NSString stringWithFormat:@"本月"];
+            incomeStr = income[value];
             str = incomeStr.description;
             headerView.income = str;
-
-            payStr = pay[section+1];
+            
+            payStr = pay[value];
             payStr2 = payStr.description;
             headerView.pay = payStr2;
+            return headerView;
+
         }
-    }else if (section == 5){//给予一个值，避免翻页到当前出现闪退
-
-        headerView.income = @"0";
-       
-        headerView.pay = @"0";
-    }
-
-    if (nub == [NSNumber numberWithInteger:[self getYearOrMonth:@"month"]]) {
-            headerView.month.text = [NSString stringWithFormat:@"本月"];
+        incomeStr = income[value];
+        str = incomeStr.description;
+        headerView.income = str;
         
-        return headerView;
-    }
+        payStr = pay[value];
+        payStr2 = payStr.description;
+        headerView.pay = payStr2;
+
+
+//    if (nub == [NSNumber numberWithInteger:[self getYearOrMonth:@"month"]]) {
+//            headerView.month.text = [NSString stringWithFormat:@"本月"];
+//        
+//        return headerView;
+//    }
     headerView.month.text = [NSString stringWithFormat:@"%@月",nub];
    return headerView;
 }

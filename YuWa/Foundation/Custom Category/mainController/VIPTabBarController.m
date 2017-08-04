@@ -129,6 +129,7 @@
         
     }else  if ([viewController.tabBarItem.title isEqualToString:@"拍卖场"]){
         self.BGView.hidden= NO;
+        [self.view bringSubviewToFront:self.BGView];
         return NO;
     }
     
@@ -137,7 +138,7 @@
 
 - (UIView*)BGView{
     if (!_BGView) {
-        _BGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height)];
+        _B GView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height)];
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, self.BGView.height)];
         toolbar.barStyle = UIBarStyleBlackTranslucent;
         toolbar.alpha = 0.95;
@@ -194,11 +195,7 @@
 - (void)toFoodPage{
      self .selectedIndex =2;
     [self cancelBGView];
-//    YWSalesroomViewController*vc=[[YWSalesroomViewController alloc]init];
-//    [self.navigationController pushViewController:vc animated:YES];
-//    VIPNavigationController*navi=[[VIPNavigationController alloc]initWithRootViewController:vc];
-//    [self presentViewController:navi animated:YES completion:nil];
-//    [self setHidesBottomBarWhenPushed:NO];
+
 }
 //娱乐
 - (void)toEntertaubmentPage{
