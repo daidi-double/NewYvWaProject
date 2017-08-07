@@ -138,7 +138,7 @@
 
 - (UIView*)BGView{
     if (!_BGView) {
-        _B GView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height)];
+        _BGView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height)];
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, self.BGView.height)];
         toolbar.barStyle = UIBarStyleBlackTranslucent;
         toolbar.alpha = 0.95;
