@@ -134,7 +134,10 @@
     self.toolsBottomView = [[[NSBundle mainBundle]loadNibNamed:@"RBNodeDetailBottomView" owner:nil options:nil] firstObject];
     WEAKSELF;
     self.toolsBottomView.nodeID = self.model.homeID;
-    
+    if (!self.model) {
+        self.toolsBottomView.nodeID = self.note_id;
+        self.toolsBottomView.auser_type = @"1";
+    }
     self.toolsBottomView.likeBlock = ^(BOOL isLike){
         if ([weakSelf isLogin]) {
             weakSelf.dataModel.inlikes = [NSString stringWithFormat:@"%zi",isLike];
@@ -144,7 +147,12 @@
     };
     
     self.toolsBottomView.commentBlock = ^(){
-        [weakSelf commentActionWithNodeDic:@{@"nodeID":weakSelf.model.homeID}];
+        if (weakSelf.model) {
+            
+            [weakSelf commentActionWithNodeDic:@{@"nodeID":weakSelf.model.homeID}];
+        }else{
+            [weakSelf commentActionWithNodeDic:@{@"nodeID":weakSelf.note_id}];
+        }
     };
     self.toolsBottomView.collectionBlock = ^(BOOL isCollection){
         if ([weakSelf isLogin]){
@@ -559,12 +567,21 @@
     }
     RBNodeAddToAldumModel * aldumModel = self.addToAldumView.dataArr[[aldumIdx integerValue]];
     NSString * album_id = aldumModel.aldumID;
-    
-    NSDictionary * pragram = @{@"note_id":self.model.homeID,@"album_id":album_id,@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"auser_type":self.model.user.user_type};//album_id没有将创建默认
+    NSString * note_id;
+    NSString* auser_type;
+    if (!self.model) {
+        note_id = self.note_id;
+        auser_type = @"1";
+    }else{
+        note_id = self.model.homeID;
+        auser_type = self.model.user.user_type;
+    }
+    NSDictionary * pragram = @{@"note_id":note_id,@"album_id":album_id,@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"auser_type":auser_type};//album_id没有将创建默认
     
     [[HttpObject manager]postNoHudWithType:YuWaType_RB_COLLECTION_TO_ALDUM withPragram:pragram success:^(id responsObj) {
         //        MyLog(@"Regieter Code pragram is %@",pragram);
         //        MyLog(@"Regieter Code is %@",responsObj);
+        [self showHUDWithStr:@"收藏成功" withSuccess:YES];
         [self.addToAldumView setUserInteractionEnabled:YES];
         self.toolsBottomView.isCollection = !self.toolsBottomView.isCollection;
         self.dataModel.infavs = @"1";
@@ -585,11 +602,21 @@
 }
 
 - (void)requestCancelToAldum{
-    NSDictionary * pragram = @{@"note_id":self.model.homeID,@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"auser_type":self.model.user.user_type};
+    NSString * note_id;
+    NSString* auser_type;
+    if (!self.model) {
+        note_id = self.note_id;
+        auser_type = @"1";
+    }else{
+        note_id = self.model.homeID;
+        auser_type = self.model.user.user_type;
+    }
+    NSDictionary * pragram = @{@"note_id":note_id,@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"auser_type":auser_type};
     
     [[HttpObject manager]postNoHudWithType:YuWaType_RB_COLLECTION_CANCEL withPragram:pragram success:^(id responsObj) {
         //        MyLog(@"Regieter Code pragram is %@",pragram);
         //        MyLog(@"Regieter Code is %@",responsObj);
+         [self showHUDWithStr:@"取消收藏成功" withSuccess:YES];
         self.dataModel.infavs = @"0";
         self.dataModel.fav_count = [NSString stringWithFormat:@"%zi",([self.dataModel.fav_count integerValue] - 1)];
         self.toolsBottomView.isCollection = !self.toolsBottomView.isCollection;

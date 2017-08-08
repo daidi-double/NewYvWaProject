@@ -20,7 +20,11 @@
 //    self.collectionBtn.backgroundColor = [UIColor colorWithHexString:isCollection == YES?@"#ffffff":@"#3CCAED"];
     self.collectionBtn.backgroundColor = CNaviColor;
 }
-
+- (void)setAuser_type:(NSString *)auser_type{
+    if (!_auser_type) {
+        _auser_type = auser_type;
+    }
+}
 - (void)setIsLike:(BOOL)isLike{
     if (_isLike == isLike)return;
     _isLike = isLike;

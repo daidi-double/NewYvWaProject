@@ -63,6 +63,8 @@
     UILabel*titleLabel=[cell viewWithTag:1];
     UILabel*detailLabel=[cell viewWithTag:2];
     cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    cell.selectionStyle = NO;
     if (indexPath.row==0) {
         titleLabel.text=@"打款时间";
         NSString*payTime=[JWTools getTimeTwo:self.model.pay_to_shop_time];

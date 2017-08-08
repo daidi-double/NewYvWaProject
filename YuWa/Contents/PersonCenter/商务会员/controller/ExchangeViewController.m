@@ -42,7 +42,7 @@
     self.exchangeGradeTextField.text = self.canUseGrade;
     NSArray * scoreAry = [self.pay_scale componentsSeparatedByString:@":"];
     CGFloat scoreNum = [scoreAry[1] floatValue];
-    NSString * money = [NSString stringWithFormat:@"%f",[_canUseGrade floatValue] * scoreNum];
+    NSString * money = [NSString stringWithFormat:@"%.4f",[_canUseGrade floatValue] * scoreNum];
     
     self.scoreLabel.text = [NSString stringWithFormat:@"当前兑换比例为%@,可兑换人民币金额为:%@元",self.pay_scale,money];
 }
@@ -63,7 +63,7 @@
 
     NSArray * scoreAry = [self.pay_scale componentsSeparatedByString:@":"];
     CGFloat scoreNum = [scoreAry[1] floatValue];
-    NSString * money = [NSString stringWithFormat:@"%f",[score floatValue] * scoreNum];
+    NSString * money = [NSString stringWithFormat:@"%.4f",[score floatValue] * scoreNum];
     
     self.scoreLabel.text = [NSString stringWithFormat:@"当前兑换比例为%@,可兑换人民币金额为:%@元",self.pay_scale,money];
 
