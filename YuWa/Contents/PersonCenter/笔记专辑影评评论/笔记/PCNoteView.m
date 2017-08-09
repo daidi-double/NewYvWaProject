@@ -151,7 +151,7 @@
     
     
         RBHomeCollectionViewCell * homeCell = [collectionView dequeueReusableCellWithReuseIdentifier:HOMECELL forIndexPath:indexPath];
-    homeCell.model = self.allDatas[self.isOther?indexPath.row:(indexPath.row - 1)];
+    homeCell.model = self.allDatas[self.isOther?indexPath.row:(indexPath.row - 1)];//此处的数组中无返回点赞状态的字段
         return homeCell;
     
     
