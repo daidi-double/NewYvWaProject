@@ -38,7 +38,7 @@
 #import "YWStartAnimation.h"
 
 #import "YWMessageNotificationViewController.h"
-
+#import "YWMessageChatViewController.h"
 #import "UMMobClick/MobClick.h"//crash 崩溃监控日志
 
 @interface AppDelegate ()<EMContactManagerDelegate,EMChatManagerDelegate,EMGroupManagerDelegate,EMClientDelegate,JPUSHRegisterDelegate,WXApiDelegate,EMCallManagerDelegate>
@@ -62,10 +62,10 @@
 #pragma mark  ----国际化语言
     [InternationalLanguage initUserLanguage];//初始化应用语言
 #pragma mark  -- 根视图
-
+    
     VIPTabBarController *tabBar=[[VIPTabBarController alloc]init];
     self.window= [AppDelegate windowInitWithRootVC:tabBar];
-
+    
 #pragma mark -- 启动页动画
     [self.window makeKeyAndVisible];
     [YWStartAnimation startAnimationWithView:self.window];
@@ -153,17 +153,60 @@
     apnsCertName = @"YvWaNotificationProducation";
 #endif
     NSString * appkey= @"ceoshanghaidurui#duruikejiyuwa";
-
+    
     
     EMOptions *options = [EMOptions optionsWithAppkey:appkey];
     options.apnsCertName = apnsCertName;
     [[EMClient sharedClient] initializeSDKWithOptions:options];
     [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];//好友代理
     [[EMClient sharedClient] addDelegate:self delegateQueue:nil];//登录代理
+    [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
     //注册实时通话回调
     [[EMClient sharedClient].callManager addDelegate:self delegateQueue:nil];
     [[EaseSDKHelper shareHelper] hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:appkey apnsCertName:apnsCertName otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
+    
+    //    UIApplication *applications = [UIApplication sharedApplication];
+    
+    //iOS10 注册APNs
+    if (NSClassFromString(@"UNUserNotificationCenter")) {
+        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert completionHandler:^(BOOL granted, NSError *error) {
+            if (granted) {
+#if !TARGET_IPHONE_SIMULATOR
+                [application registerForRemoteNotifications];
+#endif
+            }
+        }];
+        return;
+    }
+    
+    if([application respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:notificationTypes categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+    
+#if !TARGET_IPHONE_SIMULATOR
+    if ([application respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [application registerForRemoteNotifications];
+    }else{
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+            
+            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes: (UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeSound| UIRemoteNotificationTypeAlert) categories:nil];
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+        } else {
+            
+            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |UIUserNotificationTypeSound |UIUserNotificationTypeAlert)];
+        }
+        
+        
+    }
+#endif
+    
 }
+
+
 /*!
  *  \~chinese
  *  用户A拨打用户B，用户B会收到这个回调
@@ -194,10 +237,33 @@
         
     }
     [topRootViewController presentViewController:voiceVC animated:YES completion:nil];
-
-
+    
+    
+}
+- (void)didReceiveMessages:(NSArray *)aMessages{
+    YWMessageChatViewController * chatVC = [[YWMessageChatViewController alloc]init];
+     for(EMMessage *message in aMessages){
+          BOOL needShowNotification = (message.chatType = EMChatTypeChat) ? [self _needShowNotification:message.conversationId] : YES;
+         if (needShowNotification) {
+             
+             [chatVC showNotificationWithMessage:message];
+         }
+     }
 }
 
+#pragma mark - private
+- (BOOL)_needShowNotification:(NSString *)fromChatter
+{
+    BOOL ret = YES;
+    NSArray *igGroupIds = [[EMClient sharedClient].groupManager getGroupsWithoutPushNotification:nil];
+    for (NSString *str in igGroupIds) {
+        if ([str isEqualToString:fromChatter]) {
+            ret = NO;
+            break;
+        }
+    }
+    return ret;
+}
 - (void)friendRequestDidReceiveFromUser:(NSString *)aUsername message:(NSString *)aMessage{
     NSMutableArray * friendsRequest = [NSMutableArray arrayWithArray:[KUSERDEFAULT valueForKey:FRIENDSREQUEST]];
     NSDictionary * requestDic = @{@"hxID":aUsername,@"message":aMessage,@"status":@"0"};//0未读1未处理2同意3拒绝
@@ -224,7 +290,7 @@
 }
 
 - (void)registerJPushWithOptions:(NSDictionary *)launchOptions{
-//    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    //    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
         JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
@@ -256,9 +322,11 @@
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {/// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
+    [[EMClient sharedClient] bindDeviceToken:deviceToken];
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {//Optional
     MyLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+    MyLog(@"离线推送注册失败error -- %@",error);
 }
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_7_1
@@ -307,7 +375,7 @@ fetchCompletionHandler:
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
     
 #else
-//    [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
+    //    [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
 #endif
 }
 
@@ -353,9 +421,9 @@ fetchCompletionHandler:
         [JPUSHService handleRemoteNotification:userInfo];
         NSLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
         [self saveJupshNotificationDicWithDic:userInfo];
-//        YWMessageNotificationViewController*vc=[[YWMessageNotificationViewController alloc]init];
-//        UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:vc];//这里加导航栏是因为我跳转的页面带导航栏，如果跳转的页面不带导航，那这句话请省去。
-//        [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
+        //        YWMessageNotificationViewController*vc=[[YWMessageNotificationViewController alloc]init];
+        //        UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:vc];//这里加导航栏是因为我跳转的页面带导航栏，如果跳转的页面不带导航，那这句话请省去。
+        //        [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
         NSString * documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)firstObject];
         NSString * filePath1 = [documentPath stringByAppendingPathComponent:@"push.plist"];
         NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithContentsOfFile:filePath1];
@@ -393,7 +461,7 @@ fetchCompletionHandler:
     NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
     NSString *str = [NSPropertyListSerialization propertyListFromData:tempData mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:NULL];
     
-
+    
     return str;
 }
 
@@ -404,7 +472,7 @@ fetchCompletionHandler:
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
     UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
     UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
-//    center.delegate = self;
+    //    center.delegate = self;
     content.title = @"雨娃宝";// 标题
     content.subtitle = @"";// 子标题
     content.body = con;// 内容
@@ -494,10 +562,10 @@ fetchCompletionHandler:
     }
     if ([url.host isEqualToString:@"uppayresult"]) {
         [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
- 
+            
             if (self.unionpayBlock) {
                 self.unionpayBlock(data);
-
+                
             }
             
             //结果code为成功时，去商户后台查询一下确保交易是成功的再展示成功
@@ -520,8 +588,8 @@ fetchCompletionHandler:
         return YES;
         
     }
-
-       return  [WXApi handleOpenURL:url delegate:[PCPayViewController sharedManager]];
+    
+    return  [WXApi handleOpenURL:url delegate:[PCPayViewController sharedManager]];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -553,7 +621,7 @@ fetchCompletionHandler:
     }
     if ([url.host isEqualToString:@"uppayresult"]) {
         [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
-
+            
             if([code isEqualToString:@"success"]) {
                 
                 
@@ -569,13 +637,13 @@ fetchCompletionHandler:
         return YES;
         
     }
-
+    
     return  [WXApi handleOpenURL:url delegate:[PCPayViewController sharedManager]];
 }
 
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary*)options{
-  
+    
     if ([url.host isEqualToString:@"safepay"]) {
         // 支付跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
@@ -610,10 +678,10 @@ fetchCompletionHandler:
     }
     if ([url.host isEqualToString:@"uppayresult"]) {
         [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
-
+            
             if (self.unionpayBlock) {
                 self.unionpayBlock(data);
- 
+                
             }
             
             //结果code为成功时，去商户后台查询一下确保交易是成功的再展示成功
@@ -621,24 +689,24 @@ fetchCompletionHandler:
         
         
         [[UPPaymentControl defaultControl] handlePaymentResult:url completeBlock:^(NSString *code, NSDictionary *data) {
-
+            
             if([code isEqualToString:@"success"]) {
-
+                
                 //结果code为成功时，去商户后台查询一下确保交易是成功的再展示成功
             }
-  
-        else if([code isEqualToString:@"fail"]) {
-            //交易失败
-        }
-        else if([code isEqualToString:@"cancel"]) {
-            //交易取消
-        }
-    }];
-    return YES;
-
+            
+            else if([code isEqualToString:@"fail"]) {
+                //交易失败
+            }
+            else if([code isEqualToString:@"cancel"]) {
+                //交易取消
+            }
+        }];
+        return YES;
+        
     }
     
-     return  [WXApi handleOpenURL:url delegate:[PCPayViewController sharedManager]];
+    return  [WXApi handleOpenURL:url delegate:[PCPayViewController sharedManager]];
     
 }
 - (void)umengTrack {

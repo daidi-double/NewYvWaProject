@@ -9,6 +9,10 @@
 #import "VoiceChatViewController.h"
 #import "HttpObject.h"
 #import "YWMessageAddressBookModel.h"
+#import "EMCDDeviceManager.h"
+
+
+
 @interface VoiceChatViewController ()<EMCallManagerDelegate,AVCaptureVideoDataOutputSampleBufferDelegate>
 {
     AVCaptureSession *_session;
@@ -251,26 +255,32 @@
 - (void)_beginRing
 {
     [self.ringPlayer stop];
-    
+    NSURL *bundlePath = [[NSBundle mainBundle] URLForResource:@"EaseUIResource" withExtension:@"bundle"];
+    NSURL *audioPath = [[NSBundle bundleWithURL:bundlePath] URLForResource:@"in" withExtension:@"caf"];
     //    NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"callRing" ofType:@"mp3"];
-    SystemSoundID sound = kSystemSoundID_Vibrate;
-    
-    NSString *musicPath = [NSString stringWithFormat:@"/System/Library/Audio/UISounds/%@.%@",@"SIMToolkitGeneralBeep",@"caf"];
-    if (musicPath) {
-        OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:musicPath],&sound);
-        if (error != kAudioServicesNoError) {
-            sound = 0;
-        }
-    }
-    
-    NSURL *url = [[NSURL alloc] initFileURLWithPath:musicPath];
-    self.ringPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+//    SystemSoundID sound = kSystemSoundID_Vibrate;
+//
+//    NSString *musicPath = [NSString stringWithFormat:@"/System/Library/Audio/UISounds/%@.%@",@"SIMToolkitGeneralBeep",@"caf"];
+//    if (musicPath) {
+//        OSStatus error = AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:musicPath],&sound);
+//        if (error != kAudioServicesNoError) {
+//            sound = 0;
+//        }
+//    }
+
+//    NSURL *url = [[NSURL alloc] initFileURLWithPath:musicPath];
+    self.ringPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioPath error:nil];
     [self.ringPlayer setVolume:1];
     self.ringPlayer.numberOfLoops = -1; //设置音乐播放次数  -1为一直循环
     if([self.ringPlayer prepareToPlay])
     {
         [self.ringPlayer play]; //播放
     }
+    
+
+    
+    // 收到消息时，震动
+    [[EMCDDeviceManager sharedInstance] playVibration];
 }
 - (void)_stopRing
 {
