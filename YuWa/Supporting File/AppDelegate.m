@@ -80,6 +80,7 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     [[EMClient sharedClient] applicationDidEnterBackground:application];
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -164,9 +165,7 @@
     //注册实时通话回调
     [[EMClient sharedClient].callManager addDelegate:self delegateQueue:nil];
     [[EaseSDKHelper shareHelper] hyphenateApplication:application didFinishLaunchingWithOptions:launchOptions appkey:appkey apnsCertName:apnsCertName otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
-    
-    //    UIApplication *applications = [UIApplication sharedApplication];
-    
+
     //iOS10 注册APNs
     if (NSClassFromString(@"UNUserNotificationCenter")) {
         [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert completionHandler:^(BOOL granted, NSError *error) {
@@ -242,6 +241,9 @@
 }
 - (void)didReceiveMessages:(NSArray *)aMessages{
     YWMessageChatViewController * chatVC = [[YWMessageChatViewController alloc]init];
+    UIApplication * application = [UIApplication sharedApplication];
+    
+    [[EMClient sharedClient] applicationDidEnterBackground:application];
      for(EMMessage *message in aMessages){
           BOOL needShowNotification = (message.chatType = EMChatTypeChat) ? [self _needShowNotification:message.conversationId] : YES;
          if (needShowNotification) {

@@ -103,8 +103,12 @@ static NSString *kGroupName = @"GroupName";
 //- (NSString*)getNickNameWithUsername:(NSString*)username{
 //    
 //}
+
 - (void)showNotificationWithMessage:(EMMessage *)message
 {
+    
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+
     EMPushOptions *options = [[EMClient sharedClient] pushOptions];
     NSString *alertBody = nil;
     if (options.displayStyle == EMPushDisplayStyleMessageSummary) {
@@ -139,53 +143,54 @@ static NSString *kGroupName = @"GroupName";
                 break;
         }
         
-        do {
-//            NSString *title = [self getNickNameWithUsername:message.from];
-            MyLog(@"消息来自谁 = %@",message.from);
-            NSString * title = @"";
-            if (message.chatType == EMChatTypeGroupChat) {
-                NSDictionary *ext = message.ext;
-                if (ext && ext[kGroupMessageAtList]) {
-                    id target = ext[kGroupMessageAtList];
-                    if ([target isKindOfClass:[NSString class]]) {
-                        if ([kGroupMessageAtAll compare:target options:NSCaseInsensitiveSearch] == NSOrderedSame) {
-                            alertBody = [NSString stringWithFormat:@"%@%@", title, NSLocalizedString(@"group.atPushTitle", @" @ me in the group")];
-                            break;
-                        }
-                    }
-                    else if ([target isKindOfClass:[NSArray class]]) {
-                        NSArray *atTargets = (NSArray*)target;
-                        if ([atTargets containsObject:[EMClient sharedClient].currentUsername]) {
-                            alertBody = [NSString stringWithFormat:@"%@%@", title, NSLocalizedString(@"group.atPushTitle", @" @ me in the group")];
-                            break;
-                        }
-                    }
-                }
-                NSArray *groupArray = [[EMClient sharedClient].groupManager getJoinedGroups];
-                for (EMGroup *group in groupArray) {
-                    if ([group.groupId isEqualToString:message.conversationId]) {
-                        title = [NSString stringWithFormat:@"%@(%@)", message.from, group.subject];
-                        break;
-                    }
-                }
-            }
-            else if (message.chatType == EMChatTypeChatRoom)
-            {
-                NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-                NSString *key = [NSString stringWithFormat:@"OnceJoinedChatrooms_%@", [[EMClient sharedClient] currentUsername]];
-                NSMutableDictionary *chatrooms = [NSMutableDictionary dictionaryWithDictionary:[ud objectForKey:key]];
-                NSString *chatroomName = [chatrooms objectForKey:message.conversationId];
-                if (chatroomName)
-                {
-                    title = [NSString stringWithFormat:@"%@(%@)", message.from, chatroomName];
-                }
-            }
-            
-            alertBody = [NSString stringWithFormat:@"%@:%@", title, messageStr];
-        } while (0);
+//        do {
+////            NSString *title = [self getNickNameWithUsername:message.from];
+//            MyLog(@"消息来自谁 = %@",message.from);
+//            NSString * title = @"";
+//            if (message.chatType == EMChatTypeGroupChat) {
+//                NSDictionary *ext = message.ext;
+//                if (ext && ext[kGroupMessageAtList]) {
+//                    id target = ext[kGroupMessageAtList];
+//                    if ([target isKindOfClass:[NSString class]]) {
+//                        if ([kGroupMessageAtAll compare:target options:NSCaseInsensitiveSearch] == NSOrderedSame) {
+//                            alertBody = [NSString stringWithFormat:@"%@%@", title, NSLocalizedString(@"group.atPushTitle", @" @ me in the group")];
+//                            break;
+//                        }
+//                    }
+//                    else if ([target isKindOfClass:[NSArray class]]) {
+//                        NSArray *atTargets = (NSArray*)target;
+//                        if ([atTargets containsObject:[EMClient sharedClient].currentUsername]) {
+//                            alertBody = [NSString stringWithFormat:@"%@%@", title, NSLocalizedString(@"group.atPushTitle", @" @ me in the group")];
+//                            break;
+//                        }
+//                    }
+//                }
+//                NSArray *groupArray = [[EMClient sharedClient].groupManager getJoinedGroups];
+//                for (EMGroup *group in groupArray) {
+//                    if ([group.groupId isEqualToString:message.conversationId]) {
+//                        title = [NSString stringWithFormat:@"%@(%@)", message.from, group.subject];
+//                        break;
+//                    }
+//                }
+//            }
+//            else if (message.chatType == EMChatTypeChatRoom)
+//            {
+//                NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+//                NSString *key = [NSString stringWithFormat:@"OnceJoinedChatrooms_%@", [[EMClient sharedClient] currentUsername]];
+//                NSMutableDictionary *chatrooms = [NSMutableDictionary dictionaryWithDictionary:[ud objectForKey:key]];
+//                NSString *chatroomName = [chatrooms objectForKey:message.conversationId];
+//                if (chatroomName)
+//                {
+//                    title = [NSString stringWithFormat:@"%@(%@)", message.from, chatroomName];
+//                }
+//            }
+//            
+//            alertBody = [NSString stringWithFormat:@"%@:%@", title, messageStr];
+//        } while (0);
     }
     else{
         alertBody = NSLocalizedString(@"有一条未读消息", @"you have a new message");
+
     }
     
     NSTimeInterval timeInterval = [[NSDate date] timeIntervalSinceDate:self.lastPlaySoundDate];
@@ -200,6 +205,7 @@ static NSString *kGroupName = @"GroupName";
     [userInfo setObject:message.conversationId forKey:kConversationChatter];
     
     //发送本地推送
+
     if (NSClassFromString(@"UNUserNotificationCenter")) {
         UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:0.01 repeats:NO];
         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
@@ -224,6 +230,8 @@ static NSString *kGroupName = @"GroupName";
         
         //发送通知
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
+        
     }
 }
 
