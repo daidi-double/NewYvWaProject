@@ -316,7 +316,7 @@
     [[HttpObject manager]postDataWithType:YuWaType_RB_NODE_PUBLISH withPragram:pragram success:^(id responsObj) {
         MyLog(@"Regieter Code pragram is %@",pragram);
         MyLog(@"Regieter Code is %@",responsObj);
-        self.HUD.hidden = YES;
+        [self.HUD hide:YES];
         [self showHUDWithStr:responsObj[@"msg"] withSuccess:YES];
         [self.publishBtn setUserInteractionEnabled:YES];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -327,7 +327,7 @@
     } failur:^(id responsObj, NSError *error) {
         MyLog(@"Regieter Code pragram is %@",pragram);
         MyLog(@"Regieter Code error is %@",responsObj);
-        self.HUD.hidden = YES;
+        [self.HUD hide:YES];
         [self.publishBtn setUserInteractionEnabled:YES];
     }];
 }
@@ -345,7 +345,7 @@
     
     self.picUpCount = 0;
     self.picUrlArr = [NSMutableArray arrayWithCapacity:0];
-     self.HUD.hidden = NO;
+    [self.HUD show:YES];
     for (int i = 0; i < self.imageChangeSaveArr.count; i++) {
         [self.picUrlArr addObject:@""];
         [self requestPublishNodePhotoWithIdx:i];

@@ -144,7 +144,7 @@
         make.size.mas_equalTo(CGSizeMake(25, 25));
         
     }];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:[UserSession instance].logo] placeholderImage:[UIImage imageNamed:@"placehoder_loading"] completed:nil];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:[UserSession instance].logo] placeholderImage:[UIImage imageNamed:@"placeholder"] completed:nil];
     
     nameLabel=[[UILabel alloc]initWithFrame:CGRectZero];
     nameLabel.text= [UserSession instance].nickName;

@@ -529,7 +529,7 @@
     }
     [[HttpObject manager]postNoHudWithType:YuWaType_RB_RELATED withPragram:pragram success:^(id responsObj) {
         //        MyLog(@"Regieter Code pragram is %@",pragram);
-        //        MyLog(@"Regieter Code is %@",responsObj);
+                MyLog(@"Regieter Code is 笔记 %@",responsObj);
         if (page == 0) {
             [self.dataArr removeAllObjects];
         }
@@ -541,9 +541,9 @@
                 NSMutableDictionary * dataDic = [RBHomeModel dataDicSetWithDic:dic];
                 [self.dataArr addObject:[RBHomeModel yy_modelWithDictionary:dataDic]];
             }
-            [self.tableView reloadData];
             self.bottomToolsHeight = self.bottomToolsHeight == 0.f? self.scrollToolsHeight/2 : self.bottomToolsHeight;
         }
+        [self.tableView reloadData];
     } failur:^(id responsObj, NSError *error) {
         MyLog(@"Regieter Code pragram is %@",pragram);
         MyLog(@"Regieter Code error is %@",responsObj);

@@ -21,8 +21,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="k5I-sD-HVo">
-                    <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="k5I-sD-HVo">
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.97254901960784312" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wkd-WK-IXU">
                         <size key="itemSize" width="50" height="50"/>
@@ -35,8 +35,8 @@
                         <outlet property="delegate" destination="-1" id="yIh-q3-MR2"/>
                     </connections>
                 </collectionView>
-                <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="O7F-2Z-Qzg">
-                    <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="O7F-2Z-Qzg">
+                    <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.97254901960784312" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aiL-bO-ukP">
                         <size key="itemSize" width="50" height="50"/>

@@ -7,10 +7,10 @@
 //
 
 #import "AFHTTPRequestOperationManager.h"
-
+#import "YWload.h"
 @interface JWHttpManger : AFHTTPRequestOperationManager<MBProgressHUDDelegate>
-@property(nonatomic,strong)MBProgressHUD*HUD;
-
+//@property(nonatomic,strong)MBProgressHUD*HUD;
+@property(nonatomic,strong)YWload * HUD;
 //没有HUD 的get 请求
 -(void)getDatasNoHudWithUrl:(NSString*)urlStr withParams:(NSDictionary*)params compliation:(resultBlock)newBlock;
 //有HUD 的get 请求

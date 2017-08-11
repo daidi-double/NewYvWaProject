@@ -112,19 +112,25 @@
 }
 
 #pragma mark - HUD
--(MBProgressHUD *)HUD{
+//-(MBProgressHUD *)HUD{
+//    if (!_HUD) {
+//        _HUD=[MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].delegate.window animated:YES];
+//        _HUD.delegate=self;
+//        _HUD.userInteractionEnabled=NO;
+//        //        _HUD.mode=MBProgressHUDModeCustomView;
+//        _HUD.dimBackground=NO;
+//        _HUD.removeFromSuperViewOnHide = YES;
+//    }
+//    return _HUD;
+//}
+
+- (YWload*)HUD{
     if (!_HUD) {
-        _HUD=[MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].delegate.window animated:YES];
-        _HUD.delegate=self;
-        _HUD.userInteractionEnabled=NO;
-        //        _HUD.mode=MBProgressHUDModeCustomView;
-        _HUD.dimBackground=NO;
-        _HUD.removeFromSuperViewOnHide = YES;
+        _HUD=[YWload showOnView:[UIApplication sharedApplication].delegate.window];
+        
     }
     return _HUD;
 }
-
-
 
 
 

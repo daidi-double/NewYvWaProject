@@ -140,6 +140,11 @@
     //这下面的文字
     UILabel*zheLabel=[cell viewWithTag:7];
     NSString*zheNum=[model.discount substringFromIndex:2];
+    if ([zheNum integerValue] % 10 == 0) {
+        zheNum = [NSString stringWithFormat:@"%ld",[zheNum integerValue]/10];
+    }else{
+        zheNum = [NSString stringWithFormat:@"%.1f",[zheNum floatValue]/10];
+    }
     zheLabel.text=[NSString stringWithFormat:@"%@折，闪付立享",zheNum];
     
     CGFloat num=[model.discount floatValue];

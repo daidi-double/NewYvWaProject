@@ -91,7 +91,7 @@
         [skillBtn setTitleColor:[UIColor colorWithHexString:@"#afe5ff"] forState:UIControlStateNormal];
     }
     
-    [self.LVUpBtn setUserInteractionEnabled:(self.user.baobaoEXP >= self.user.baobaoNeedEXP?YES:NO)];
+//    [self.LVUpBtn setUserInteractionEnabled:(self.user.baobaoEXP >= self.user.baobaoNeedEXP?YES:NO)];
     
     //Gif动画
 //    self.baobaoImageView.animationImages = self.baobaoGifArr;
@@ -125,6 +125,7 @@
 
 - (IBAction)lvUpAction:(id)sender {
     if (self.user.baobaoLV>4)return;
+
     [self.LVUpBtn setUserInteractionEnabled:NO];
     [self requestLvUP];
 }
@@ -160,6 +161,7 @@
 - (void)requestLvUP{
     if (self.user.baobaoEXP < self.user.baobaoNeedEXP){
         [self.LVUpBtn setUserInteractionEnabled:YES];
+        [JRToast showWithText:@"宝宝升级所需经验不够哦，继续加油！" duration:2];
         return;
     }
     if (self.user.baobaoLV>=5) {
