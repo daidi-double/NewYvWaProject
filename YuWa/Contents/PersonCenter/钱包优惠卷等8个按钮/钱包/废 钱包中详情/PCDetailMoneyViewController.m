@@ -420,6 +420,14 @@
         if ([errorCode isEqualToString:@"0"]) {
             NSMutableArray *arr ;
             arr = data[@"data"];
+            if (arr.count <=0 && self.pages != 0) {
+                [JRToast showWithText:@"没有更多了"];
+                
+                [self.tableView.mj_header endRefreshing];
+                [self.tableView.mj_footer endRefreshing];
+                
+                return ;
+            }
             if (arr.count) {
 //                MyLog(@"count = %lu",(unsigned long)arr.count);
                 [self.maAllDatasModel removeAllObjects];
@@ -476,11 +484,6 @@
                             }
                         }
                     }
-                    //                MyLog(@"!!!!!!!!!!%@，，%@",dict[@"dataTime"],time );
-                    //                MoneyPackModel*model=[MoneyPackModel yy_modelWithDictionary:dict];
-                    //                NSMutableArray * modelARR =
-                    //                [self.maAllDatasModel addObject:model];
-                    
                 }
                 NSDictionary * dic = data[@"total_money"];
                 //收入

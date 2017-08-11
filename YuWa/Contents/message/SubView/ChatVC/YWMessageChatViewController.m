@@ -100,9 +100,6 @@ static NSString *kGroupName = @"GroupName";
         }
     }
 }
-//- (NSString*)getNickNameWithUsername:(NSString*)username{
-//    
-//}
 
 - (void)showNotificationWithMessage:(EMMessage *)message
 {
