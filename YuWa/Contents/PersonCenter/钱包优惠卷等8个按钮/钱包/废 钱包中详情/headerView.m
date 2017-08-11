@@ -19,10 +19,11 @@
 @implementation headerView
 -(void)setPay:(NSString *)pay{
     _pay = pay;
-    self.zhichu.text =  pay;
+    self.zhichu.text =  [NSString stringWithFormat:@"%.4f",[pay floatValue]];
 }
 -(void)setIncome:(NSString *)income{
     _income = income;
-    self.shouru.text = income;
+
+    self.shouru.text = [NSString stringWithFormat:@"%.4f",[income floatValue]];
 }
 @end
