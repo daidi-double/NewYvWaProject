@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.title=@"开通商务会员";
+    self.title=@"开通商务会员";
     [self.agreeBtn setImage:[UIImage imageNamed:@"zhifu_nosel"] forState:UIControlStateNormal];
     [self.agreeBtn setImage:[UIImage imageNamed:@"zhifu_sel"] forState:UIControlStateSelected];
     [self.agreeBtn setTitle:@"同意协议" forState:UIControlStateNormal];
@@ -63,53 +63,83 @@
 }
 
 - (IBAction)touchCommit:(id)sender {
-  
-  NSString*str= [self judgeCanSave];
-    if (self.canSave==NO) {
-        [JRToast showWithText:str];
-        return;
-    }
     
-//    接口了
-
-        [self commitDatas]; 
+//    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提醒" message:@"是否确认开通商务会员，开通商务会员需缴纳1500元手续费" preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//    UIAlertAction * sure = [UIAlertAction actionWithTitle:@"确认开通" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        PayBusinessViewController * payVC = [[PayBusinessViewController alloc]init];
+//        payVC.ischoose = _payMethod;
+//        [self.navigationController pushViewController:payVC animated:YES];
+//    }];
+//    
+//    [alertVC addAction:cancel];
+//    [alertVC addAction:sure];
+//    
+//    [self presentViewController:alertVC animated:YES completion:nil];
+//    
+//    
+    
+      NSString*str= [self judgeCanSave];
+        if (self.canSave==NO) {
+            [JRToast showWithText:str];
+            return;
+        }
+    
+    //    接口了
+    
+            [self commitDatas];
 }
 
 - (IBAction)wechatPayAction:(UIButton *)sender {
     sender.selected = !sender.selected;
+    self.chooseZFB.selected = NO;
+    self.chooseYL.selected = NO;
     _payMethod = 1;
-    sender.selected = YES;
-    markBtn.selected = NO;
-    markBtn = sender;
-    MyLog(@"选择微信");
+    if (sender.selected == NO) {
+        _payMethod = 0;
+    }
+    //    sender.selected = YES;
+    //    markBtn.selected = NO;
+    //    markBtn = sender;
+    MyLog(@"选择微信---%ld",_payMethod);
 }
 - (IBAction)zhifubaoPayAction:(UIButton *)sender {
     sender.selected = !sender.selected;
+    self.chooseYL.selected = NO;
+    self.chooseMethodWX.selected = NO;
     _payMethod = 2;
-    sender.selected = YES;
-    markBtn.selected = NO;
-    markBtn = sender;
-    MyLog(@"选择支付宝");
+    if (sender.selected == NO) {
+        _payMethod = 0;
+    }
+    //    sender.selected = YES;
+    //    markBtn.selected = NO;
+    //    markBtn = sender;
+    MyLog(@"选择支付宝 ···· %ld",_payMethod);
 }
 - (IBAction)yilianPayAction:(UIButton *)sender {
     sender.selected = !sender.selected;
+    self.chooseMethodWX.selected = NO;
+    self.chooseZFB.selected = NO;
     _payMethod = 3;
-    sender.selected = YES;
-    markBtn.selected = NO;
-    markBtn = sender;
-    MyLog(@"选择银联");
+    if (sender.selected == NO) {
+        _payMethod = 0;
+    }
+    //    sender.selected = YES;
+    //    markBtn.selected = NO;
+    //    markBtn = sender;
+    MyLog(@"选择银联 ----%ld",_payMethod);
 }
 
 - (IBAction)agreement:(UIButton *)sender {
     sender.selected = !sender.selected;
     if (sender.selected) {
         _index = 1;
-
+        
     }else{
         _index = 0;
-
+        
     }
-
+    
 }
 - (IBAction)agreementDetali:(UIButton *)sender {
     BusinessAgreementDetaliViewController * argeement = [[BusinessAgreementDetaliViewController alloc]init];
@@ -125,23 +155,23 @@
 
 - (IBAction)touchOrderInfont:(UIButton*)sender {
     _isTouchRightImage=NO;
-//    if (sender.selected) {
-//        //删除照片
-//        sender.selected=NO;
-//        
-//    }else{
-//        //选中照片
-//        sender.selected=YES;
-//        
-//    }
+    //    if (sender.selected) {
+    //        //删除照片
+    //        sender.selected=NO;
+    //
+    //    }else{
+    //        //选中照片
+    //        sender.selected=YES;
+    //
+    //    }
     
     [self TouchAddImage];
-
+    
 }
 
 - (IBAction)touchOrderBlow:(UIButton*)sender {
-       _isTouchRightImage=YES;
-      [self TouchAddImage];
+    _isTouchRightImage=YES;
+    [self TouchAddImage];
     
 }
 
@@ -173,7 +203,7 @@
 
 #pragma mark  --getDatas
 -(void)commitDatas{
-//上传图片
+    //上传图片
     NSArray*array=@[self.imageInfo,self.imageBelow];
     for (int i=0; i<array.count; i++) {
         NSString*urlStr=[NSString stringWithFormat:@"%@%@",HTTP_ADDRESS,HTTP_IMG_UP];
@@ -189,24 +219,24 @@
                 }else{
                     self.saveRightImageUrl=data[@"data"];
                 }
-               
+                
                 //如果 都有值的话
                 if (self.saveLeftImageUrl&&self.saveRightImageUrl) {
                     //这时候 就可以  吊 上传的接口了
                     
                     [self postDatas];
-
+                    
                 }
                 
             }else{
                 [JRToast showWithText:data[@"errorMessage"]];
                 
             }
-          
+            
         }];
-       
+        
     }
- 
+    
 }
 
 
@@ -221,18 +251,19 @@
         NSInteger number=[data[@"errorCode"] integerValue];
         if (number==0) {
             [JRToast showWithText:data[@"data"]];
-//            UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提醒" message:@"是否确认开通商务会员，开通商务会员需缴纳8000元手续费" preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-//            UIAlertAction * sure = [UIAlertAction actionWithTitle:@"确认开通" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//                PayBusinessViewController * payVC = [[PayBusinessViewController alloc]init];
-//                [self.navigationController pushViewController:payVC animated:YES];
-//            }];
-//            
-//            [alertVC addAction:cancel];
-//            [alertVC addAction:sure];
-//            
-//            [self presentViewController:alertVC animated:YES completion:nil];
-//
+            //            UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提醒" message:@"是否确认开通商务会员，开通商务会员需缴纳1500元手续费" preferredStyle:UIAlertControllerStyleAlert];
+            //            UIAlertAction * cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            //            UIAlertAction * sure = [UIAlertAction actionWithTitle:@"确认开通" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //                PayBusinessViewController * payVC = [[PayBusinessViewController alloc]init];
+//               payVC.ischoose = _payMethod;
+            //                [self.navigationController pushViewController:payVC animated:YES];
+            //            }];
+            //
+            //            [alertVC addAction:cancel];
+            //            [alertVC addAction:sure];
+            //
+            //            [self presentViewController:alertVC animated:YES completion:nil];
+            //
         }else{
             [JRToast showWithText:data[@"errorMessage"]];
         }
@@ -256,18 +287,18 @@
         //左边的图
         _imageInfo=newPhoto;
         [self.orderInFont setBackgroundImage:_imageInfo forState:UIControlStateNormal];
-
+        
     }
     
     //吊接口  照片
-//    NSString *str = [ImageCache headImagePath:newPhoto];
-//    
-//    if (self.saveAllImage.count>=9) {
-//        [JRToast showWithText:@"最多只能穿9张照片"];
-//        return;
-//    }
-//    [self.saveAllImage addObject:newPhoto];
-//    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
+    //    NSString *str = [ImageCache headImagePath:newPhoto];
+    //
+    //    if (self.saveAllImage.count>=9) {
+    //        [JRToast showWithText:@"最多只能穿9张照片"];
+    //        return;
+    //    }
+    //    [self.saveAllImage addObject:newPhoto];
+    //    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
     
     //    NSDictionary*dict=@{@"header_img":str};
     //    [self changePersonInfoWithDic:dict];
@@ -313,14 +344,14 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 //隐藏键盘
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{

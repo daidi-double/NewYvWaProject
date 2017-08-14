@@ -15,7 +15,7 @@
     
 }
 @property (nonatomic,strong)UITableView * payInfoTableView;
-@property(nonatomic,assign)NSInteger ischoose; //0 微信 1 支付宝 2 银联支付
+
 @end
 
 @implementation PayBusinessViewController
@@ -25,7 +25,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"订单支付";
     [self setpayinfomationUI];
-    _ischoose = 3;
+    
 }
 
 - (void)setpayinfomationUI{
@@ -81,7 +81,7 @@
         cell.imageView.image = [UIImage imageNamed:@"商务会员头像.png"];
         cell.textLabel.font = [UIFont systemFontOfSize:17 weight:1];
         cell.textLabel.textColor = CNaviColor;
-        cell.textLabel.text = @"￥8000";
+        cell.textLabel.text = @"￥1500";
 
         cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
         cell.detailTextLabel.textColor = [UIColor grayColor];
@@ -91,7 +91,7 @@
 //            UILabel * promptLbl = [[UILabel alloc]initWithFrame:CGRectMake(10,0, kScreen_Width - 20, 30)];
 //            promptLbl.font = [UIFont systemFontOfSize:14];
 //            promptLbl.textColor = [UIColor darkGrayColor];
-//            promptLbl.text = @"永久成为商务会员:需要支付8000手续费";
+//            promptLbl.text = @"永久成为商务会员:需要支付1500手续费";
 //            
 //            [cell.contentView addSubview:promptLbl];
   
@@ -128,7 +128,7 @@
         payBtn.backgroundColor = CNaviColor;
         payBtn.layer.masksToBounds = YES;
         payBtn.layer.cornerRadius = 5;
-        [payBtn setTitle:@"确认支付￥8000" forState:UIControlStateNormal];
+        [payBtn setTitle:@"确认支付￥1500" forState:UIControlStateNormal];
         [payBtn addTarget:self action:@selector(payMoney) forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:payBtn];
     
@@ -137,21 +137,21 @@
     return cell;
 }
 - (void)payMoney{
-    if (_ischoose == 3) {
+    if (_ischoose == 0) {
         [JRToast showWithText:@"请选择支付方式"];
         return;
 
     }
-        if (_ischoose == 0) {
+        if (_ischoose == 1) {
            //微信支付
-           
+            MyLog(@"微信支付");
     
-        }else if(_ischoose == 1){
+        }else if(_ischoose == 2){
            //支付宝支付
             [self payWith:@"ali"];
-
+MyLog(@"支付宝支付");
         }else{
-            
+            MyLog(@"银联支付");
             //银联支付
         }
 }

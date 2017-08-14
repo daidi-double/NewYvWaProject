@@ -243,7 +243,7 @@
     subLabel.text = [NSString stringWithFormat:@"笔记·%@ 粉丝·%@",self.model.album.total,self.model.album.fans];
     if (self.otherUserID) {
         nameLabel.text = self.otherUserName;
-        [imageView sd_setImageWithURL:[NSURL URLWithString:self.otherUserIcon] placeholderImage:[UIImage imageNamed:@"placehoder_loading"] completed:nil];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:self.otherUserIcon] placeholderImage:[UIImage imageNamed:@"placeholder"] completed:nil];
     }
     [self.collectionView reloadData];
 }

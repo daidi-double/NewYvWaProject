@@ -153,7 +153,7 @@ NSString * const ID = @"cycleCell";
 {
     int currentIndex = _mainView.contentOffset.x / _flowLayout.itemSize.width;
     int targetIndex = currentIndex + 1;
-    //自己加的 我艹
+    
     if (_totalItemsCount==0) {
         return;
     }

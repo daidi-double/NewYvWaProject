@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="139"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="寻蛙记炭烧牛蛙餐厅(大融城店)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTn-bm-2Eo">
@@ -149,7 +149,6 @@
                             <constraint firstAttribute="height" constant="25" id="I28-Ue-k6G"/>
                             <constraint firstAttribute="width" constant="25" id="x4i-zN-HiI"/>
                         </constraints>
-                        <state key="normal" backgroundImage="qiang.png"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -201,12 +200,11 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="home_grayStar.png" width="19" height="19"/>
-        <image name="home_halfStar.png" width="19" height="19"/>
-        <image name="home_lightStar.png" width="19" height="19"/>
+        <image name="home_grayStar.png" width="13" height="12"/>
+        <image name="home_halfStar.png" width="13" height="12"/>
+        <image name="home_lightStar.png" width="13" height="12"/>
         <image name="home_locate.png" width="32" height="32"/>
         <image name="home_phone.png" width="32" height="32"/>
         <image name="page_collection.png" width="64" height="64"/>
-        <image name="qiang.png" width="64" height="64"/>
     </resources>
 </document>

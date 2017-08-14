@@ -682,7 +682,7 @@
     
     NSString*urlStr=[NSString stringWithFormat:@"%@%@",HTTP_ADDRESS,HTTP_DELABOUT];
 
-    NSDictionary*params=@{@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"other_uid":self.uid,@"user_type":@(1),@"auser_type":self.user_type};
+    NSDictionary*params=@{@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"attention_id":self.uid,@"user_type":@(1),@"auser_type":self.user_type};
 
     HttpManager*manager=[[HttpManager alloc]init];
     [manager postDatasNoHudWithUrl:urlStr withParams:params compliation:^(id data, NSError *error) {
@@ -697,20 +697,10 @@
             [JRToast showWithText:data[@"errorMessage"]];
             [self getDatas];
         }
-        
-        
     }];
-    
-    
-    
-    
 }
-
-
 -(void)ButtonAddAbount{
       //变成加为关注
-  
-    
     NSString*urlStr=[NSString stringWithFormat:@"%@%@",HTTP_ADDRESS,HTTP_ADDABOUT];
     
     NSDictionary*params=@{@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"user_id":@([UserSession instance].uid),@"attention_id":self.uid,@"user_type":@(1),@"auser_type":self.user_type};

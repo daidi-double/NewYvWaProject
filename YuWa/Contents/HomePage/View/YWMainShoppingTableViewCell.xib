@@ -16,10 +16,10 @@
             <rect key="frame" x="0.0" y="0.0" width="376" height="148"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="148"/>
+                <rect key="frame" x="0.0" y="0.0" width="376" height="147"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placehoder_loading.png" translatesAutoresizingMaskIntoConstraints="NO" id="8tA-sV-brn">
+                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="8tA-sV-brn">
                         <rect key="frame" x="10" y="10" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="8tA-sV-brn" secondAttribute="height" multiplier="1:1" id="QM0-4C-hgI"/>
@@ -119,7 +119,7 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_te.png" translatesAutoresizingMaskIntoConstraints="NO" id="DZO-Xt-DRg">
+                    <imageView hidden="YES" userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_te" translatesAutoresizingMaskIntoConstraints="NO" id="DZO-Xt-DRg">
                         <rect key="frame" x="82" y="117" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="X8R-VN-T7z"/>
@@ -195,9 +195,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="home_lightStar.png" width="19" height="19"/>
-        <image name="home_te.png" width="32" height="32"/>
-        <image name="placehoder_loading.png" width="1024" height="1024"/>
+        <image name="home_lightStar.png" width="13" height="12"/>
+        <image name="home_te" width="14" height="14"/>
+        <image name="placeholder" width="394" height="330"/>
         <image name="zekou" width="24" height="24"/>
     </resources>
 </document>

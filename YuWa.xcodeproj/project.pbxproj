@@ -1747,7 +1747,6 @@
 		C1C1481E1DE83B44001FCBC3 /* pointMoneyHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1C1481D1DE83B44001FCBC3 /* pointMoneyHeaderView.m */; };
 		C1DB58F31E51A8C5004B386F /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DB58F21E51A8C5004B386F /* PassKit.framework */; };
 		C1DB58FA1E51AC06004B386F /* libUPAPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1DB58F91E51AC06004B386F /* libUPAPayPlugin.a */; };
-		C1E5B74F1DE3211B00EB1F85 /* qiang.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E5B74E1DE3211B00EB1F85 /* qiang.png */; };
 		C1E5B7551DE41A7E00EB1F85 /* otherPersonImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C1E5B7541DE41A7E00EB1F85 /* otherPersonImage.png */; };
 		C1E5B7581DE41C7E00EB1F85 /* OtherPersonCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E5B7571DE41C7E00EB1F85 /* OtherPersonCenterModel.m */; };
 		C1E5B75C1DE454C200EB1F85 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E5B75A1DE454C200EB1F85 /* ScheduleTableViewCell.m */; };
@@ -1875,7 +1874,6 @@
 		C1F7BF561DB1CA0700CCAF96 /* icon_homepage_search.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F7BF141DB1CA0700CCAF96 /* icon_homepage_search.png */; };
 		C1F7BF571DB1CA0700CCAF96 /* icon_homepage_upArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F7BF151DB1CA0700CCAF96 /* icon_homepage_upArrow@2x.png */; };
 		C1F7BF581DB1CA0700CCAF96 /* page_downArr.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F7BF161DB1CA0700CCAF96 /* page_downArr.png */; };
-		C1F7BF5C1DB1CA0700CCAF96 /* placehoder_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F7BF1A1DB1CA0700CCAF96 /* placehoder_loading.png */; };
 		C1F7BF791DB1CB6500CCAF96 /* SQMenuShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F7BF751DB1CB6500CCAF96 /* SQMenuShowCell.m */; };
 		C1F7BF7A1DB1CB6500CCAF96 /* SQMenuShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F7BF761DB1CB6500CCAF96 /* SQMenuShowCell.xib */; };
 		C1F7BF7B1DB1CB6500CCAF96 /* SQMenuShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F7BF781DB1CB6500CCAF96 /* SQMenuShowView.m */; };
@@ -4384,7 +4382,6 @@
 		C1DB58F61E51AC06004B386F /* UPAPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPlugin.h; sourceTree = "<group>"; };
 		C1DB58F71E51AC06004B386F /* UPAPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPAPayPluginDelegate.h; sourceTree = "<group>"; };
 		C1DB58F91E51AC06004B386F /* libUPAPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPAPayPlugin.a; sourceTree = "<group>"; };
-		C1E5B74E1DE3211B00EB1F85 /* qiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qiang.png; sourceTree = "<group>"; };
 		C1E5B7541DE41A7E00EB1F85 /* otherPersonImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = otherPersonImage.png; sourceTree = "<group>"; };
 		C1E5B7561DE41C7E00EB1F85 /* OtherPersonCenterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherPersonCenterModel.h; sourceTree = "<group>"; };
 		C1E5B7571DE41C7E00EB1F85 /* OtherPersonCenterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherPersonCenterModel.m; sourceTree = "<group>"; };
@@ -4579,7 +4576,6 @@
 		C1F7BF141DB1CA0700CCAF96 /* icon_homepage_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_homepage_search.png; sourceTree = "<group>"; };
 		C1F7BF151DB1CA0700CCAF96 /* icon_homepage_upArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_homepage_upArrow@2x.png"; sourceTree = "<group>"; };
 		C1F7BF161DB1CA0700CCAF96 /* page_downArr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page_downArr.png; sourceTree = "<group>"; };
-		C1F7BF1A1DB1CA0700CCAF96 /* placehoder_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placehoder_loading.png; sourceTree = "<group>"; };
 		C1F7BF741DB1CB6500CCAF96 /* SQMenuShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQMenuShowCell.h; sourceTree = "<group>"; };
 		C1F7BF751DB1CB6500CCAF96 /* SQMenuShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQMenuShowCell.m; sourceTree = "<group>"; };
 		C1F7BF761DB1CB6500CCAF96 /* SQMenuShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SQMenuShowCell.xib; sourceTree = "<group>"; };
@@ -10559,7 +10555,6 @@
 				AAFA57BB1ED2EC8E006CF2D7 /* home_hui3x.png */,
 				C1E5B7711DE4626900EB1F85 /* unselected.png */,
 				C1E5B7721DE4626900EB1F85 /* seoected.png */,
-				C1E5B74E1DE3211B00EB1F85 /* qiang.png */,
 				C135A0D01DDC654E002B78A5 /* page_collection_selected.png */,
 				C135A0CE1DDC5F69002B78A5 /* page_collection.png */,
 				C10E94BB1DD360A100728B3D /* home_yue.png */,
@@ -10583,7 +10578,6 @@
 				C1F7BF141DB1CA0700CCAF96 /* icon_homepage_search.png */,
 				C1F7BF151DB1CA0700CCAF96 /* icon_homepage_upArrow@2x.png */,
 				C1F7BF161DB1CA0700CCAF96 /* page_downArr.png */,
-				C1F7BF1A1DB1CA0700CCAF96 /* placehoder_loading.png */,
 			);
 			path = "首页图";
 			sourceTree = "<group>";
@@ -10920,7 +10914,6 @@
 				AA3544BC1E9DF23900A2EC73 /* 0baobaoBG28@2x.jpg in Resources */,
 				AAFA57A71ED2E540006CF2D7 /* 酒店.png in Resources */,
 				C135A13F1DDE020F002B78A5 /* 波浪个人_00019.png in Resources */,
-				C1E5B74F1DE3211B00EB1F85 /* qiang.png in Resources */,
 				AA3545C91E9DF23A00A2EC73 /* 4baobaoBG57@2x.jpg in Resources */,
 				AA35446E1E9DF23800A2EC73 /* 4baobaoLVUP11@2x.jpg in Resources */,
 				AA3A305D1EB0619500E2FCD7 /* YWNewShopInfoTableViewCell.xib in Resources */,
@@ -11566,7 +11559,6 @@
 				B38B2F211D8FC82F004D5256 /* RBHomeSearchDetailViewController.xib in Resources */,
 				AA35443B1E9DF23800A2EC73 /* 3baobaoLVUP1@2x.jpg in Resources */,
 				AA3544E11E9DF23900A2EC73 /* 1baobaoBG0@2x.jpg in Resources */,
-				C1F7BF5C1DB1CA0700CCAF96 /* placehoder_loading.png in Resources */,
 				AA3544CC1E9DF23900A2EC73 /* 0baobaoBG42@2x.jpg in Resources */,
 				AA3543D21E9DF23800A2EC73 /* 1baobaoLVUP33@2x.jpg in Resources */,
 				25B3C5C81ECD8E4000674F20 /* 38.png in Resources */,
