@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -172,16 +173,19 @@
                     <constraint firstItem="OKw-c4-raV" firstAttribute="leading" secondItem="wUh-Ld-JAf" secondAttribute="leading" id="a7V-Ix-Bj0"/>
                     <constraint firstItem="OKw-c4-raV" firstAttribute="top" secondItem="LWN-Wj-DxF" secondAttribute="bottom" constant="8" symbolic="YES" id="c08-0E-WDo"/>
                     <constraint firstItem="HRC-PK-Vlf" firstAttribute="leading" secondItem="wUh-Ld-JAf" secondAttribute="leading" id="cL4-lr-9A6"/>
+                    <constraint firstItem="OKw-c4-raV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="84" id="fTQ-Wj-HjQ"/>
                     <constraint firstAttribute="trailing" secondItem="B6d-8F-02x" secondAttribute="trailing" constant="10" id="gbG-4C-wZl"/>
                     <constraint firstItem="7nS-tQ-4nP" firstAttribute="leading" secondItem="HRC-PK-Vlf" secondAttribute="trailing" constant="2" id="gvp-2f-rt0"/>
                     <constraint firstItem="B6d-8F-02x" firstAttribute="leading" secondItem="Vuv-Lr-jGo" secondAttribute="trailing" constant="5" id="jaM-pT-AtF"/>
                     <constraint firstItem="te6-Qj-mcP" firstAttribute="height" secondItem="GsQ-vf-LiJ" secondAttribute="height" id="nsx-1x-OCf"/>
+                    <constraint firstItem="OKw-c4-raV" firstAttribute="top" secondItem="Nwb-bI-0nU" secondAttribute="bottom" constant="34" id="p1x-CR-OW4"/>
                     <constraint firstItem="Nwb-bI-0nU" firstAttribute="baseline" secondItem="uAN-hw-w17" secondAttribute="baseline" id="pnM-qM-TzZ"/>
                     <constraint firstItem="DZO-Xt-DRg" firstAttribute="centerX" secondItem="PTz-Lh-vKo" secondAttribute="centerX" id="rzM-Qd-2XM"/>
                     <constraint firstItem="B6d-8F-02x" firstAttribute="baseline" secondItem="Vuv-Lr-jGo" secondAttribute="baseline" id="sQv-qw-3wM"/>
                     <constraint firstAttribute="bottom" secondItem="nNp-QA-xDa" secondAttribute="bottom" id="tCu-Hy-JhA"/>
                     <constraint firstItem="GsQ-vf-LiJ" firstAttribute="centerY" secondItem="PTz-Lh-vKo" secondAttribute="centerY" id="tuA-wB-pRQ"/>
                     <constraint firstAttribute="trailing" secondItem="nNp-QA-xDa" secondAttribute="trailing" id="uTC-zl-DOB"/>
+                    <constraint firstItem="wUh-Ld-JAf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="wQs-gt-U6g"/>
                     <constraint firstItem="8tA-sV-brn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="wdt-DL-Ew1"/>
                     <constraint firstItem="GsQ-vf-LiJ" firstAttribute="top" secondItem="OKw-c4-raV" secondAttribute="bottom" constant="7" id="xTF-Km-nVa"/>
                 </constraints>

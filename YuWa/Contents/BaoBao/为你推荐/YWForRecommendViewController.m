@@ -122,7 +122,7 @@
     
     //人均
     UILabel*per_capitaLabel=[cell viewWithTag:3];
-    per_capitaLabel.text=[NSString stringWithFormat:@"%@/人",model.per_capita];
+    per_capitaLabel.text=[NSString stringWithFormat:@"%@元/人",model.per_capita];
     
  
     //分类
