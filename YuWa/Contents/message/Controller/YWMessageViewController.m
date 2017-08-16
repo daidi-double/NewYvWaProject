@@ -283,7 +283,7 @@
         //        从数据库获取所有的好友
         userlist = [[EMClient sharedClient].contactManager getContacts];
     }
-    chatVC.chatMessage = nil;
+
     if (!userlist||userlist.count<=0) {
         chatVC.chatMessage = @"你们已不是好友了哦~";
     }else{

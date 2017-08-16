@@ -238,7 +238,8 @@
     HttpManager*manager=[[HttpManager alloc]init];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [manager postDatasNoHudWithUrl:urlStr withParams:params compliation:^(id data, NSError *error) {
-            MyLog(@"%@",[NSThread  currentThread]);
+//            MyLog(@"%@",[NSThread  currentThread]);
+            MyLog(@"首页数据%@",data);
             NSString*errorCode=[NSString stringWithFormat:@"%@",data[@"errorCode"]];
             if ([errorCode isEqualToString:@"0"]) {
                 self.mtModelArrBanner=nil;

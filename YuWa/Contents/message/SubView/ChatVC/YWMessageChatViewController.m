@@ -59,8 +59,25 @@ static NSString *kGroupName = @"GroupName";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(makeCall:) name:KNOTIFICATION_CALL object:nil];
 
+    UIBarButtonItem * rightBtn = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"haveaccount"] style:UIBarButtonItemStylePlain target:self action:@selector(toOtherPersen)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
 }
-
+- (void)toOtherPersen{
+    MyLog(@"查看个人中心");
+    if ([self.user_type isEqualToString:@"1"]) {
+        //如果是1，表示是用户账号。就跳转，如果是商家则跳转到店铺
+        YWOtherSeePersonCenterViewController * vc = [[YWOtherSeePersonCenterViewController alloc]init];
+        vc.uid = self.friendID;
+        vc.nickName = self.friendNikeName;
+        vc.otherIcon = self.friendIcon;
+        vc.user_type = self.user_type;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        ShopDetailViewController * detailVC = [[ShopDetailViewController alloc]init];
+        detailVC.shop_id = self.friendID;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }
+}
 - (void)makeCall:(NSNotification*)notification{
     
     
@@ -310,45 +327,6 @@ static NSString *kGroupName = @"GroupName";
 
 - (void)callDidEnd:(EMCallSession *)aSession reason:(EMCallEndReason)aReason error:(EMError *)aError
 {
-  
-//    if (aReason != EMCallEndReasonHangup) {
-//        NSString *reasonStr = @"对方不在线";
-//        switch (aReason) {
-//            case EMCallEndReasonNoResponse:
-//            {
-//                reasonStr = NSLocalizedString(@"对方无人接听", @"NO response");
-//                
-//            }
-//                break;
-//            case EMCallEndReasonDecline:
-//            {
-//                reasonStr = NSLocalizedString(@"对方拒绝了您的通话", @"Reject the call");
-//            }
-//                break;
-//            case EMCallEndReasonBusy:
-//            {
-//                reasonStr = NSLocalizedString(@"对方正在通话中", @"In the call...");
-//            }
-//                break;
-//            case EMCallEndReasonFailed:
-//            {
-//                reasonStr = NSLocalizedString(@"连接失败", @"Connect failed");
-//            }
-//                break;
-//            default:
-//                break;
-//        }
-//        
-//        if (aError) {
-//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:aError.errorDescription delegate:nil cancelButtonTitle:NSLocalizedString(@"好的", @"OK") otherButtonTitles:nil, nil];
-//            [alertView show];
-//        }
-//        else{
-//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:reasonStr delegate:nil cancelButtonTitle:NSLocalizedString(@"好的", @"OK") otherButtonTitles:nil, nil];
-//            [alertView show];
-//        }
-//        
-//    }
     [self _stopCallTimer];
     [self.voiceViewController dismissViewControllerAnimated:YES completion:nil];
 }

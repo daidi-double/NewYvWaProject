@@ -65,7 +65,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[[self.navigationController.navigationBar subviews]objectAtIndex:0] setAlpha:1];
-    
+    [self.tableView.mj_header beginRefreshing];
 }
 
 #pragma mark  --UI
