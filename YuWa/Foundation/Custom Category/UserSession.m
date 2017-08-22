@@ -121,6 +121,11 @@ static UserSession * user=nil;
     user.password = dataDic[@"password"];
     [KUSERDEFAULT setValue:user.password forKey:AUTOLOGINCODE];
     user.hxPassword = dataDic[@"mobile"];
+    if ([dataDic[@"mobile"] isEqualToString:@""]) {
+        user.hxPassword = [NSString stringWithFormat:@"%@",dataDic[@"username"]];
+    }else if (![dataDic[@"mobile"] isEqualToString:user.account]) {
+        user.hxPassword = user.account;
+    }
     user.local = dataDic[@"address"];
     
     NSArray * SexArr = @[@"男",@"女",@"未知"];
