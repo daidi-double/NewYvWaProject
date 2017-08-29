@@ -704,8 +704,14 @@
     }
 }
 -(void)touchLingdang{
-    YWMessageNotificationViewController*vc=[[YWMessageNotificationViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([UserSession instance].isLogin) {
+        
+        YWMessageNotificationViewController*vc=[[YWMessageNotificationViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        YWLoginViewController * vc = [[YWLoginViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 //点击输入框
 -(void)touchinPut{

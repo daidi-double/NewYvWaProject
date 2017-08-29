@@ -154,7 +154,10 @@
             NSArray*array=data[@"data"];
             for (NSDictionary*dict in array) {
                 HPRecommendShopModel*model=[HPRecommendShopModel yy_modelWithDictionary:dict];
-                [modelArray addObject:model];
+                if (model) {
+                    
+                    [modelArray addObject:model];
+                }
             }
             
             showResultsViewController*vc=[[showResultsViewController alloc]init];
