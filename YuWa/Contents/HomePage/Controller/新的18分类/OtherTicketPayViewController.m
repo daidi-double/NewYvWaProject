@@ -200,7 +200,9 @@
     //有效期转时间戳
    NSString * day = [JWTools dateTimeStrDate:[self.model.validDays integerValue]];
     
-    
+    if (!self.model.per_price) {
+        self.model.per_price = @"";
+    }
     NSDictionary * pragrams = @{@"mobile":self.iphone,@"ticketNo":self.model.ticketNo,@"ticketName":self.model.ticketName,@"devicePos":self.model.devicePos,@"validateMemo":self.model.validateMemo,@"price":self.model.price,@"count":number,@"cinema_code":self.cinemaCode,@"is_coupon":isCoupon,@"coupon_money":coupon_moneyStr,@"show_type":self.model.showType,@"period_validity":day,@"user_id":@([UserSession instance].uid),@"device_id":[JWTools getUUID],@"token":[UserSession instance].token,@"percentage":self.model.percentage,@"per_price":self.model.per_price};
    
     NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithDictionary:pragrams];
